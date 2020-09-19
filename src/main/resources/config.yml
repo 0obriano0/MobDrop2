@@ -1,0 +1,9 @@
+ServerIP: 127.0.0.1
+port: 5000
+MySQL:
+   user: user
+   pass: password
+   DB_URL: db_url
+   db: null
+   show_msg: false
+lang: zh_TW

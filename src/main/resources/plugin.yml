@@ -1,0 +1,31 @@
+name: MobDrop2
+main: com.brian.MobDrop2.MobDrop2
+version: ${full.version}
+author: 0obrino0
+website: www.youtube.com/user/brian041301
+api-version: 1.13
+commands:
+   mobdrop:
+      description: mobdrop Commands.
+   mobdrop2:
+      description: mobdrop Commands.
+   mdop:
+      description: mobdrop Commands.
+permissions:
+   mobdrop.*:
+      default: op
+      description: Give players with op everything by default
+      children:
+         mobdrop.user.*: true
+         mobdrop.admin.*: true
+   mobdrop.user.*:
+      default: true
+      children:
+         mobdrop.user: true
+         mobdrop.user.help: true
+   mobdrop.admin.*:
+      default: op
+      children:
+         mobdrop.admin: true
+         mobdrop.admin.test: true
+         mobdrop.admin.reload: true

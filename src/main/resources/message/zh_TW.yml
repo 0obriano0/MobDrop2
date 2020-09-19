@@ -1,0 +1,10 @@
+SQL:
+   Join_db_connect_error: "&c伺服器連接資料庫失敗，無法使用此功能，請立即連絡管理員"
+   
+Command:
+   CmdCanNotUse: "&c後台無法使用此指令"
+   PlayerCanNotUse: "&c無法使用此指令"
+   NoPermission: "&c無使用此權限的指令"
+   CanNotFind: "&c查無此指令"
+
+      
