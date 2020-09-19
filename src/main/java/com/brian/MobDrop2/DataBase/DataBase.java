@@ -34,7 +34,7 @@ public class DataBase {
 	public static String pluginMainDir = "./plugins/NoShove/";
 	
 	/**
-	 * 
+	 * 此插件名稱
 	 */
 	public static String pluginName = "MobDrop2";
 	
@@ -49,12 +49,12 @@ public class DataBase {
 	public static FileMessage fileMessage = new FileMessage();
 	
 	/**
-	 * 顯示訊息 在cmd 裡顯示 "[NoShove] " + msg
+	 * 顯示訊息 在cmd 裡顯示 "[MobDrop2] " + msg
 	 * @param msg 要顯示的文字
 	 */
 	public static void Print(String msg){
 		MobDrop2.plugin.getLogger().info(msg);
-		//System.out.print("[NoShove] " + msg);
+		//System.out.print("[MobDrop2] " + msg);
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class DataBase {
 																		      "black"));
 	
 	/**
-	 * 抓取指令列表(/NoShove 列表資料)
+	 * 抓取指令列表(/MobDrop2 列表資料)
 	 * @param plugin 系統資料
 	 * @return 列表資料
 	 */
