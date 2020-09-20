@@ -1,4 +1,4 @@
-package com.brian.MobDrop2;
+package com.chengbrian.MobDrop2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.brian.MobDrop2.Command.ImainCommandSystem;
-import com.brian.MobDrop2.DataBase.DataBase;
+import com.chengbrian.MobDrop2.Command.ImainCommandSystem;
+import com.chengbrian.MobDrop2.DataBase.DataBase;
 
 public class MobDrop2 extends JavaPlugin{
 	public static Plugin plugin;

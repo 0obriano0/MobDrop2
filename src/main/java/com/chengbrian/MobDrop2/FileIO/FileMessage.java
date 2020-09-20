@@ -1,7 +1,7 @@
-package com.brian.MobDrop2.FileIO;
+package com.chengbrian.MobDrop2.FileIO;
 
-import com.brian.MobDrop2.MobDrop2;
-import com.brian.MobDrop2.FileIO.FileIO;
+import com.chengbrian.MobDrop2.MobDrop2;
+import com.chengbrian.MobDrop2.FileIO.FileIO;
 
 public class FileMessage extends FileIO{
 	public FileMessage() {

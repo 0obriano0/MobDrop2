@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.Command;
+package com.chengbrian.MobDrop2.Command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop2.MobDrop2;
+import com.chengbrian.MobDrop2.MobDrop2;
 
 public class Commandreload extends mainCommandSystem{
 	public Commandreload() {

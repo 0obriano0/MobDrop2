@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.Command;
+package com.chengbrian.MobDrop2.Command;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop2.DataBase.DataBase;
+import com.chengbrian.MobDrop2.DataBase.DataBase;
 
 public class mainCommandSystem implements ImainCommandSystem {
 	private final transient String name;

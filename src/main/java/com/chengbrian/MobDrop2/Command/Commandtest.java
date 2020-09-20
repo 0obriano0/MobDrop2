@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.Command;
+package com.chengbrian.MobDrop2.Command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop2.DataBase.DataBase;
-import com.brian.MobDrop2.DataBase.Itemset;
+import com.chengbrian.MobDrop2.DataBase.DataBase;
+import com.chengbrian.MobDrop2.DataBase.Itemset;
 
 public class Commandtest extends mainCommandSystem{
 	public Commandtest() {

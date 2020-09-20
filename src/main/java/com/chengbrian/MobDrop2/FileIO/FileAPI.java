@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.FileIO;
+package com.chengbrian.MobDrop2.FileIO;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 import org.bukkit.plugin.Plugin;
 
-import com.brian.MobDrop2.AnsiColor;
+import com.chengbrian.MobDrop2.AnsiColor;
 
 public interface FileAPI {
 	public static void copyFile(InputStream in, File out) throws Exception {

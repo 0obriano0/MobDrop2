@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.FileIO;
+package com.chengbrian.MobDrop2.FileIO;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.bukkit.plugin.Plugin;
 
-import com.brian.MobDrop2.AnsiColor;
+import com.chengbrian.MobDrop2.AnsiColor;
 public class tools {
 	/**
 	 * 基本文字輸出 顯示讀取成功及失敗
