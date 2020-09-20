@@ -57,6 +57,13 @@
         <scope>provided</scope>
     </dependency>
     
+    <dependency>
+	    <groupId>fr.minuskube.inv</groupId>
+	    <artifactId>smart-invs</artifactId>
+	    <version>1.2.7</version>
+	    <scope>provided</scope>
+	</dependency>
+    
    	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
