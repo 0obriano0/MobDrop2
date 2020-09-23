@@ -72,9 +72,10 @@ public class Itemset implements IItemset {
 
 	@Override
 	public Itemset setDurability(short Durability) {
-		Damageable meta = (Damageable) Item.getItemMeta();
+		Damageable meta = (Damageable) getItemMeta();
 		meta.setDamage(Durability);
 		Item.setItemMeta((ItemMeta) meta);
+		//Item.setDurability(Durability);
 		return this;
 	}
 
