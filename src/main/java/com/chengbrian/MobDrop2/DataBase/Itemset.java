@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -102,8 +103,8 @@ public class Itemset implements IItemset {
 			List<String> data = new ArrayList<String>();
 			for (Entry<Enchantment, Integer> lore : newItemMeta.getEnchants().entrySet()) {
 				
-				data.add(lore.getKey().getName().replace("minecraft:", "") + ":" + lore.getValue()); //1.12.2
-				//data.add(lore.getKey().getKey().toString().replace("minecraft:", "") + ":" + lore.getValue()); //1.15.2
+				//data.add(lore.getKey().getName().replace("minecraft:", "") + ":" + lore.getValue()); //1.12.2
+				data.add(lore.getKey().getKey().toString().replace("minecraft:", "") + ":" + lore.getValue()); //1.15.2
 				
 			}
 			return data;
@@ -120,8 +121,8 @@ public class Itemset implements IItemset {
 			String[] EnchantsParts = Enchants.get(i).split(":");
 			int level = Integer.parseInt(EnchantsParts[1]);
 			
-			Enchantment enchantment = Enchantment.getByName(EnchantsParts[0]); //1.12.2
-			//Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(EnchantsParts[0])); //1.15.2
+			//Enchantment enchantment = Enchantment.getByName(EnchantsParts[0]); //1.12.2
+			Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(EnchantsParts[0])); //1.15.2
 			
 			newItemMeta.addEnchant(enchantment, level, true);
 		}
