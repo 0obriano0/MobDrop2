@@ -11,7 +11,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta; 
 
 public class Itemset implements IItemset {
 	private ItemStack Item;
@@ -71,7 +72,9 @@ public class Itemset implements IItemset {
 
 	@Override
 	public Itemset setDurability(short Durability) {
-		Item.setDurability(Durability);
+		Damageable meta = (Damageable) Item.getItemMeta();
+		meta.setDamage(Durability);
+		Item.setItemMeta((ItemMeta) meta);
 		return this;
 	}
 
