@@ -12,8 +12,8 @@ import com.chengbrian.MobDrop2.MobDrop2;
 public class Commandreload extends mainCommandSystem{
 	public Commandreload() {
 		super(  "reload",
-				"/noshove reload 重新讀取資料",
-				new ArrayList<String>(Arrays.asList("noshove.admin.reload")));
+				"/mobdrop reload 重新讀取資料",
+				new ArrayList<String>(Arrays.asList("mobdrop.admin.reload")));
 	}
 	
 	@Override

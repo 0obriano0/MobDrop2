@@ -14,8 +14,8 @@ public class Commandhelp extends mainCommandSystem{
 
 	public Commandhelp() {
 		super(  "help",
-				"/noshove help 取得指令說明",
-				new ArrayList<String>(Arrays.asList("noshove.user.help")));
+				"/mobdrop help 取得指令說明",
+				new ArrayList<String>(Arrays.asList("mobdrop.user.help")));
 	}
 	
 	@Override

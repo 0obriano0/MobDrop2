@@ -90,7 +90,7 @@ public class DataBase {
 	public static List<String> getCommands(Plugin plugin){
 		if(Commands == null) {
 			Commands = new ArrayList<String>();
-			URL jarURL = plugin.getClass().getResource("/com/brian/" + pluginName + "/Command");
+			URL jarURL = plugin.getClass().getResource("/com/chengbrian/" + pluginName + "/Command");
 	    	URI uri;
 			try {
 				FileSystem fileSystem = null;
@@ -98,7 +98,7 @@ public class DataBase {
 				Path myPath;
 		        if (uri.getScheme().equals("jar")) {
 		            fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-		            myPath = fileSystem.getPath("/com/brian/"+ pluginName +"/Command");
+		            myPath = fileSystem.getPath("/com/chengbrian/"+ pluginName +"/Command");
 		            
 		        } else {
 		            myPath = Paths.get(uri);

@@ -13,8 +13,8 @@ import com.chengbrian.MobDrop2.DataBase.Itemset;
 public class Commandtest extends mainCommandSystem{
 	public Commandtest() {
 		super(  "test",
-				"/noshove test 取得指令說明",
-				new ArrayList<String>(Arrays.asList("noshove.admin.test")));
+				"/mobdrop test 取得指令說明",
+				new ArrayList<String>(Arrays.asList("mobdrop.admin.test")));
 	}
 	
 	@Override

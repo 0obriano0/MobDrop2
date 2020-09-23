@@ -38,7 +38,7 @@ public class MobDrop2 extends JavaPlugin{
     }
 	
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-    	return Command(sender,command,label,args,MobDrop2.class.getClassLoader(),"com.brian." + DataBase.pluginName + ".Command");
+    	return Command(sender,command,label,args,MobDrop2.class.getClassLoader(),"com.chengbrian." + DataBase.pluginName + ".Command");
     }
 	
 	public boolean Command(CommandSender sender, Command command, String commandLabel, String[] args,final ClassLoader classLoader, final String commandPath) {
@@ -86,7 +86,7 @@ public class MobDrop2 extends JavaPlugin{
 	
 	@Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-    	return onTabComplete(sender,cmd,label,args,MobDrop2.class.getClassLoader(),"com.brian." + DataBase.pluginName + ".Command");
+    	return onTabComplete(sender,cmd,label,args,MobDrop2.class.getClassLoader(),"com.chengbrian." + DataBase.pluginName + ".Command");
     }
     
     public List<String> onTabComplete(CommandSender sender, Command command, String commandLabel, String[] args,final ClassLoader classLoader, final String commandPath){
