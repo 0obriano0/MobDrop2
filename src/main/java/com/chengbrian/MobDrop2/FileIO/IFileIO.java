@@ -42,7 +42,11 @@ public interface IFileIO {
 	 * @return 是否讀取成功
 	 */
 	boolean reloadFile();
-
 	
+	/**
+	 * 再重新讀取檔案資料後要做的事情
+	 * @return 回傳事情是否成功執行
+	 */
+	boolean reloadcmd();
 	
 }

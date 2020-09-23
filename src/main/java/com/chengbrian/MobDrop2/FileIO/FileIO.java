@@ -131,6 +131,12 @@ public class FileIO implements IFileIO{
 	@Override
 	public boolean reloadFile() {
 		readFile();
+		if(!reloadcmd()) return false;
+		return true;
+	}
+
+	@Override
+	public boolean reloadcmd() {
 		return true;
 	}
 	

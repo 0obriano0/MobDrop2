@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.bukkit.plugin.Plugin;
 
+import com.chengbrian.MobDrop2.AnsiColor;
 import com.chengbrian.MobDrop2.MobDrop2;
 import com.chengbrian.MobDrop2.FileIO.FileMessage;
 
@@ -53,7 +54,7 @@ public class DataBase {
 	 * @param msg 要顯示的文字
 	 */
 	public static void Print(String msg){
-		MobDrop2.plugin.getLogger().info(msg);
+		MobDrop2.plugin.getLogger().info(msg + AnsiColor.RESET);
 		//System.out.print("[MobDrop2] " + msg);
 	}
 	
