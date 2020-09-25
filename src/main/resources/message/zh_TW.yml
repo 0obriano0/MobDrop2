@@ -1,3 +1,8 @@
+Message:
+   Title: "[怪物掉落系統]"
+   MobDropItem: "§f%mob% §6掉落了§f %item% §b%item_num% §6個!"
+   Gobal_MobDropItem: "§6恭喜§a %player% §6 將§f %mob% §6殺死後掉落§a %item% §b%item_num% §6個!"
+
 SQL:
    Join_db_connect_error: "&c伺服器連接資料庫失敗，無法使用此功能，請立即連絡管理員"
    

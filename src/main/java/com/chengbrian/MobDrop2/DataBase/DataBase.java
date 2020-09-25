@@ -12,8 +12,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.plugin.Plugin;
 
@@ -32,7 +34,7 @@ public class DataBase {
 	/**
 	 * 插件目錄 插件附屬檔案的存放路徑
 	 */
-	public static String pluginMainDir = "./plugins/NoShove/";
+	public static String pluginMainDir = "./plugins/MobDrop2/";
 	
 	/**
 	 * 此插件名稱
@@ -43,6 +45,11 @@ public class DataBase {
 	 * 指令列表
 	 */
 	private static List<String> Commands = null;
+	
+	/**
+	 * 掉落物品清單
+	 */
+	public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
 	
 	/**
 	 * message 設定
@@ -57,11 +64,6 @@ public class DataBase {
 		MobDrop2.plugin.getLogger().info(msg + AnsiColor.RESET);
 		//System.out.print("[MobDrop2] " + msg);
 	}
-	
-	/**
-	 * 防放系統物件宣告
-	 */
-	public static List<Itemset> NoShoveItem = new ArrayList<Itemset>();
 	
 	/**
 	 * Minecraft 16 種顏色

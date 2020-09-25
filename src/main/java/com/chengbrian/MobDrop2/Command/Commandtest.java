@@ -18,12 +18,8 @@ public class Commandtest extends mainCommandSystem{
 	}
 	
 	@Override
-	public void run(CommandSender sender, String commandLabel, Command command, String[] args) throws Exception {
+	public void run(CommandSender sender, String commandLabel, Command command, String[] args){
 		
 	}
-	
-	@Override
-	public void run(Player player, String commandLabel, Command command, String[] args) throws Exception {
-		DataBase.NoShoveItem.add(new Itemset(player.getInventory().getItemInMainHand()));
-	}
 }
+	
