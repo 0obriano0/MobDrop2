@@ -34,6 +34,12 @@ public interface IItemset {
 	Itemset setDurability(short Durability);
 	
 	/**
+	 * 讀取物品耐久值
+	 * @return 物品耐久值
+	 */
+	int getDurability();
+	
+	/**
 	 * 新增文字敘述
 	 * @param lore 訊息資料(type String)
 	 * @return Itemset

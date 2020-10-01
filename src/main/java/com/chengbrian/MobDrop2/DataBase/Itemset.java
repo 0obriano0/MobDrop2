@@ -78,6 +78,12 @@ public class Itemset implements IItemset {
 		//Item.setDurability(Durability);
 		return this;
 	}
+	
+	@Override
+	public int getDurability() {
+		Damageable meta = (Damageable) getItemMeta();
+		return meta.getDamage();
+	}
 
 	@Override
 	public Itemset setLore(String lore) {
