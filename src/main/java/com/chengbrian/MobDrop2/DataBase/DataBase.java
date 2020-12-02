@@ -49,7 +49,7 @@ public class DataBase {
 	/**
 	 * 掉落物品清單
 	 */
-	//public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
+	public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
 	
 	/**
 	 * message 設定
