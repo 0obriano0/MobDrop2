@@ -1,0 +1,27 @@
+﻿#是否要公開廣播 打到寶物的人
+#以及調整機率低於多少顯示
+GobalMessage:
+  IsOpen: true
+  Chance: 20
+
+#針對指令進行介面設定
+command:
+  #在後台是否要逐一顯示所有成功的設定
+  cmdShow: false
+  #是否在遊戲裡面使用文字列表的指令
+  oldList: true
+  
+lang: zh_TW
+
+#設定殺死玩家會不會掉頭顱以及機率
+player:
+   sakurahead: true
+   Chance: 0.001
+   title: "&f%player% 的頭顱"
+   lore:
+   - "&f自定義文字 "
+   - "&f玩家:&a%player%"
+   - "&f斬首時間:&e&l %time%"
+
+#如果dropItem 是 false 就會嘗試將怪物掉落的道具塞入包包，假如包包滿了還是會掉地上
+dropItem: true

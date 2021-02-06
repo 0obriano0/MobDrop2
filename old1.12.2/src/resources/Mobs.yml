@@ -1,0 +1,117 @@
+﻿#================================#
+#生物實體ID                      #
+#CREEPER         : 苦力怕        #
+#SKELETON        : 骷髏          #
+#SPIDER          : 蜘蛛          #
+#GIANT           : 巨人          #
+#ZOMBIE          : 殭屍          #
+#SLIME           : 史萊姆        #
+#GHAST           : 幽靈水母      #
+#ZOMBIE_PIGMAN   : 殭屍豬人      #
+#ENDERMAN        : 終界使者      #
+#CAVE_SPIDER     : 洞穴蜘蛛      #
+#SILVERFISH      : 石頭蟲        #
+#BLAZE           : 烈焰使者      #
+#MAGMA_CUBE      : 烈焰史萊姆    #
+#ENDERDRAGON     : 終界龍        #
+#WITHERBOSS      : 凋零怪        #
+#WITCH       　  : 巫婆          #
+#BAT             : 蝙蝠          #
+#PIG             : 豬            #
+#SHEEP           : 羊            #
+#COW             : 牛            #
+#CHICKEN         : 雞            #
+#SQUID           : 章魚          #
+#WOLF            : 狼            #
+#MOOSHROOM       : 蘑菇牛        #
+#SNOWMAN         : 雪人          #
+#OZELOT          : 貓            #
+#VILLAGERGOLEM   : 鐵人          #
+#HORSE           : 馬            #
+#VILLAGER        : 村民          #
+#COD             : 鱈魚          #
+#DOLPHIN         : 海豚          #
+#DONKEY          : 驢子          #
+#DROWNED         : 沉屍          #
+#ELDER_GUARDIAN  : 原古深海守衛  #
+#ENDERMITE       : 終界蟲        #
+#EVOKER          : 喚魔者        #
+#GUARDIAN        : 深海守衛      #
+#HUSK            : 屍殼          #
+#LLAMA           : 羊駝          #
+#MULE            : 騾            #
+#PARROT          : 鸚鵡          #
+#PHANTOM         : 夜魅          #
+#POLAR_BEAR      : 北極熊        #
+#PUFFERFISH      : 河豚          #
+#RABBIT          : 兔子          #
+#SALMON          : 鮭魚          #
+#SHULKER         : 界伏蚌        #
+#PUFFERFISH      : 河豚          #
+#SKELETON_HORSE  : 骷髏馬        #
+#STRAY           : 流浪骷髏      #
+#TROPICAL_FISH   : 熱帶魚        #
+#TURTLE          : 海龜          #
+#VEX             : 鬼            #
+#VINDICATOR      : 衛道士        #
+#WITHER_SKELETON : 凋零骷髏      #
+#ZOMBIE_HORSE    : 殭屍馬        #
+#ZOMBIE_VILLAGER : 殭屍村民      #
+#================================#
+ZOMBIE:
+#====================================#
+#特殊名詞(這名詞不能再items.yml使用) #
+#定義怪物的頭顱掉落物                #
+#====================================#
+  head:
+    ItemName: "&f殭屍頭顱"
+    Chance: 0.001
+    Lore:
+      - ""
+      - "&f斬首時間:&e&l %time%"
+#===========================================#
+#value 請至https://minecraft-heads.com/ 收尋#
+#===========================================#
+    value: "eyJ0aW1lc3RhbXAiOjE0NjczMTAxMjg5MzAsInByb2ZpbGVJZCI6ImIwZDRiMjhiYzFkNzQ4ODlhZjBlODY2MWNlZTk2YWFiIiwicHJvZmlsZU5hbWUiOiJJbnZlbnRpdmVHYW1lcyIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZmYzg1NGJiODRjZjRiNzY5NzI5Nzk3M2UwMmI3OWJjMTA2OTg0NjBiNTFhNjM5YzYwZTVlNDE3NzM0ZTExIn19fQ=="
+    
+#====================================#
+#請填入在Items.yml所設定的物品識別碼 #
+#====================================#
+  WOODEN_SWORD_TEST:
+#==================#
+#掉落的物品數量    #
+#註：附魔物品無效  #
+#==================#
+    Quantity: 1
+#========================#
+#掉落的機率(0.01~100)    #
+#若無此設定則表示100%掉落#
+#========================#
+    Chance: 20
+#========#
+#其他範例#
+#========#
+  Diamond_TEST:
+    Quantity: 1
+#========================#
+#掉落的物品的最大數量    #
+#========================#
+    Quantity_max: 4
+    Chance: 0.1
+SKELETON: 
+  leather_helmet_test:
+    Quantity: 1
+    Chance: 60
+  leather_chestplate_test:
+    Quantity: 1
+    Chance: 60
+  leather_leggings_test:
+    Quantity: 1
+    Chance: 60
+  leather_boots_test:
+    Quantity: 1
+    Chance: 60
+  arrow_test:
+    Quantity: 10
+    Quantity_max: 30
+    Chance: 50

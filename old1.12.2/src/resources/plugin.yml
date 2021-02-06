@@ -1,0 +1,20 @@
+﻿name: MobDrop2
+main: com.brian.MobDrop2.Main
+version: ${full.version}
+author: 0obrino0
+website: www.youtube.com/user/brian041301
+api-version: 1.12
+depend: [SmartInvs]
+commands:
+   mobdrop:
+      description: MobDrop Commands.
+      aliases: mdop
+      permission: MobDrop.player
+      permission-message: you can not use it
+permissions:
+   MobDrop.player:
+      description: the base command can use.
+      default: true
+   MobDrop.admin:
+      description: can reload the plugin and get items.
+      default: op
