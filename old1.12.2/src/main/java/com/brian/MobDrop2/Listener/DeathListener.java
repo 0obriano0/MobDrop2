@@ -67,8 +67,7 @@ public class DeathListener implements Listener{
         			List<MobItemList> dropItems = DataBase.MobItemMap.get(sEntitlyName);
         			MobItemList MobDropItem;
         			// 迴圈判斷是否掉落物品
-        			for (int i = 0; i < dropItems.size(); i++)
-        			{
+        			for (int i = 0; i < dropItems.size(); i++){
         				MobDropItem = dropItems.get(i);
         				// 判斷世界是否正確
         				//if (customItem.OnlyWorld.equals("") || customItem.OnlyWorld.toUpperCase().equals(entityDeth.getWorld().getName().toUpperCase()))
@@ -76,8 +75,9 @@ public class DeathListener implements Listener{
         					// 取得基數(從1~10000中抽一個號碼)
             				int iChance = (int)(Math.random() * 10000 + 1);
             				// 判斷物品掉落機率(乘以100後)是否小於基數
-            				if (iChance <= (MobDropItem.Chance * 100))
-            				{	
+            				if(DataBase.Config.command_cmd_show) 
+            					DataBase.main.getLogger().info("物品:" + MobDropItem.Item.ItemName + " | 機率:" + MobDropItem.Chance * 100 + " | 算出來的機率:" + iChance);
+            				if (iChance <= (MobDropItem.Chance * 100)){	
             					// 判定掉落數量
             					ItemStack MobDropItem_ = MobDropItem.getResultItem();
                 				int items_num = 1;

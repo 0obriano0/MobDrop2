@@ -1,6 +1,7 @@
 ﻿package com.brian.MobDrop2.FileIO;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -31,7 +32,7 @@ public class LoadConfig {
 	boolean player_sakurahead;
 	double player_Chance;
 	String player_title;
-	List<String> player_lore;
+	List<String> player_lore = new ArrayList<String>();
 	
 	boolean dropItem = true;
 	public void ReLoadConfig(){
@@ -66,7 +67,7 @@ public class LoadConfig {
 	    	if(data.contains("player.sakurahead")) player_sakurahead = data.getBoolean("player.sakurahead"); else player_sakurahead = false;
 	    	if(data.contains("player.Chance")) player_Chance = data.getDouble("player.Chance"); else player_Chance = 0;
 	    	if(data.contains("player.title")) player_title = data.getString("player.title").replace("&","§"); else errorMessage("","player_title","");
-	    	if(data.contains("player.lore")) player_lore = data.getStringList("player.lore"); else errorMessage("","player_lore","");
+	    	if(data.contains("player.lore")) player_lore = data.getStringList("player.lore");
 	    }
 	    
 	    if(data.contains("dropItem")) dropItem = data.getBoolean("dropItem"); else errorMessage("","dropItem",""+dropItem);
