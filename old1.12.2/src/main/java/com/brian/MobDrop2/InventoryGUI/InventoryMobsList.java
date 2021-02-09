@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.brian.MobDrop2.Database.DataBase;
+import com.brian.MobDrop2.Database.Mob;
 import com.brian.MobDrop2.Database.MobItemList;
 import com.brian.MobDrop2.HashMap.HashMapSortMobList;
 
@@ -34,12 +35,15 @@ public class InventoryMobsList implements InventoryProvider{
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
     	
-        ClickableItem[] items = new ClickableItem[DataBase.MobItemMap.size()];
+        ClickableItem[] items = new ClickableItem[DataBase.MobsMap.size()];
         int index = 0;
-        HashMapSortMobList ItemList = new HashMapSortMobList((HashMap<String, List<MobItemList>>) DataBase.MobItemMap);
+        HashMapSortMobList ItemList = new HashMapSortMobList((HashMap<String, Mob>) DataBase.MobsMap);
         
-        for (Map.Entry<String, List<MobItemList>> entry:ItemList.list_Data) {
-            items[index] = ClickableItem.of(createitem(entry), e -> InventoryMobs_ItemList.getInventory(entry.getKey(),entry.getValue()).open(player));
+        for (Map.Entry<String, Mob> entry:ItemList.list_Data) {
+        	List<MobItemList> mobdata = new ArrayList<MobItemList>();
+        	mobdata.addAll(entry.getValue().HeadList);
+        	mobdata.addAll(entry.getValue().ItemList);
+            items[index] = ClickableItem.of(createitem(entry.getKey(),mobdata), e -> InventoryMobs_ItemList.getInventory(entry.getKey(),entry.getValue()).open(player));
         	index++;
         }
         
@@ -64,7 +68,7 @@ public class InventoryMobsList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createitem(Map.Entry<String, List<MobItemList>> entry) {
+	private ItemStack createitem(String mobname, List<MobItemList> items) {
 		
 		/*Material Material_data = Material.getMaterial(entry.getKey() + "_SPAWN_EGG");
 		if(Material_data == null)
@@ -72,15 +76,15 @@ public class InventoryMobsList implements InventoryProvider{
 		ItemStack item = new ItemStack(Material.MONSTER_EGG);
 		ItemMeta newItemMeta;
 	    newItemMeta = item.getItemMeta();
-	    newItemMeta.setDisplayName("§f" + DataBase.GetEntityName(entry.getKey()));
+	    newItemMeta.setDisplayName("§f" + DataBase.GetEntityName(mobname));
 	    
         List<String> Lore =  newItemMeta.getLore();
         if(Lore == null)
         	Lore = new ArrayList<String>();
         Lore.add("");
         
-        Lore.add("§a - " + DataBase.language.Inventory.items + " §f" + entry.getValue().size());
-        Lore.add("§7 - " + entry.getKey());
+        Lore.add("§a - " + DataBase.language.Inventory.items + " §f" + items.size());
+        Lore.add("§7 - " + mobname);
         
         newItemMeta.setLore(Lore);
     	item.setItemMeta(newItemMeta);

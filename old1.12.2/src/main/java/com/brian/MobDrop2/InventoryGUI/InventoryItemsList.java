@@ -13,6 +13,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.brian.MobDrop2.Database.DataBase;
 import com.brian.MobDrop2.Database.Items;
+import com.brian.MobDrop2.Database.Mob;
+import com.brian.MobDrop2.Database.MobItemList;
 import com.brian.MobDrop2.HashMap.HashMapSortItemList;
 
 import fr.minuskube.inv.ClickableItem;
@@ -33,13 +35,23 @@ public class InventoryItemsList implements InventoryProvider{
     @Override
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
+    	List<MobItemList> head_list = new ArrayList<MobItemList>();
     	
-        ClickableItem[] items = new ClickableItem[DataBase.ItemMap.size()];
+    	for(Map.Entry<String, Mob> entry:DataBase.MobsMap.entrySet()) {
+    		if(entry.getValue().HeadList.size() > 0)head_list.addAll(entry.getValue().HeadList);
+    	}
+    	
+        ClickableItem[] items = new ClickableItem[DataBase.ItemMap.size() + head_list.size()];
         int index = 0;
         HashMapSortItemList ItemList = new HashMapSortItemList((HashMap<String, Items>) DataBase.ItemMap);
         
+        for (MobItemList item:head_list) {
+            items[index] = ClickableItem.of(createitem(null,item.Item,player), e -> GetItem(item.Item,player));
+        	index++;
+        }
+        
         for (Map.Entry<String, Items> entry:ItemList.list_Data) {
-            items[index] = ClickableItem.of(createitem(entry,player), e -> GetItem(entry,player));
+            items[index] = ClickableItem.of(createitem(entry.getKey(),entry.getValue(),player), e -> GetItem(entry.getValue(),player));
         	index++;
         }
         
@@ -63,36 +75,36 @@ public class InventoryItemsList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createitem(Map.Entry<String, Items> entry, Player player) {
-		ItemStack item = entry.getValue().getResultItem();
+	private ItemStack createitem(String Keyname ,Items entry, Player player) {
+		ItemStack item = entry.getResultItem();
         ItemMeta newItemMeta = item.getItemMeta();
         List<String> Lore =  newItemMeta.getLore();
         if(Lore == null)
         	Lore = new ArrayList<String>();
         Lore.add("");
-        Lore.add("§7 - " + entry.getKey());
+        if(Keyname != null) Lore.add("§7 - " + Keyname);
         if (player.hasPermission("MobDrop.admin")) {
         	Lore.add("");
         	for(int index = 0;index < DataBase.language.Inventory.admin_lore.size();index++) {
         		Lore.add("§a"+DataBase.language.Inventory.admin_lore.get(index));
         	}
         }
-        newItemMeta.setDisplayName(entry.getValue().ItemName);
+        newItemMeta.setDisplayName(entry.ItemName);
         newItemMeta.setLore(Lore);
     	item.setItemMeta(newItemMeta);
     	item.setAmount(1);
 		return item;
 	}
 	
-	private void GetItem(Map.Entry<String, Items> entry, Player player) {
+	private void GetItem(Items entry, Player player) {
 		if (player.hasPermission("MobDrop.admin")) {
-			ItemStack Itemcreate = entry.getValue().getResultItem();
+			ItemStack Itemcreate = entry.getResultItem();
 			Itemcreate.setAmount(1);
 			if(player.getInventory().firstEmpty() == -1)
 				player.sendMessage("§b" + DataBase.language.Plugin_name + " §c背包已滿，無法獲取道具");
 			else {
 				player.getInventory().addItem(Itemcreate);
-				player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + entry.getValue().ItemName);
+				player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + entry.ItemName);
 			}
 		}
 	}

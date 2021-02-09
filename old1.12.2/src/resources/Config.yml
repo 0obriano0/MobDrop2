@@ -8,6 +8,8 @@ GobalMessage:
 command:
   #在後台是否要逐一顯示所有成功的設定
   cmdShow: false
+  #debug專用
+  debug: false
   #是否在遊戲裡面使用文字列表的指令
   oldList: true
   

@@ -10,6 +10,7 @@ public class Config {
 	public int Chance;
 	public boolean list_Chinese;
 	public boolean command_cmd_show;
+	public boolean command_debug;
 	public boolean command_old_list;
 	public String lang = "zh_TW";
 	
@@ -20,10 +21,11 @@ public class Config {
 	
 	public boolean dropItem = true;
 	
-	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_old_list,boolean list_Chinese,String lang,boolean player_sakurahead,double player_Chance,String player_title,List<String> player_lore,boolean dropItem) {
+	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_debug,boolean command_old_list,boolean list_Chinese,String lang,boolean player_sakurahead,double player_Chance,String player_title,List<String> player_lore,boolean dropItem) {
 		this.IsOpen = newIsOpen;
 		this.Chance = newChance;
 		this.command_cmd_show = command_cmd_show;
+		this.command_debug = command_debug;
 		this.command_old_list = command_old_list;
 		this.list_Chinese = list_Chinese;
 		this.lang = lang;

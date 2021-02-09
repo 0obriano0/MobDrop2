@@ -5,6 +5,7 @@ InventoryGUI:
     info: "資訊"
     info_player_sakurahead: "玩家會不會掉頭盧:%boolean%"
     MobsList: "怪物掉落列表"
+    HeadOnlyOne: "&c頭顱只能掉一種"
     ItemList: "物品列表"
     close: "關閉"
     next: "下一頁"

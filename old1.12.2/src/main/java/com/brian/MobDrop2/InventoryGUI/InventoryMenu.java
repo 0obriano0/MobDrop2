@@ -30,7 +30,7 @@ public class InventoryMenu implements InventoryProvider{
 		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a" + DataBase.language.Inventory.ItemList,"§a - " + DataBase.language.Inventory.items + " §f" + DataBase.ItemMap.size()),
                 e -> InventoryItemsList.INVENTORY.open(player)));
 		contents.set(1, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a" + DataBase.language.Inventory.info,"§a" + DataBase.language.Inventory.info_player_sakurahead.replaceAll("%boolean%", DataBase.Config.player_sakurahead + ""))));
-		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.MONSTER_EGG,"§a" + DataBase.language.Inventory.MobsList,"§a - " + DataBase.language.Inventory.mobs + " §f" + DataBase.MobItemMap.size()),
+		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.MONSTER_EGG,"§a" + DataBase.language.Inventory.MobsList,"§a - " + DataBase.language.Inventory.mobs + " §f" + DataBase.MobsMap.size()),
                 e -> InventoryMobsList.INVENTORY.open(player)));
 		contents.set(2, 8, ClickableItem.of(InventoryTools.createPageButton(Material.BARRIER,"§a" + DataBase.language.Inventory.close),
                 e -> InventoryMobsList.INVENTORY.close(player)));

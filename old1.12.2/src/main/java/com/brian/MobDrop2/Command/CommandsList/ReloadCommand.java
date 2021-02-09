@@ -11,7 +11,7 @@ public class ReloadCommand {
 		// 清除合成表
 		DataBase.server.resetRecipes();
 		// 清除對照表
-		DataBase.MobItemMap.clear();
+		DataBase.MobsMap.clear();
 		DataBase.ItemMap.clear();
 		// 重讀
 		DataBase.LoadConfig.ReLoadConfig();

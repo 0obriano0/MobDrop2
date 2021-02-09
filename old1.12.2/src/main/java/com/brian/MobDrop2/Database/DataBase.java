@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Material;
@@ -42,7 +41,7 @@ public class DataBase {
 	public static MainList CommandsList = new MainList();
 
 	//掉落物品清單
-	public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
+	public static Map<String, Mob> MobsMap = new HashMap<String, Mob>();
 	
 	//物品設定
 	public static Map<String, Items> ItemMap = new HashMap<String, Items>();

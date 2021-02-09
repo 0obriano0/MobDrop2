@@ -7,6 +7,7 @@ public class InventoryGUI {
 	public String info = "資訊";
 	public String info_player_sakurahead = "玩家會不會掉頭盧:%boolean%";
 	public String MobsList = "怪物掉落列表";
+	public String HeadOnlyOne = "§c頭顱只能掉一種";
 	public String ItemList = "物品列表";
 	public String close = "關閉";
 	public String next = "下一頁";

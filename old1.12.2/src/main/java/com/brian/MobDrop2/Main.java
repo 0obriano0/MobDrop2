@@ -39,7 +39,7 @@ public class Main extends JavaPlugin {
 		// 清除合成表
 		DataBase.server.resetRecipes();
 		// 清除對照表
-		DataBase.MobItemMap.clear();
+		DataBase.MobsMap.clear();
 		DataBase.ItemMap.clear();
 		// 訊息
 		DataBase.Print("MobDropItems is disable!");

@@ -5,6 +5,7 @@ InventoryGUI:
     info: "infomation"
     info_player_sakurahead: "drop head:%boolean%"
     MobsList: "§aMobs Drop Item List"
+    HeadOnlyOne: "&cHead just can only get one."
     ItemList: "Item List"
     close: "Close"
     next: "Next"

@@ -37,13 +37,17 @@ public class MobListCommand {
 		sender.sendMessage("§9============§dMobDrop 怪物掉落資訊§9===========");
 		if(args.length == 2) {
 			//把讀取到的怪物名稱轉換成中文
-			MobDropItemList = DataBase.MobItemMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase()));
-			list_base(sender,MobDropItemList,args[1].toUpperCase());
+			MobDropItemList = DataBase.MobsMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase())).HeadList;
+			if(MobDropItemList != null && MobDropItemList.size() > 0) list_base(sender,MobDropItemList,args[1].toUpperCase());
+			MobDropItemList = DataBase.MobsMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase())).ItemList;
+			if(MobDropItemList != null && MobDropItemList.size() > 0) list_base(sender,MobDropItemList,args[1].toUpperCase());
 		}else {
-			for (String key : DataBase.MobItemMap.keySet())
+			for (String key : DataBase.MobsMap.keySet())
 			{
-				MobDropItemList = DataBase.MobItemMap.get(key);
-				list_base(sender,MobDropItemList,key);
+				MobDropItemList = DataBase.MobsMap.get(key).HeadList;
+				if(MobDropItemList != null && MobDropItemList.size() > 0) list_base(sender,MobDropItemList,key);
+				MobDropItemList = DataBase.MobsMap.get(key).ItemList;
+				if(MobDropItemList != null && MobDropItemList.size() > 0) list_base(sender,MobDropItemList,key);
 			}
 		}
 		sender.sendMessage("§9========================================");
@@ -52,7 +56,7 @@ public class MobListCommand {
 	
 	public static List<String> onTabComplete(String command){
 		List<String> show_commands = new ArrayList<String>();
-		for (String key : DataBase.MobItemMap.keySet())
+		for (String key : DataBase.MobsMap.keySet())
 		{
 			if(DataBase.Config.list_Chinese) {
 				if(DataBase.GetEntityName(key.toUpperCase()).indexOf(command) != -1)

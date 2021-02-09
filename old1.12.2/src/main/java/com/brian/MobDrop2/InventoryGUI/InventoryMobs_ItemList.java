@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.brian.MobDrop2.Database.DataBase;
+import com.brian.MobDrop2.Database.Mob;
 import com.brian.MobDrop2.Database.MobItemList;
 
 import fr.minuskube.inv.ClickableItem;
@@ -21,15 +22,15 @@ import fr.minuskube.inv.content.SlotIterator;
 
 public class InventoryMobs_ItemList implements InventoryProvider{
 	
-	List<MobItemList> mobItemList;
+	Mob mobItemList;
 	String MobName;
 	
-	public InventoryMobs_ItemList(String mobName, List<MobItemList> mobItemListTable) {
+	public InventoryMobs_ItemList(String mobName, Mob mobItemListTable) {
 		mobItemList = mobItemListTable;
 		MobName = mobName;
 	}
 
-	public static SmartInventory getInventory(String MobName , List<MobItemList> MobItemListTable) {
+	public static SmartInventory getInventory(String MobName , Mob MobItemListTable) {
         return SmartInventory.builder()
                 .provider(new InventoryMobs_ItemList(MobName, MobItemListTable))
                 .size(5, 9)
@@ -41,11 +42,19 @@ public class InventoryMobs_ItemList implements InventoryProvider{
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
     	
-        ClickableItem[] items = new ClickableItem[mobItemList.size()];
+    	ClickableItem[] items = new ClickableItem[mobItemList.HeadList.size() + mobItemList.ItemList.size()];
         
-        for (int loopnum1 = 0;loopnum1 < mobItemList.size();loopnum1++) {
-            items[loopnum1] = ClickableItem.empty(createitem(mobItemList.get(loopnum1)));
-        }
+    	int index = 0;
+    	
+    	for(MobItemList item : mobItemList.HeadList) {
+    		items[index] = ClickableItem.empty(createitem(true,item));
+    		index++;
+    	}
+    	
+    	for(MobItemList item : mobItemList.ItemList) {
+    		items[index] = ClickableItem.empty(createitem(item));
+    		index++;
+    	}
         
         pagination.setItems(items);
         pagination.setItemsPerPage(36);
@@ -67,7 +76,7 @@ public class InventoryMobs_ItemList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createitem(MobItemList MobItem) {
+	private ItemStack createitem(boolean head,MobItemList MobItem) {
 		ItemStack item = MobItem.Item.getResultItem();
 		ItemMeta newItemMeta = item.getItemMeta();
 	    
@@ -82,10 +91,15 @@ public class InventoryMobs_ItemList implements InventoryProvider{
         if(MobItem.Quantity_max - MobItem.Quantity > 0)
         	buffer = buffer + " ~ " + MobItem.Quantity_max;
         Lore.add(buffer);
+        if(head) Lore.add(DataBase.language.Inventory.HeadOnlyOne);
         
         newItemMeta.setLore(Lore);
     	item.setItemMeta(newItemMeta);
     	item.setAmount(1);
 		return item;
+	}
+	
+	private ItemStack createitem(MobItemList MobItem) {
+		return createitem(false,MobItem);
 	}
 }

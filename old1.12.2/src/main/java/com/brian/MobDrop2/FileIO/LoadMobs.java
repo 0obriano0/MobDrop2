@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import com.brian.MobDrop2.AnsiColor;
 import com.brian.MobDrop2.Database.DataBase;
 import com.brian.MobDrop2.Database.Items;
+import com.brian.MobDrop2.Database.Mob;
 import com.brian.MobDrop2.Database.MobItemList;
 
 public class LoadMobs {
@@ -43,11 +44,13 @@ public class LoadMobs {
 		    
 		    // 待儲存的掉落物清單
 		 	List<MobItemList> ItemsList = new ArrayList<MobItemList>();
+		 	List<MobItemList> HeadsList = new ArrayList<MobItemList>();
 		 	int failData = 0;
 		 	int success = 0;
 		 	
 		    for (String entity_name : data.getConfigurationSection("").getKeys(false)) {
 		    	ItemsList = new ArrayList<MobItemList>();
+		    	HeadsList = new ArrayList<MobItemList>();
 		    	for (String Itemkey : data.getConfigurationSection(entity_name).getKeys(false)) {
 		    		int Quantity = -1;
 		    		int Quantity_max = 0;
@@ -88,7 +91,7 @@ public class LoadMobs {
 				    		}
 				    		
 				    		if(Itemkey.toLowerCase().equals("heads") && Quantity >= 1 && !(Chance < 0)) {
-				    			ItemsList.add(new MobItemList(Quantity, Quantity_max, Chance,new Items(ItemName, ItemLores, value)));
+				    			HeadsList.add(new MobItemList(Quantity, Quantity_max, Chance,new Items(ItemName, ItemLores, value)));
 				    			success++;
 				    			head_id++;
 				    			if(DataBase.Config.command_cmd_show)
@@ -160,7 +163,7 @@ public class LoadMobs {
 			    		}
 		    		}
 		    	}
-		    	DataBase.MobItemMap.put(entity_name.toUpperCase().replace("&","§"),ItemsList);
+		    	DataBase.MobsMap.put(entity_name.toUpperCase().replace("&","§"),new Mob(entity_name.toUpperCase().replace("&","§"),ItemsList,HeadsList));
 		    }
 		    tools.Setprint("LoadMobs","MobsLoad",success + failData,success,failData);
 		}
