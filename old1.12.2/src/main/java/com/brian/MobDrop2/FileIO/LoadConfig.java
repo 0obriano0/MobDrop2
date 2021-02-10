@@ -36,6 +36,7 @@ public class LoadConfig {
 	List<String> player_lore = new ArrayList<String>();
 	
 	boolean dropItem = true;
+	boolean dropHead = true;
 	public void ReLoadConfig(){
 		// 確認檔案是否存在
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
@@ -74,19 +75,20 @@ public class LoadConfig {
 	    }
 	    
 	    if(data.contains("dropItem")) dropItem = data.getBoolean("dropItem"); else errorMessage("","dropItem",""+dropItem);
+	    if(data.contains("dropHead")) dropItem = data.getBoolean("dropHead"); else errorMessage("","dropHead",""+dropHead);
 	   
 	    
 	    
 	    if (data.contains("GobalMessage")){
 	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
-	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_debug,command_old_list,list_Chinese,lang,player_sakurahead,player_Chance,player_title,player_lore,dropItem);
+	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_debug,command_old_list,list_Chinese,lang,player_sakurahead,player_Chance,player_title,player_lore,dropItem,dropHead);
 	    		DataBase.main.getLogger().info(AnsiColor.CYAN + "[LoadConfig]" + AnsiColor.GREEN +  " Config.yml Load Success" + AnsiColor.RESET);
 	    	}else{
 	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 config.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.Config = new Config(true,50,command_cmd_show,command_debug,command_old_list,list_Chinese,lang,player_sakurahead,player_Chance,player_title,player_lore,dropItem);
+	    	DataBase.Config = new Config(true,50,command_cmd_show,command_debug,command_old_list,list_Chinese,lang,player_sakurahead,player_Chance,player_title,player_lore,dropItem,dropHead);
 	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
 	    }
 	}

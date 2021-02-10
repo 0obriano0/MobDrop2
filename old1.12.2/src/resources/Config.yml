@@ -27,3 +27,5 @@ player:
 
 #如果dropItem 是 false 就會嘗試將怪物掉落的道具塞入包包，假如包包滿了還是會掉地上
 dropItem: true
+#如果dropHead 是 false 就會嘗試將怪物掉落的頭顱塞入包包，假如包包滿了還是會掉地上
+dropHead: true

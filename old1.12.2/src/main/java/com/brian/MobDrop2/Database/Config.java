@@ -20,8 +20,9 @@ public class Config {
 	public List<String> player_lore = new ArrayList<String>();
 	
 	public boolean dropItem = true;
+	public boolean dropHead = true;
 	
-	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_debug,boolean command_old_list,boolean list_Chinese,String lang,boolean player_sakurahead,double player_Chance,String player_title,List<String> player_lore,boolean dropItem) {
+	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_debug,boolean command_old_list,boolean list_Chinese,String lang,boolean player_sakurahead,double player_Chance,String player_title,List<String> player_lore,boolean dropItem,boolean dropHead) {
 		this.IsOpen = newIsOpen;
 		this.Chance = newChance;
 		this.command_cmd_show = command_cmd_show;
@@ -34,5 +35,6 @@ public class Config {
 		this.player_title = player_title;
 		this.player_lore = player_lore;
 		this.dropItem = dropItem;
+		this.dropHead = dropHead;
 	}
 }

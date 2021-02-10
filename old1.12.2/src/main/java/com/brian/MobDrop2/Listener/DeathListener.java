@@ -87,7 +87,7 @@ public class DeathListener implements Listener{
             			}
             			if(MobDropItem_ != null) {
             				// 判定掉落
-        					if(killBy.getInventory().firstEmpty() == -1)
+        					if(killBy.getInventory().firstEmpty() == -1 || DataBase.Config.dropHead)
         						entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_.Item.getResultItem());
         					else
         						killBy.getInventory().addItem(MobDropItem_.Item.getResultItem());
@@ -126,7 +126,7 @@ public class DeathListener implements Listener{
                     					MobDropItem_.setAmount(items_num);
                 					}
                 					// 判定掉落
-                					if(killBy.getInventory().firstEmpty() == -1)
+                					if(killBy.getInventory().firstEmpty() == -1 || DataBase.Config.dropItem)
                 						entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
                 					else
                 						killBy.getInventory().addItem(MobDropItem_);
