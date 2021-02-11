@@ -75,7 +75,7 @@ public class LoadConfig {
 	    }
 	    
 	    if(data.contains("dropItem")) dropItem = data.getBoolean("dropItem"); else errorMessage("","dropItem",""+dropItem);
-	    if(data.contains("dropHead")) dropItem = data.getBoolean("dropHead"); else errorMessage("","dropHead",""+dropHead);
+	    if(data.contains("dropHead")) dropHead = data.getBoolean("dropHead"); else errorMessage("","dropHead",""+dropHead);
 	   
 	    
 	    

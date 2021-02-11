@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
@@ -11,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.brian.MobDrop2.Database.DataBase;
+import com.brian.MobDrop2.Database.Mob;
+import com.brian.MobDrop2.Database.MobItemList;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
@@ -29,7 +32,13 @@ public class InventoryMenu implements InventoryProvider{
 	public void init(Player player, InventoryContents contents) {
 		contents.fillBorders(ClickableItem.empty(new ItemStack(Material.STAINED_GLASS_PANE)));
 		
-		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a" + DataBase.language.Inventory.ItemList,"§a - " + DataBase.language.Inventory.items + " §f" + DataBase.ItemMap.size()),
+		List<MobItemList> head_list = new ArrayList<MobItemList>();
+    	
+    	for(Map.Entry<String, Mob> entry:DataBase.MobsMap.entrySet()) {
+    		if(entry.getValue().HeadList.size() > 0)head_list.addAll(entry.getValue().HeadList);
+    	}
+		
+		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a" + DataBase.language.Inventory.ItemList,"§a - " + DataBase.language.Inventory.items + " §f" + (DataBase.ItemMap.size() + head_list.size())),
                 e -> InventoryItemsList.INVENTORY.open(player)));
 		contents.set(1, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a" + DataBase.language.Inventory.info,info_format(DataBase.language.Inventory.info_lore))));
 		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.MONSTER_EGG,"§a" + DataBase.language.Inventory.MobsList,"§a - " + DataBase.language.Inventory.mobs + " §f" + DataBase.MobsMap.size()),
