@@ -5,7 +5,9 @@ import java.util.List;
 
 public class InventoryGUI {
 	public String info = "資訊";
-	public String info_player_sakurahead = "玩家會不會掉頭盧:%boolean%";
+	public List<String> info_lore = new ArrayList<String>();
+	public String info_true = "§atrue";
+	public String info_false = "§cfalse";
 	public String MobsList = "怪物掉落列表";
 	public String HeadOnlyOne = "§c頭顱只能掉一種";
 	public String ItemList = "物品列表";

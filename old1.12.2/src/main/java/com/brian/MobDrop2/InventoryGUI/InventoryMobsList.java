@@ -40,10 +40,7 @@ public class InventoryMobsList implements InventoryProvider{
         HashMapSortMobList ItemList = new HashMapSortMobList((HashMap<String, Mob>) DataBase.MobsMap);
         
         for (Map.Entry<String, Mob> entry:ItemList.list_Data) {
-        	List<MobItemList> mobdata = new ArrayList<MobItemList>();
-        	mobdata.addAll(entry.getValue().HeadList);
-        	mobdata.addAll(entry.getValue().ItemList);
-            items[index] = ClickableItem.of(createitem(entry.getKey(),mobdata), e -> InventoryMobs_ItemList.getInventory(entry.getKey(),entry.getValue()).open(player));
+            items[index] = ClickableItem.of(createitem(entry.getKey(),entry.getValue()), e -> InventoryMobs_ItemList.getInventory(entry.getKey(),entry.getValue()).open(player));
         	index++;
         }
         
@@ -68,19 +65,28 @@ public class InventoryMobsList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createitem(String mobname, List<MobItemList> items) {
+	private ItemStack createitem(String mobname, Mob mob) {
+		List<MobItemList> items = new ArrayList<MobItemList>();
+		items.addAll(mob.HeadList);
+		items.addAll(mob.ItemList);
 		
+		ItemStack item;
+				
+		if(mob.HeadList.size() > 0) {
+			item = mob.HeadList.get(0).getResultItem();
+		}else {
+			item = new ItemStack(Material.MONSTER_EGG);
+		}
 		/*Material Material_data = Material.getMaterial(entry.getKey() + "_SPAWN_EGG");
 		if(Material_data == null)
 			Material_data = Material.getMaterial("ZOMBIE" + "_SPAWN_EGG");*/
-		ItemStack item = new ItemStack(Material.MONSTER_EGG);
 		ItemMeta newItemMeta;
 	    newItemMeta = item.getItemMeta();
 	    newItemMeta.setDisplayName("§f" + DataBase.GetEntityName(mobname));
 	    
         List<String> Lore =  newItemMeta.getLore();
-        if(Lore == null)
-        	Lore = new ArrayList<String>();
+        Lore = new ArrayList<String>();
+        
         Lore.add("");
         
         Lore.add("§a - " + DataBase.language.Inventory.items + " §f" + items.size());

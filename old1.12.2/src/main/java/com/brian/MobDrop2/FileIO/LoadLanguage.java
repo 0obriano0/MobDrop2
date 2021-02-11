@@ -53,7 +53,9 @@ public class LoadLanguage {
 		    
 		    if(data.contains("InventoryGUI")) {
 		    	if(data.contains("InventoryGUI.info"))      					DataBase.language.Inventory.info      					= data.getString("InventoryGUI.info").replace("&","§");      					else errorMessage("InventoryGUI","info");
-		    	if(data.contains("InventoryGUI.info_player_sakurahead"))      	DataBase.language.Inventory.info_player_sakurahead      = data.getString("InventoryGUI.info_player_sakurahead").replace("&","§");      	else errorMessage("InventoryGUI","info_player_sakurahead");
+		    	if(data.contains("InventoryGUI.info_lore"))    					DataBase.language.Inventory.info_lore    				= getListString(data.getStringList("InventoryGUI.info_lore"));  				else errorMessage("InventoryGUI","info_lore");
+		    	if(data.contains("InventoryGUI.info_true"))      				DataBase.language.Inventory.info_true      				= data.getString("InventoryGUI.info_true").replace("&","§");      				else errorMessage("InventoryGUI","info_true");
+		    	if(data.contains("InventoryGUI.info_false"))      				DataBase.language.Inventory.info_false      			= data.getString("InventoryGUI.info_false").replace("&","§");      				else errorMessage("InventoryGUI","info_false");
 		    	if(data.contains("InventoryGUI.MobsList"))      				DataBase.language.Inventory.MobsList      				= data.getString("InventoryGUI.MobsList").replace("&","§");      				else errorMessage("InventoryGUI","MobsList");
 		    	if(data.contains("InventoryGUI.HeadOnlyOne"))      				DataBase.language.Inventory.HeadOnlyOne    				= data.getString("InventoryGUI.HeadOnlyOne").replace("&","§");      			else errorMessage("InventoryGUI","HeadOnlyOne");
 		    	if(data.contains("InventoryGUI.ItemList"))      				DataBase.language.Inventory.ItemList      				= data.getString("InventoryGUI.ItemList").replace("&","§");      				else errorMessage("InventoryGUI","ItemList");

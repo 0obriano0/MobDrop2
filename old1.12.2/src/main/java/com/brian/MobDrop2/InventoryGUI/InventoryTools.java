@@ -26,4 +26,14 @@ public class InventoryTools {
 		Button.setItemMeta(newItemMeta);
 		return Button;
 	}
+	
+	static ItemStack createPageButton(Material MaterialType,String itemname,List<String> lores) {
+		ItemStack Button = createPageButton(MaterialType,itemname);
+		ItemMeta newItemMeta = Button.getItemMeta();
+		List<String> lore_list = new ArrayList<String>();
+		lore_list.addAll(lores);
+		newItemMeta.setLore(lore_list);
+		Button.setItemMeta(newItemMeta);
+		return Button;
+	}
 }

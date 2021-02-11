@@ -3,7 +3,20 @@
     
 InventoryGUI:
     info: "infomation"
-    info_player_sakurahead: "drop head:%boolean%"
+    info_lore:
+    - "&e系統語言: &6%lang%"
+    - "&e公開廣播:"
+    - " &f- &e是否打開: &6%GobalMessageIsOpen%" 
+    - " &f- &e顯示機率: &6%GobalMessageChance%"
+    - "&e系統顯示設定:"
+    - " &f- &e打開黑盒子資訊內容: &6%cmdShow%" 
+    - " &f- &e顯示debug專用資訊: &6%debug%"
+    - " &f- &e是否使用文字介面顯示列表: &6%oldList%"
+    - "&e玩家會不會掉頭盧: &6%sakurahead%"
+    - "&e物品直接掉地上: &6%dropItem%"
+    - "&e頭顱直接掉地上: &6%dropHead%"
+    info_true: "&atrue"
+    info_false: "&cfalse"
     MobsList: "§aMobs Drop Item List"
     HeadOnlyOne: "&cHead just can only get one."
     ItemList: "Item List"

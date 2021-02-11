@@ -109,6 +109,6 @@ public class LoadConfig {
 	}
 	
 	public void errorMessage(String title,String name,String def) {
-		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " 資料讀取失敗，使用預設值: " + def + AnsiColor.RESET);
+		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] " + title + " -> " + name + " 資料讀取失敗，使用預設值: " + def + AnsiColor.RESET);
 	}
 }
