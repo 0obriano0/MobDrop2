@@ -4,7 +4,8 @@
 InventoryGUI:
     info: "infomation"
     info_lore:
-    - "&e系統語言: &6%lang%"
+    - "&e版本: &6%version%"
+    - "&e語言: &6%lang%"
     - "&e公開廣播:"
     - " &f- &e是否打開: &6%GobalMessageIsOpen%" 
     - " &f- &e顯示機率: &6%GobalMessageChance%"

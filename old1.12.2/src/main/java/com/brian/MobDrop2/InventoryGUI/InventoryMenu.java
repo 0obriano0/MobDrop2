@@ -67,7 +67,8 @@ public class InventoryMenu implements InventoryProvider{
 	public List<String> info_format(List<String> lores) {
 		List<String> final_lores = new ArrayList<String>();
 		for(String lore : lores) {
-			final_lores.add(lore.replaceAll("%GobalMessageIsOpen%", DataBase.Config.IsOpen ? DataBase.language.Inventory.info_true : DataBase.language.Inventory.info_false)
+			final_lores.add(lore.replaceAll("%version%", DataBase.main.getDescription().getVersion())
+								.replaceAll("%GobalMessageIsOpen%", DataBase.Config.IsOpen ? DataBase.language.Inventory.info_true : DataBase.language.Inventory.info_false)
 								.replaceAll("%GobalMessageChance%", DataBase.Config.Chance + "")
 								.replaceAll("%cmdShow%", DataBase.Config.command_cmd_show ? DataBase.language.Inventory.info_true : DataBase.language.Inventory.info_false)
 								.replaceAll("%debug%", DataBase.Config.command_debug ? DataBase.language.Inventory.info_true : DataBase.language.Inventory.info_false)
