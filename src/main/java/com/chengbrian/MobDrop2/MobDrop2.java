@@ -27,7 +27,6 @@ public class MobDrop2 extends JavaPlugin{
         reloadConfig();
         
         setEvents();
-        
         DataBase.fileMessage.reloadFile();
 
 	}
