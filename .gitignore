@@ -3,3 +3,5 @@
 /target
 target/
 target/*.jar
+old1.12.2/target/
+old1.12.2/target/*.jar
