@@ -110,8 +110,8 @@ public class SQL {
 		}
 	}
 	
-	private void MySQL_Load() {
-		
-	}
+//	private void MySQL_Load() {
+//		
+//	}
 	
 }
