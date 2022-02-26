@@ -1,0 +1,127 @@
+﻿#===========#
+#物品識別碼 #
+#===========#
+WOODEN_SWORD_TEST:
+#==============#
+#掉落的物品名稱#
+#==============#
+  ItemName: §f強力木劍§f
+#==========================#
+#掉落的物品是否套用原始名稱#
+#==========================#
+  UseCustomName: false
+#==================================================#
+#可參考: https://minecraft-ids.grahamedgecombe.com/#
+#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)         #
+#==================================================#
+  ItemRealname: WOOD_SWORD
+#==============#
+#掉落的物品說明#
+#==============#
+  ItemLores:
+  - §e充滿怨靈的木劍§f
+#=======================================#
+#掉落的物品附魔                         #
+#- <附魔>:<等級>                        #
+#ARROW_INFINITE 無限弓                  #
+#ARROW_DAMAGE 強力弓                    #
+#ARROW_FIRE 火燄弓                      #
+#ARROW_KNOCKBACK 弓擊退                 #
+#BINDING_CURSE 綁定詛咒	                #
+#CHANNELING 喚雷                        #
+#DAMAGE_UNDEAD 不死剋星                 #
+#DAMAGE_ALL 鋒利                        #
+#DAMAGE_ARTHROPODS 節肢剋星             #
+#DEPTH_STRIDER 深海漫遊                 #
+#DURABILITY 耐久                        #
+#FIRE_ASPECT 火焰附加                   #
+#FROST_WALKER 冰霜行者                  #
+#IMPALING 魚叉(對海中怪物造成更大的傷害)#
+#KNOCKBACK 擊退劍                       #
+#LOOT_BONUS_BLOCKS 幸運                 #
+#LOOT_BONUS_MOBS 掠奪                   #
+#LOYALTY (拋出的三叉戟返回投擲它的玩家) #
+#LURE (增加魚咬鉤的速度)                #
+#MENDING 經驗修補                       #
+#OXYGEN 氧氣(頭)                        #
+#PROTECTION_ENVIRONMENTAL 保護          #
+#PROTECTION_EXPLOSIONS 防爆             #
+#PROTECTION_PROJECTILE 防彈             #
+#PROTECTION_FIRE 抗火                   #
+#PROTECTION_FALL 輕盈(腳)               #
+#SILK_TOUCH 絲綢之觸                    #
+#SWEEPING_EDGE 鐮刀之刃                 #
+#WATER_WORKER 親水性                    #
+#THORNS 尖刺                            #
+#VANISHING_CURSE (物品消失而不是掉落)   #
+#DIG_SPEED 效率                         #
+#=======================================#
+  Enchants:
+  - DAMAGE_ALL:1
+
+#========#
+#其他範例#
+#========#
+IRON_SWORD_TEST:
+  ItemName: §f史萊姆鋼劍§f
+  UseCustomName: false
+  ItemRealname: IRON_SWORD
+  ItemLores:
+  - §e由史萊姆打造的劍§f
+  - §e使用他可以得到神力§f
+  Enchants:
+  - DAMAGE_ALL:8
+
+Diamond_TEST:
+  ItemName: §b鑽石§f
+  UseCustomName: true
+  ItemRealname: Diamond
+
+leather_helmet_test:
+  ItemName: §f白頭盔§f
+  ItemRealname: leather_helmet
+  ItemLores:
+  - §e骷髏生前的裝備§f
+  Enchants:
+  - PROTECTION_ENVIRONMENTAL:1
+  RGB: 255,255,255
+
+leather_chestplate_test:
+  ItemName: §f白上衣§f
+  ItemRealname: leather_chestplate
+  ItemLores:
+  - §e骷髏生前的裝備§f
+  Enchants:
+  - PROTECTION_ENVIRONMENTAL:1
+  RGB: 255,255,255
+
+leather_leggings_test:
+  ItemName: §f白褲子§f
+  ItemRealname: leather_leggings
+  ItemLores:
+  - §e骷髏生前的裝備§f
+  Enchants:
+  - PROTECTION_ENVIRONMENTAL:1
+  RGB: 255,255,255
+
+leather_boots_test:
+  ItemName: §f白鞋子§f
+  ItemRealname: leather_boots
+  ItemLores:
+  - §e骷髏生前的裝備§f
+  Enchants:
+  - PROTECTION_ENVIRONMENTAL:1
+  RGB: 255,255,255
+
+arrow_test:
+  ItemName: §c箭矢§f
+  UseCustomName: true
+  ItemRealname: arrow
+
+customhead:
+  ItemName: §f自定義頭顱§f
+  ItemRealname: SKULL_ITEM
+  ItemLores:
+  - §e自定義頭顱文字§f
+  value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTgyNTQxOWU0MjlhZmMwNDBjOWU2OGIxMDUyM2I5MTdkN2I4MDg3ZDYzZTc2NDhiMTA4MDdkYThiNzY4ZWUifX19
+  

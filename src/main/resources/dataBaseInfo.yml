@@ -1,0 +1,13 @@
+storage:
+  # storage method, can be MySQL or sqlite
+  method: sqlite
+  
+mysql:
+  # Requires Mysql.
+  username: root
+  password: password
+  hostname: 127.0.0.1:3306
+  database: mobdrop
+  # Valid characters are a-z 0-9 and _
+  Prefix: mdop_
+  useSSL: false

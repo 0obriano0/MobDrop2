@@ -1,0 +1,99 @@
+init:
+  Button:
+    Close:
+      Type: "BARRIER"
+      Title: "&c離開"
+      Lore:
+      - "&7關閉介面"
+    Back:
+      Type: "OAK_DOOR"
+      Title: "&a返回"
+      Lore:
+      - "&7返回上一畫面"
+    Previous:
+      Type: "ARROW"
+      Title: "&a上一頁"
+      Lore:
+      - "&7點擊讀取上一頁"
+    Next:
+      Type: "ARROW"
+      Title: "&a下一頁"
+      Lore:
+      - "&7點擊讀取下一頁"
+Inventory:
+  Menu:
+    Title: "目錄"
+    Button:
+      Normal:
+        Type: "GRASS_BLOCK"
+        Title: "原版生物"
+        Lore:
+        - "&7數量: &2%num%"
+      Custom:
+        Type: "CRAFTING_TABLE"
+        Title: "自定義生物"
+        Lore:
+        - "&7數量: &2%num%"
+  MobAdd:
+    Title: "新增怪物"
+    Button:
+      getEntityType: #新增原版怪物時 才會出現的按鈕
+        Type: "ORANGE_WOOL"
+        Title: "選擇怪物"
+        Lore:
+        - "&7目前選擇:%name%"
+        - "&7系統代號:%id%"
+      Name: #自定義怪物時 才會出現的按鈕
+        Type: "ORANGE_WOOL"
+        Title: "設定名稱"
+        Lore:
+        - "&7使用者必需在15秒內&f"
+        - "&7在聊天窗打上名稱&f"
+        - "&7必須是生物的英文名稱避免錯誤"
+        - "&7目前名稱:%name%"
+      Icon:
+        Type: "BARRIER"
+        Title: "設定圖示"
+        Lore:
+        - "&7請直接放上想要的物品當圖示"
+        
+Other:
+  EntityType_Normal:
+    blacklist:
+    #1.13
+    - "AREA_EFFECT_CLOUD"
+    - "ARMOR_STAND"
+    - "BOAT"
+    - "COMPLEX_PART"
+    - "DRAGON_FIREBALL"
+    - "DROPPED_ITEM"
+    - "EGG"
+    - "ENDER_CRYSTAL"
+    - "ENDER_PEARL"
+    - "ENDER_SIGNAL"
+    - "EVOKER_FANGS"
+    - "EXPERIENCE_ORB"
+    - "FALLING_BLOCK"
+    - "FIREBALL"
+    - "FIREWORK"
+    - "FISHING_HOOK"
+    - "ITEM_FRAME"
+    - "LEASH_HITCH"
+    - "LIGHTNING"
+    - "LINGERING_POTION"
+    - "LLAMA_SPIT"
+    - "PAINTING"
+    - "PLAYER"
+    - "PRIMED_TNT"
+    - "SHULKER_BULLET"
+    - "SMALL_FIREBALL"
+    - "SNOWBALL"
+    - "SPLASH_POTION"
+    - "THROWN_EXP_BOTTLE"
+    - "TRIDENT"
+    - "UNKNOWN"
+    - "WEATHER"
+    - "WITHER"
+    #1.17
+    - "GLOW_ITEM_FRAME"
+    - "MARKER"
