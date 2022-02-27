@@ -40,17 +40,31 @@ public interface IItemset {
 	int getDurability();
 	
 	/**
-	 * 新增文字敘述
-	 * @param lore 訊息資料(type String)
-	 * @return Itemset
+	 * 讀取文字敘述
+	 * @return 如果是空的會回傳 []
 	 */
-	Itemset setLore(String lore);
+	List<String> getLore();
+	
 	/**
 	 * 新增文字敘述
 	 * @param lore 訊息資料(type String)
 	 * @return Itemset
 	 */
+	Itemset setLore(String lore);
+	
+	/**
+	 * 新增文字敘述
+	 * @param lore 訊息資料(type List<String>)
+	 * @return Itemset
+	 */
 	Itemset setLore(List<String> lore) ;
+	
+	/**
+	 * 增加文字敘述
+	 * @param lore 訊息資料(type List<String>)
+	 * @return Itemset
+	 */
+	Itemset addLore(List<String> lore);
 	
 	/**
 	 * 抓取附魔參數

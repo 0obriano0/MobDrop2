@@ -92,6 +92,14 @@ public class Itemset implements IItemset {
 	}
 
 	@Override
+	public List<String> getLore() {
+		ItemMeta newItemMeta = getItemMeta();
+		List<String> lore_list = new ArrayList<String>();
+		if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
+		return lore_list;
+	}
+	
+	@Override
 	public Itemset setLore(String lore) {
 		ItemMeta newItemMeta = getItemMeta();
 		List<String> lore_list = new ArrayList<String>();
@@ -106,6 +114,21 @@ public class Itemset implements IItemset {
 	public Itemset setLore(List<String> lore) {
 		ItemMeta newItemMeta = getItemMeta();
 		newItemMeta.setLore(lore);
+		Item.setItemMeta(newItemMeta);
+		return this;
+	}
+	
+	@Override
+	public Itemset addLore(List<String> lore) {
+		ItemMeta newItemMeta = getItemMeta();
+		List<String> lore_list = new ArrayList<String>();
+		if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
+		
+		for(String str : lore) {
+			lore_list.add(str);
+		}
+		
+		newItemMeta.setLore(lore_list);
 		Item.setItemMeta(newItemMeta);
 		return this;
 	}

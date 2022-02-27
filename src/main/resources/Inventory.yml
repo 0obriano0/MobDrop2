@@ -55,7 +55,8 @@ Inventory:
         Type: "BARRIER"
         Title: "設定圖示"
         Lore:
-        - "&7請直接放上想要的物品當圖示"
+        - ""
+        - "&a請直接放上想要的物品當圖示"
         
 Other:
   EntityType_Normal:

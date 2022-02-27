@@ -1,6 +1,7 @@
 package com.brian.MobDrop2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.brian.MobDrop2.Command.ImainCommandSystem;
+import com.brian.MobDrop2.Command.ToolCommandSystem;
 import com.brian.MobDrop2.DataBase.DataBase;
 
 public class MobDrop2 extends JavaPlugin{
@@ -44,13 +46,13 @@ public class MobDrop2 extends JavaPlugin{
 	
 	public boolean Command(CommandSender sender, Command command, String commandLabel, String[] args,final ClassLoader classLoader, final String commandPath) {
 		if(args.length == 0){
-        	ImainCommandSystem cmd = getCommandClass("help",classLoader,commandPath);
+        	ImainCommandSystem cmd = ToolCommandSystem.getCommandClass("help",classLoader,commandPath);
         	if(!cmd.hasPermission(sender)) {
         		sender.sendMessage(DataBase.fileMessage.getString("Command.NoPermission"));
 				return false;
         	}
         	try {
-				cmd.run(sender, commandLabel, command, args);
+				cmd.run(sender, commandLabel + ".help", command, args, classLoader, commandPath);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -60,20 +62,21 @@ public class MobDrop2 extends JavaPlugin{
 				return false;
 			}
 			if(args.length >= 1) {
-    			ImainCommandSystem cmd = getCommandClass(args[0],classLoader,commandPath);
+				String[] newargs = Arrays.copyOfRange(args, 1, args.length);
+    			ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(args[0],classLoader,commandPath);
     			if ((sender instanceof Player)) {    
     				if(!cmd.hasPermission(sender)) {
     					sender.sendMessage(DataBase.fileMessage.getString("Command.NoPermission"));
     					return false;
     				}
             		try {
-						cmd.run((Player)sender, commandLabel, command, args);
+						cmd.run((Player)sender, commandLabel + "." + args[0], command, newargs, classLoader, commandPath);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
             	}else {
             		try {
-						cmd.run(sender, commandLabel, command, args);
+						cmd.run(sender, commandLabel + "." + args[0], command, newargs, classLoader, commandPath);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -82,7 +85,6 @@ public class MobDrop2 extends JavaPlugin{
             }
     	}
 		return false;
-		
 	}
 	
 	@Override
@@ -90,28 +92,29 @@ public class MobDrop2 extends JavaPlugin{
     	return onTabComplete(sender,cmd,label,args,MobDrop2.class.getClassLoader(),"com.brian." + DataBase.pluginName + ".Command");
     }
     
-    public List<String> onTabComplete(CommandSender sender, Command command, String commandLabel, String[] args,final ClassLoader classLoader, final String commandPath){
+    public List<String> onTabComplete(CommandSender sender, Command command, String commandLabel, String[] args, final ClassLoader classLoader, final String commandPath){
     	if(args.length == 1) {
     		List<String> show_commands = new ArrayList<String>();
     		for (String key : DataBase.getCommands(plugin)){
-    			ImainCommandSystem cmd = getCommandClass(key,classLoader,commandPath);
+    			ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(key,classLoader,commandPath);
     			if(key.indexOf(args[0].toLowerCase()) != -1 && cmd.hasPermission(sender))
     				show_commands.add(key);
     		}
     		return show_commands;
     	}else if(args.length > 1 && DataBase.getCommands(plugin).contains(args[0])){
-    		ImainCommandSystem cmd = getCommandClass(args[0],classLoader,commandPath);
+    		ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(args[0],classLoader,commandPath);
+    		String[] newargs = Arrays.copyOfRange(args, 1, args.length);
 			if ((sender instanceof Player)) {    
 				if(!cmd.hasPermission(sender))
 					return Collections.emptyList();
         		try {
-					return cmd.tabComplete((Player)sender, commandLabel, command, args);
+					return cmd.tabComplete((Player)sender, commandLabel + "." + args[0], command, newargs, classLoader, commandPath);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
         	}else {
         		try {
-        			return cmd.tabComplete(sender, commandLabel, command, args);
+        			return cmd.tabComplete(sender, commandLabel + "." + args[0], command, newargs, classLoader, commandPath);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -119,44 +122,6 @@ public class MobDrop2 extends JavaPlugin{
             return Collections.emptyList();
     	}
     	return Collections.emptyList();
-    }
-    
-    /**
-	 *  取得指令的類別(class)
-	 * @param command 指令名稱
-     * @return 該class資料
-     */
-    @SuppressWarnings("deprecation")
-	public static ImainCommandSystem getCommandClass(String command) {
-    	ImainCommandSystem cmd = null;
-        try {
-            cmd = (ImainCommandSystem) MobDrop2.class.getClassLoader().loadClass("com.brian." + DataBase.pluginName + ".Command" + ".Command" + command).newInstance();
-        }catch(InstantiationException ex) {
-        	ex.printStackTrace();
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }
-		return cmd;
-    }
-    
-    /**
-	 *  取得指令的類別(class)
-	 * @param command 指令名稱
-     * @param classLoader 抓取此插件讀取classLoader指令
-     * @param commandPath 要抓取插件的檔案位置
-     * @return 該class資料
-     */
-    @SuppressWarnings("deprecation")
-	private ImainCommandSystem getCommandClass(String command,final ClassLoader classLoader, final String commandPath) {
-    	ImainCommandSystem cmd = null;
-        try {
-            cmd = (ImainCommandSystem) classLoader.loadClass(commandPath + ".Command" + command).newInstance();
-        }catch(InstantiationException ex) {
-        	ex.printStackTrace();
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }
-		return cmd;
     }
     
     /**

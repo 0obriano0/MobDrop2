@@ -21,10 +21,10 @@ public class Commandhelp extends mainCommandSystem{
 	@Override
 	public void run(CommandSender sender, String commandLabel, Command command, String[] args) throws Exception {
 		sender.sendMessage(" ");
-		sender.sendMessage("=============== MobDrop2 怪物掉落物系統 ===============");
+		sender.sendMessage("=============== MobDrop2 ===============");
 		sender.sendMessage(" ");
 		for(String command_value :DataBase.getCommands(MobDrop2.plugin)) {
-			ImainCommandSystem cmd = MobDrop2.getCommandClass(command_value);
+			ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(command_value);
 			if(cmd.hasPermission(sender))
 				sender.sendMessage(cmd.getHelp());
 		}

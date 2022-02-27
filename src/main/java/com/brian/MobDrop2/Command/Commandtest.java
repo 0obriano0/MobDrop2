@@ -18,12 +18,13 @@ public class Commandtest extends mainCommandSystem{
 	
 	@Override
 	public void run(CommandSender sender, String commandLabel, Command command, String[] args){
-	    if(args.length >= 2) {
+		DataBase.Print("commandLabel =  " + commandLabel);
+	    if(args.length >= 1) {
 	    	try {
-	    		EntityType.valueOf(args[1].toUpperCase());
-	    		DataBase.Print(args[1] + " 存在 ");
+	    		EntityType.valueOf(args[0].toUpperCase());
+	    		DataBase.Print(args[0] + " 存在 ");
 	    	}catch(IllegalArgumentException e) {
-	    		DataBase.Print(args[1] + " 不存在 ");
+	    		DataBase.Print(args[0] + " 不存在 ");
 	    	}
 	    }
 	}

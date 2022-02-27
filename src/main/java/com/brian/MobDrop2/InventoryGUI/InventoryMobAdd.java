@@ -42,13 +42,14 @@ public class InventoryMobAdd implements InventoryProvider{
 		if(!mob.isCustom()) {
 			contents.set(0, 1, ClickableItem.of(button("getEntityType"),
 	                e -> InventoryNormalMobs.getInventory(mob).open(player)));
-			if(!mob.getName().isEmpty()) {
-				contents.set(0, 2, ClickableItem.of(mob.getIcon(),
-		                e -> {}));
-			}
 		} else {
 			contents.set(0, 1, ClickableItem.of(button("Name"),
 	                e -> {}));
+		}
+		
+		if(!(!mob.isCustom() && mob.getName().isEmpty())) {
+			contents.set(0, 2, ClickableItem.of(new Itemset(mob.getIcon()).addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),
+	                e -> ChangeItem(player, contents, 0, 2)));
 		}
 	}
 
@@ -77,4 +78,13 @@ public class InventoryMobAdd implements InventoryProvider{
 		return new Itemset(material).setItemName(title).setLore(Lore).getItemStack();
 	}
 
+	private void ChangeItem(Player player ,InventoryContents contents, int x, int y) {
+		ItemStack setitem = player.getItemOnCursor().clone();
+		if (!setitem.getType().toString().equals("AIR")) {
+			contents.set(x,y, ClickableItem.of(new Itemset(setitem).addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),e -> ChangeItem(player,contents,x,y)));
+			mob.setIcon(setitem);
+		}else {
+//			player.sendMessage("");
+		}
+	}
 }
