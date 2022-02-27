@@ -11,12 +11,12 @@ import com.brian.MobDrop2.Command.mainCommandSystem;
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
 
-public class Commandname extends mainCommandSystem{
+public class Commandaddlore extends mainCommandSystem{
 	
-	public Commandname() {
-		super(  "itemset.name",
-				"/mobdrop itemset name 設定物品名稱",
-				new ArrayList<String>(Arrays.asList("mobdrop.admin.itemset.name")));
+	public Commandaddlore() {
+		super(  "itemset.addlore",
+				"/mobdrop itemset addlore 設定物品名稱",
+				new ArrayList<String>(Arrays.asList("mobdrop.admin.itemset.addlore")));
 	}
 	
 	@Override
@@ -24,9 +24,14 @@ public class Commandname extends mainCommandSystem{
 		ItemStack setitem = player.getInventory().getItemInMainHand();
 		if (!setitem.getType().toString().equals("AIR")) {
 			if(args.length >= 1) {
-				String str = args[0].replaceAll("&", "§");
-				Itemset item = new Itemset(setitem);
-				item.setItemName(str);
+				String totalstr = "";
+				boolean first = true;
+				for(String str : args) {
+					totalstr = totalstr + (first ? "" : " ") + str;
+					first = false;
+				}
+				Itemset item = new Itemset(setitem).addLore(totalstr.replaceAll("&", "§"));
+				
 				player.getInventory().setItemInMainHand(item.getItemStack());
 			}
 		} else {

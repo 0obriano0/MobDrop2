@@ -119,6 +119,19 @@ public class Itemset implements IItemset {
 	}
 	
 	@Override
+	public Itemset addLore(String lore) {
+		ItemMeta newItemMeta = getItemMeta();
+		List<String> lore_list = new ArrayList<String>();
+		if(newItemMeta.hasLore()) lore_list = newItemMeta.getLore();
+
+		lore_list.add(lore);
+		
+		newItemMeta.setLore(lore_list);
+		Item.setItemMeta(newItemMeta);
+		return this;
+	}
+	
+	@Override
 	public Itemset addLore(List<String> lore) {
 		ItemMeta newItemMeta = getItemMeta();
 		List<String> lore_list = new ArrayList<String>();
