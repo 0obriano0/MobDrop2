@@ -32,7 +32,7 @@ public class InventoryNormalMobs implements InventoryProvider{
 		return SmartInventory.builder()
 				.provider(new InventoryNormalMobs(mob))
 				.size(5, 9)
-				.title(ChatColor.BLUE + DataBase.fileInventory.getString("Inventory.MobAdd.Title"))
+				.title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.entitytype_list"))
 				.build();
 	}
 	
@@ -84,6 +84,7 @@ public class InventoryNormalMobs implements InventoryProvider{
 		for (EntityType entry: EntityType.values()) {
 			boolean findMaterial = true;
 			
+			if(DataBase.NormalMobsMap.containsKey(entry.name().toUpperCase())) continue;
 			if(DataBase.fileInventory.getEntityType_Normal_BlackList().contains(entry.name().toUpperCase())) continue;
 			if(entry.name().toUpperCase().contains("MINECART")) continue;
 			if(entry.name().toUpperCase().contains("ARROW")) continue;

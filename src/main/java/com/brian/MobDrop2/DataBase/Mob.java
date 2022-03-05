@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class Mob {
+public class Mob implements IMob{
 	private String name = "";
 	private String custom = "";
 	public List<MobItem> MobItemList = new ArrayList<MobItem>();
@@ -19,41 +19,63 @@ public class Mob {
 		this.custom = custom;
 	}
 	
+	@Override
 	public boolean hasIcon() {
 		return icon == null ? false : true;
 	}
 	
+	@Override
 	public ItemStack getIcon() {
-		if(icon == null) {
-			if(!isCustom()) {
+
+		if(!isCustom()) {
+			if(icon == null) {
+				ItemStack itemdate = null; 
 				Material f_item = null;
 				Material head = Material.getMaterial(name.toUpperCase() + "_HEAD");
 	        	Material spawn_egg = Material.getMaterial(name.toUpperCase() + "_SPAWN_EGG");
 	        	Material item = Material.getMaterial(name.toUpperCase());
+	        	
 	        	f_item = head;
 	        	if(f_item == null) f_item = spawn_egg;
 	        	if(f_item == null) f_item = item;
-	        	if(f_item == null) f_item = Material.BARRIER;
-	        	return new ItemStack(f_item);
-			} else {
-				return new ItemStack(Material.BARRIER);
+	        	if(f_item == null) {
+	        		Itemset itemset = new Itemset(Material.BARRIER);
+	        		itemset.setItemName(getMobName());
+	        		itemset.setLore(DataBase.fileMessage.getString("Inventory.Material_not_found"));
+	        		itemdate = itemset.getItemStack();
+	        	} else itemdate = new ItemStack(f_item);
+	        	
+	        	return new Itemset(itemdate).setItemName(this.getMobName()).getItemStack();
 			}
+        	return icon;
+		} else {
+			if(icon == null) {
+				Itemset itemset = new Itemset(Material.BARRIER);
+				itemset.setItemName(getMobName());
+        		itemset.setLore(DataBase.fileMessage.getString("Inventory.Material_not_found"));
+				return itemset.getItemStack();
+			}
+			return icon;
 		}
-		return icon;
+
 	}
 	
+	@Override
 	public void setIcon(ItemStack icon) {
 		if(icon != null) this.icon = icon;
 	}
 	
+	@Override
 	public String getName() {
 		return name;
 	}
 	
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	@Override
 	public String getMobName() {
 		if(isCustom()) {
 			return name;
@@ -62,10 +84,12 @@ public class Mob {
 		}
 	}
 	
+	@Override
 	public String getCustom() {
-		return custom;
+		return isCustom() ? "Y" : "N";
 	}
 	
+	@Override
 	public boolean isCustom() {
 		return this.custom.toUpperCase().equals("Y");
 	}

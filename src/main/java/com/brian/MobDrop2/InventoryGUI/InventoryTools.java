@@ -7,6 +7,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.brian.MobDrop2.DataBase.DataBase;
+import com.brian.MobDrop2.DataBase.Itemset;
+
 public class InventoryTools {
 	static ItemStack createPageButton(Material MaterialType,String itemname) {
 		ItemMeta newItemMeta = null;
@@ -35,5 +38,22 @@ public class InventoryTools {
 		newItemMeta.setLore(lore_list);
 		Button.setItemMeta(newItemMeta);
 		return Button;
+	}
+	
+	static ItemStack getbutton(String Inventory,String mod) {
+		String Type = DataBase.fileInventory.getString("Inventory." + Inventory + ".Button." + mod + ".Type").toUpperCase();
+		String title = DataBase.fileInventory.getString("Inventory." + Inventory + ".Button." + mod + ".Title");
+		List<String> Lore = new ArrayList<String>();
+		for(String str : DataBase.fileInventory.getStringList("Inventory." + Inventory + ".Button." + mod + ".Lore")){
+			Lore.add(str.replaceAll("&", "§"));
+		}
+		Material material = null;
+		if(Material.getMaterial(Type) != null)
+			material = Material.getMaterial(Type);
+		else {
+			material = Material.BARRIER;
+			Lore.add(DataBase.fileMessage.getString("Inventory.Type_error"));
+		}
+		return new Itemset(material).setItemName(title).setLore(Lore).getItemStack();
 	}
 }

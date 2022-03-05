@@ -129,10 +129,10 @@ public interface IItemset {
 	/*
 	 * 物品 轉 Base64
 	 */
-	String itemStackArrayToBase64();
+	String itemStackToBase64();
 	
 	/*
 	 * Base64 轉 物品 Loading
 	 */
-	ItemStack itemStackFromBase64(String data);
+//	ItemStack itemStackFromBase64(String data);
 }

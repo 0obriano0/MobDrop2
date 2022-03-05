@@ -20,9 +20,46 @@ init:
       Title: "&a下一頁"
       Lore:
       - "&7點擊讀取下一頁"
+    Remove:
+      Type: "RED_WOOL"
+      Title: "&a刪除"
+      Lore:
+      - "&7點擊刪除"
+    Success:
+      Type: "GREEN_WOOL"
+      Title: "&a確認刪除"
+      Lore:
+      - "&7確認刪除"
+      - "&f - %msg%" 
+    Cancel:
+      Type: "RED_WOOL"
+      Title: "&a取消"
+      Lore:
+      - "&7取消返回上一頁"
+    Save:
+      Type: "LIME_WOOL"
+      Title: "&a儲存"
+      Lore:
+      - "&7點擊存檔"
+    Error_Save:
+      Type: "RED_WOOL"
+      Title: "&a儲存"
+      Lore:
+      - "&c資料有誤，請確認:"
+      - "%error%"
+    Create:
+      Type: "LIME_WOOL"
+      Title: "&a創建"
+      Lore:
+      - "&7點擊存檔創建"
+    Error_Create:
+      Type: "RED_WOOL"
+      Title: "&a創建"
+      Lore:
+      - "&c資料有誤，請確認:"
+      - "%error%"
 Inventory:
   Menu:
-    Title: "目錄"
     Button:
       Normal:
         Type: "GRASS_BLOCK"
@@ -35,7 +72,6 @@ Inventory:
         Lore:
         - "&7數量: &2%num%"
   MobAdd:
-    Title: "新增怪物"
     Button:
       getEntityType: #新增原版怪物時 才會出現的按鈕
         Type: "ORANGE_WOOL"
@@ -49,7 +85,6 @@ Inventory:
         Lore:
         - "&7使用者必需在15秒內&f"
         - "&7在聊天窗打上名稱&f"
-        - "&7必須是生物的英文名稱避免錯誤"
         - "&7目前名稱:%name%"
       Icon:
         Type: "BARRIER"
@@ -57,7 +92,21 @@ Inventory:
         Lore:
         - ""
         - "&a請直接放上想要的物品當圖示"
-        
+  Mob_List:
+    Button:
+       MobAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&a新增怪物"
+        Lore:
+        - "&7點擊新增"
+  Mob_Item_List:
+    Button:
+       MobEdit:
+        Type: "WRITABLE_BOOK"
+        Title: "&a設定怪物"
+        Lore:
+        - "&7點擊修改"
+
 Other:
   EntityType_Normal:
     blacklist:

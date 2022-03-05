@@ -32,7 +32,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMob_ItemList(Mob))
                 .size(5, 9)
-                .title(ChatColor.GREEN + Mob.getMobName())
+                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_item_list").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 
@@ -45,7 +45,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
     	int index = 0;
     	
     	for(MobItem item : mob.MobItemList) {
-    		items[index] = ClickableItem.empty(createitem(item));
+    		items[index] = ClickableItem.empty(createbutton(item));
     		index++;
     	}
         
@@ -61,9 +61,15 @@ public class InventoryMob_ItemList implements InventoryProvider{
         contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
         contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player, pagination.next().getPage())));
+        
+        
         if (player.hasPermission("mobdrop.admin.inventory.mob.edit")) {
-        	contents.set(4, 7, ClickableItem.of(InventoryTools.createPageButton(Material.CRAFTING_TABLE,"§a" + DataBase.fileMessage.getString("Inventory.mob_edit")),
+        	contents.set(4, 7, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobEdit"),
                 e -> InventoryMobEdit.getInventory(mob).open(player)));
+        }
+        if (player.hasPermission("mobdrop.admin.inventory.mob.remove")) {
+        	contents.set(4, 6, ClickableItem.of(DataBase.fileInventory.getbutton("Remove"),
+                    e -> InventoryMobRemove.getInventory(mob).open(player) ));
         }
     }
 
@@ -73,7 +79,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createitem(MobItem MobItem) {
+	private ItemStack createbutton(MobItem MobItem) {
 		ItemStack item = MobItem.getResultItem();
 		ItemMeta newItemMeta = item.getItemMeta();
 		

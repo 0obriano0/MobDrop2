@@ -29,7 +29,7 @@ public class InventoryMobAdd implements InventoryProvider{
 		return SmartInventory.builder()
 				.provider(new InventoryMobAdd(mob))
 				.size(1, 9)
-				.title(ChatColor.BLUE + DataBase.fileInventory.getString("Inventory.MobAdd.Title"))
+				.title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_add"))
 				.build();
 	}
 	
@@ -51,6 +51,8 @@ public class InventoryMobAdd implements InventoryProvider{
 			contents.set(0, 2, ClickableItem.of(new Itemset(mob.getIcon()).addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),
 	                e -> ChangeItem(player, contents, 0, 2)));
 		}
+		
+		LoadCreateButton(player,contents);
 	}
 
 	@Override
@@ -85,6 +87,55 @@ public class InventoryMobAdd implements InventoryProvider{
 			mob.setIcon(setitem);
 		}else {
 //			player.sendMessage("");
+		}
+	}
+	
+	private void LoadCreateButton(Player player, InventoryContents contents) {
+		ItemStack item;
+		List<String> errmsg = new ArrayList<String>();
+		if(mob.isCustom()) {
+			if(mob.getMobName().isEmpty()) {
+				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_name_noset_error"));
+			}
+			if(DataBase.CustomMobsMap.containsKey(mob.getName())) {
+				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_name_same_error"));
+			}
+		} else {
+			if(DataBase.NormalMobsMap.containsKey(mob.getName())) {
+				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_normal_same_select"));
+			}
+			if(mob.getName().isEmpty()) {
+				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_normal_no_select"));
+			}
+		}
+		if(errmsg.isEmpty()) {
+			item = DataBase.fileInventory.getbutton("Create");
+			contents.set(0, 8, ClickableItem.of(item, e -> createmob(player, contents)));
+		} else {
+			Itemset itemset = new Itemset(DataBase.fileInventory.getbutton("Error_Create"));
+			List<String> Lore = new ArrayList<String>();
+			for(String str : itemset.getLore()) {
+				if(str.contains("%error%")) {
+					for(String errstr : errmsg) {
+						Lore.add(errstr);
+					}
+				} else {
+					Lore.add(str);
+				}
+			}
+			item = itemset.setLore(Lore).getItemStack();
+			contents.set(0, 8, ClickableItem.of(item, e -> {}));
+		}
+	}
+	
+	private void createmob(Player player, InventoryContents contents) {
+		List<String> msg = DataBase.sql.MobAdd(mob);
+		if(msg.isEmpty()) {
+			if(mob.isCustom()) DataBase.CustomMobsMap.put(mob.getName(), mob);
+			else DataBase.NormalMobsMap.put(mob.getName(), mob);
+			InventoryMob_ItemList.getInventory(mob).open(player);
+		} else {
+			player.sendMessage(msg.toString());
 		}
 	}
 }

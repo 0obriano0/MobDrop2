@@ -39,15 +39,13 @@ public class Itemset implements IItemset {
 	public Itemset(@Nonnull ItemStack item) {
 		Item = item.clone();
 	}
-
-	public Itemset(@Nonnull String MaterialType) {
-		try {
-			Item = new ItemStack(Material.getMaterial(MaterialType.toUpperCase()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			DataBase.Print("MaterialType can not found,so system run defualt type dirt");
-			Item = new ItemStack(Material.DIRT);
-		}
+	
+	/**
+	 * Base64 轉 物品 Loading
+	 * @param Base64
+	 */
+	public Itemset(@Nonnull String Base64) {
+		this.itemStackFromBase64(Base64);
 	}
 	
 	@Override
@@ -237,7 +235,7 @@ public class Itemset implements IItemset {
 	}
 	
 	@Override
-	public String itemStackArrayToBase64() throws IllegalStateException {
+	public String itemStackToBase64() throws IllegalStateException {
 	    try {
 	        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 	        BukkitObjectOutputStream dataOutput = new BukkitObjectOutputStream(outputStream);
@@ -254,8 +252,7 @@ public class Itemset implements IItemset {
 	    }
 	}
 	
-	@Override
-	public ItemStack itemStackFromBase64(String data) {
+	private ItemStack itemStackFromBase64(String data) {
         try {
             ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64Coder.decodeLines(data));
             BukkitObjectInputStream dataInput = new BukkitObjectInputStream(inputStream);

@@ -21,7 +21,7 @@ public class InventoryMenu implements InventoryProvider{
             .id("Menu")
             .provider(new InventoryMenu())
             .size(3, 9)
-            .title(ChatColor.BLUE + DataBase.fileInventory.getString("Inventory.Menu.Title"))
+            .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.menu"))
             .build();
 	
 	@Override
@@ -41,7 +41,8 @@ public class InventoryMenu implements InventoryProvider{
 		String title = DataBase.fileInventory.getString("Inventory.Menu.Button." + mod + ".Title");
 		List<String> Lore = new ArrayList<String>();
 		for(String str : DataBase.fileInventory.getStringList("Inventory.Menu.Button." + mod + ".Lore")){
-			Lore.add(str.replaceAll("&", "§").replaceAll("%num%", DataBase.CustomMobsMap.size() + ""));
+			int size = mod.equals("Normal") ? DataBase.NormalMobsMap.size() : DataBase.CustomMobsMap.size();
+			Lore.add(str.replaceAll("&", "§").replaceAll("%num%", size + ""));
 		}
 		Material material = null;
 		if(Material.getMaterial(Type) != null)

@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import com.brian.MobDrop2.DataBase.DataBase;
+import com.brian.MobDrop2.DataBase.Itemset;
 import com.brian.MobDrop2.DataBase.Mob;
 import com.brian.MobDrop2.HashMap.HashMapSortMobList;
 
@@ -21,12 +22,10 @@ import fr.minuskube.inv.content.SlotIterator;
 public class InventoryMobs implements InventoryProvider{
 	
 	Map<String, Mob> mobs;
-	String Title = "";
 	boolean Custom;
 	
-	public InventoryMobs(boolean Custom, String Title) {
+	public InventoryMobs(boolean Custom) {
 		this.Custom = Custom;
-		this.Title = Title;
 		if(Custom)
 			mobs = DataBase.CustomMobsMap;
 		else
@@ -36,11 +35,11 @@ public class InventoryMobs implements InventoryProvider{
 	public static SmartInventory getInventory(boolean Custom) {
 		String Title = "";
 		if(Custom)
-			Title = DataBase.fileInventory.getString("Inventory.Menu.Button.Custom.Title");
+			Title = DataBase.fileMessage.getString("Inventory_Title.mob_custom_list");
 		else
-			Title = DataBase.fileInventory.getString("Inventory.Menu.Button.Normal.Title");
+			Title = DataBase.fileMessage.getString("Inventory_Title.mob_normal_list");
 		return SmartInventory.builder()
-				.provider(new InventoryMobs(Custom,Title))
+				.provider(new InventoryMobs(Custom))
 				.size(5, 9)
 				.title(ChatColor.BLUE + Title)
 				.build();
@@ -55,7 +54,11 @@ public class InventoryMobs implements InventoryProvider{
         HashMapSortMobList ItemList = new HashMapSortMobList((HashMap<String, Mob>) mobs);
         
         for (Map.Entry<String, Mob> entry:ItemList.list_Data) {
-            items[index] = ClickableItem.of(entry.getValue().getIcon(), e -> InventoryMob_ItemList.getInventory(entry.getValue()).open(player));
+        	Itemset icon = new Itemset(entry.getValue().getIcon());
+        	for(String Lore:DataBase.fileMessage.getStringList("Inventory.mob_info_lore")) {
+        		icon.addLore(Lore.replaceAll("%num%", entry.getValue().MobItemList.size() + ""));
+        	}
+            items[index] = ClickableItem.of(icon.getItemStack(), e -> InventoryMob_ItemList.getInventory(entry.getValue()).open(player));
         	index++;
         }
         
@@ -73,7 +76,7 @@ public class InventoryMobs implements InventoryProvider{
                 e -> InventoryMobs.getInventory(Custom).open(player, pagination.next().getPage())));
         
         if (player.hasPermission("mobdrop.admin.inventory.mod.add")) {
-        	contents.set(4, 8, ClickableItem.of(InventoryTools.createPageButton(Material.CRAFTING_TABLE,"§a" + DataBase.fileMessage.getString("Inventory.mob_add")),
+        	contents.set(4, 8, ClickableItem.of(InventoryTools.getbutton("Mob_List", "MobAdd"),
                 e -> InventoryMobAdd.getInventory(new Mob("", Custom ? "Y" : "N")).open(player)));
         }
 	}
