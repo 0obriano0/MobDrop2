@@ -1,0 +1,6 @@
+更改結構
+
+物品改成用獨立的資料庫存儲存
+
+id    - key
+item  - 放itemstack

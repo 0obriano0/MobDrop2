@@ -62,15 +62,19 @@ public class InventoryMob_ItemList implements InventoryProvider{
         contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player, pagination.next().getPage())));
         
-        
+        if (player.hasPermission("mobdrop.admin.inventory.mob.remove")) {
+        	contents.set(4, 6, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobRemove"),
+                    e -> InventoryMobRemove.getInventory(mob).open(player) ));
+        }
         if (player.hasPermission("mobdrop.admin.inventory.mob.edit")) {
         	contents.set(4, 7, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobEdit"),
                 e -> InventoryMobEdit.getInventory(mob).open(player)));
         }
-        if (player.hasPermission("mobdrop.admin.inventory.mob.remove")) {
-        	contents.set(4, 6, ClickableItem.of(DataBase.fileInventory.getbutton("Remove"),
-                    e -> InventoryMobRemove.getInventory(mob).open(player) ));
+        if (player.hasPermission("mobdrop.admin.inventory.mob.item.add")) {
+        	contents.set(4, 8, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "ItemAdd"),
+                e -> InventoryMob_ItemListAdd.getInventory(mob).open(player)));
         }
+        
     }
 
 	@Override

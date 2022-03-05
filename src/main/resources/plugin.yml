@@ -52,4 +52,8 @@ permissions:
          mobdrop.admin.inventory.mod.add: true
          mobdrop.admin.inventory.mob.edit: true
          mobdrop.admin.inventory.mod.remove: true
-         
+         mobdrop.admin.inventory.mob.item.*: true
+   mobdrop.admin.inventory.mob.item.*:
+      default: op
+      children:
+        mobdrop.admin.inventory.mob.item.add: true

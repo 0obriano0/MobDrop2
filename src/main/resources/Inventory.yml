@@ -20,11 +20,6 @@ init:
       Title: "&a下一頁"
       Lore:
       - "&7點擊讀取下一頁"
-    Remove:
-      Type: "RED_WOOL"
-      Title: "&a刪除"
-      Lore:
-      - "&7點擊刪除"
     Success:
       Type: "GREEN_WOOL"
       Title: "&a確認刪除"
@@ -94,18 +89,36 @@ Inventory:
         - "&a請直接放上想要的物品當圖示"
   Mob_List:
     Button:
-       MobAdd:
+      MobAdd:
         Type: "CRAFTING_TABLE"
         Title: "&a新增怪物"
         Lore:
         - "&7點擊新增"
   Mob_Item_List:
     Button:
-       MobEdit:
+      MobRemove:
+        Type: "RED_WOOL"
+        Title: "&a刪除怪物"
+        Lore:
+        - "&7點擊刪除怪物"
+      MobEdit:
         Type: "WRITABLE_BOOK"
         Title: "&a設定怪物"
         Lore:
         - "&7點擊修改"
+      ItemAdd:
+        Type: "CRAFTING_TABLE"
+        Title: "&a新增物品"
+        Lore:
+        - "&7點擊新增物品"
+  Mob_ItemAdd:
+    Button:
+      Item:
+        Type: "BARRIER"
+        Title: "設定物品"
+        Lore:
+        - ""
+        - "&a請直接放上物品"
 
 Other:
   EntityType_Normal:

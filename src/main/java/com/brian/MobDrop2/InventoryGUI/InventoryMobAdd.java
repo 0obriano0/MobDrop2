@@ -81,10 +81,12 @@ public class InventoryMobAdd implements InventoryProvider{
 	}
 
 	private void ChangeItem(Player player ,InventoryContents contents, int x, int y) {
-		ItemStack setitem = player.getItemOnCursor().clone();
-		if (!setitem.getType().toString().equals("AIR")) {
-			contents.set(x,y, ClickableItem.of(new Itemset(setitem).addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),e -> ChangeItem(player,contents,x,y)));
-			mob.setIcon(setitem);
+		Itemset setitem = new Itemset(player.getItemOnCursor().clone()).setAmount(1);
+		if (!setitem.getItemStack().getType().toString().equals("AIR")) {
+			contents.set(x,y, ClickableItem.of(setitem.addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),
+					e -> ChangeItem(player,contents,x,y)));
+			mob.setIcon(setitem.getItemStack());
+			LoadCreateButton(player, contents);
 		}else {
 //			player.sendMessage("");
 		}
@@ -108,6 +110,7 @@ public class InventoryMobAdd implements InventoryProvider{
 				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_normal_no_select"));
 			}
 		}
+		
 		if(errmsg.isEmpty()) {
 			item = DataBase.fileInventory.getbutton("Create");
 			contents.set(0, 8, ClickableItem.of(item, e -> createmob(player, contents)));
@@ -123,7 +126,7 @@ public class InventoryMobAdd implements InventoryProvider{
 					Lore.add(str);
 				}
 			}
-			item = itemset.setLore(Lore).getItemStack();
+			item = itemset.setLore(Lore).setAmount(1).getItemStack();
 			contents.set(0, 8, ClickableItem.of(item, e -> {}));
 		}
 	}

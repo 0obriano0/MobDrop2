@@ -10,6 +10,10 @@ public class MobItem {
 	// 掉落率
 	public double Chance;
 	
+	public MobItem(Itemset Item) {
+		this.Item = Item;
+	}
+	
 	public MobItem(int Quantity, int Quantity_max, double Chance, Itemset Item) {
 		this.Quantity = Quantity;
 		this.Quantity_max = Quantity_max;
@@ -19,7 +23,16 @@ public class MobItem {
 	
 	public ItemStack getResultItem() {
 		ItemStack ResultItem = Item.getItemStack();
-		ResultItem.setAmount(this.Quantity);
+		ResultItem.setAmount(1);
 		return ResultItem;
+	}
+	
+	public boolean equalitem(ItemStack checkitem) {
+		checkitem.setAmount(1);
+		return getResultItem().equals(checkitem);
+	}
+	
+	public String getName() {
+		return Item.getItemName();
 	}
 }

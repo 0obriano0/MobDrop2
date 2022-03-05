@@ -149,16 +149,15 @@ public class SQL {
 		List<String> mode = new ArrayList<String>();
 		
 		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
-			String mobstable = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "mobs";
 			List<Map<String,String>> data = MySQL.select(""
 					+ "Select * \n"
-					+ "From " + mobstable + "\n"
+					+ "From " + this.table_mobs + "\n"
 				    + "Where mobname = '" + Mob.getName() + "'\n"
 				    + "And custom = '" + Mob.getCustom() + "'");
 			
 			if(data.isEmpty()) {			
 				String sql = ""
-				+ "Insert Into " + mobstable + "\n"
+				+ "Insert Into " + this.table_mobs + "\n"
 				+ "(mobname, custom	, icon)\n"
 				+ "Values\n"
 				+ "('" + Mob.getName() + "',"
@@ -204,6 +203,48 @@ public class SQL {
 			Success = MySQL.executeUpdate(sql);
 			if(!Success)
 				mode.add("remove_mob_error");
+		} else {
+			
+		}
+		return mode;
+	}
+	
+	/**
+	 * 增加怪物
+	 * @param Mob
+	 * @return 
+	 *   當發生錯誤時會回傳錯誤代碼
+	 */
+	public List<String> MobItemAdd(Mob Mob, MobItem MobItem) {
+		List<String> mode = new ArrayList<String>();
+		
+		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
+			List<Map<String,String>> data = MySQL.select(""
+					+ "Select * \n"
+					+ "From " + this.table_dropitem + "\n"
+				    + "Where mobname = '" + Mob.getName() + "'\n"
+				    + "And custom = '" + Mob.getCustom() + "'\n"
+					+ "And itemname = '" + Mob.getCustom() + "'");
+			
+			if(data.isEmpty()) {			
+				String sql = ""
+				+ "Insert Into " + this.table_dropitem + "\n"
+				+ "(mobname, custom	, itemname)\n"
+				+ "Values\n"
+				+ "('" + Mob.getName() + "',"
+				+ " '" + Mob.getCustom() + "'";
+				
+				if(Mob.hasIcon()) 
+					sql = sql + ", "+ " '" + new Itemset(Mob.getIcon()).itemStackToBase64() + "')";
+				else 
+					sql = sql + ", "+ "null" + ")";
+				
+				boolean Success = MySQL.executeUpdate(sql);
+				if(!Success)
+					mode.add("Add_data_error");
+			} else {
+				mode.add("same_data_error");
+			}
 		} else {
 			
 		}
