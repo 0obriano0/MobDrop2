@@ -9,9 +9,7 @@ import org.bukkit.entity.Player;
 
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
-import com.brian.MobDrop2.DataBase.Mob;
 import com.brian.MobDrop2.HashMap.HashMapSortItemset;
-import com.brian.MobDrop2.HashMap.HashMapSortMobList;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
