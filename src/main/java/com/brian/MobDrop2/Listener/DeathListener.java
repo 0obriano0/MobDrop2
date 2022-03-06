@@ -55,7 +55,7 @@ public class DeathListener implements Listener{
         				if (iChance <= (MobDropItem.Chance * 100))
         				{	
         					// 判定掉落數量
-        					ItemStack MobDropItem_ = DataBase.mobitems.get(MobDropItem.getItemNo()).getItemStack();
+        					ItemStack MobDropItem_ = DataBase.items.get(MobDropItem.getItemNo()).getItemStack();
             				int items_num = 1;
         					if(MobDropItem.Quantity < MobDropItem.Quantity_max) {
         						items_num = (int)(Math.random() * (MobDropItem.Quantity_max-MobDropItem.Quantity+1) + MobDropItem.Quantity);
@@ -80,6 +80,6 @@ public class DeathListener implements Listener{
     }
 	
 	private String formatmessage(String message, Player player,String MobName,MobItem MobDropItem,ItemStack Item) {
-		return message.replaceAll("%player%", player.getName()).replaceAll("%mob%",DataBase.fileMessage.GetEntityName(MobName)).replaceAll("%item%",DataBase.mobitems.get(MobDropItem.getItemNo()).getItemName()).replaceAll("%item_num%","" + Item.getAmount());
+		return message.replaceAll("%player%", player.getName()).replaceAll("%mob%",DataBase.fileMessage.GetEntityName(MobName)).replaceAll("%item%",DataBase.items.get(MobDropItem.getItemNo()).getItemName()).replaceAll("%item_num%","" + Item.getAmount());
 	}
 }

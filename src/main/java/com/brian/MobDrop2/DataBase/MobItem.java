@@ -26,10 +26,10 @@ public class MobItem {
 	}
 	
 	public ItemStack getResultItem() {
-		return DataBase.mobitems.get(Itemno).getItemStack();
+		return DataBase.items.get(Itemno).getItemStack();
 	}
 	
 	public String getItemName() {
-		return DataBase.mobitems.get(Itemno).getItemName();
+		return DataBase.items.get(Itemno).getItemName();
 	}
 }

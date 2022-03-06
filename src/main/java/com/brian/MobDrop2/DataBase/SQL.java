@@ -241,15 +241,16 @@ public class SQL {
 					+ "From " + this.table_dropitem + "\n"
 				    + "Where mobname = '" + Mob.getName() + "'\n"
 				    + "And custom = '" + Mob.getCustom() + "'\n"
-					+ "And itemname = '" + Mob.getCustom() + "'");
+					+ "And itemno = '" + MobItem.getItemNo() + "'");
 			
 			if(data.isEmpty()) {			
 				String sql = ""
 				+ "Insert Into " + this.table_dropitem + "\n"
-				+ "(mobname, custom	, itemname)\n"
+				+ "(mobname, custom	, itemno)\n"
 				+ "Values\n"
 				+ "('" + Mob.getName() + "',"
-				+ " '" + Mob.getCustom() + "'";
+				+ " '" + Mob.getCustom() + "',"
+				+ " '" + MobItem.getItemNo() + "'";
 				
 				if(Mob.hasIcon()) 
 					sql = sql + ", "+ " '" + new Itemset(Mob.getIcon()).itemStackToBase64() + "')";

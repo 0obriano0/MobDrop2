@@ -66,6 +66,11 @@ Inventory:
         Title: "自定義生物"
         Lore:
         - "&7數量: &2%num%"
+      Items:
+        Type: "ITEM_FRAME"
+        Title: "物品列表"
+        Lore:
+        - "&7數量: &2%num%"
   MobAdd:
     Button:
       getEntityType: #新增原版怪物時 才會出現的按鈕

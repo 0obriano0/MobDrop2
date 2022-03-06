@@ -56,7 +56,7 @@ public class DataBase {
 	
 	public static Map<String, Mob> CustomMobsMap = new HashMap<String, Mob>();
 	public static Map<String, Mob> NormalMobsMap = new HashMap<String, Mob>();
-	public static Map<String, Itemset> mobitems = new HashMap<String, Itemset>();
+	public static Map<String, Itemset> items = new HashMap<String, Itemset>();
 	
 	/**
 	 * message 設定
