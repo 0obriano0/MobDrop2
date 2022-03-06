@@ -56,7 +56,7 @@ public class InventoryMobs implements InventoryProvider{
         for (Map.Entry<String, Mob> entry:ItemList.list_Data) {
         	Itemset icon = new Itemset(entry.getValue().getIcon());
         	for(String Lore:DataBase.fileMessage.getStringList("Inventory.mob_info_lore")) {
-        		icon.addLore(Lore.replaceAll("%num%", entry.getValue().MobItemList.size() + ""));
+        		icon.addLore(Lore.replaceAll("%num%", entry.getValue().MobItems.size() + ""));
         	}
             items[index] = ClickableItem.of(icon.getItemStack(), e -> InventoryMob_ItemList.getInventory(entry.getValue()).open(player));
         	index++;

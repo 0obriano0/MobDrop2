@@ -1,7 +1,7 @@
 package com.brian.MobDrop2.DataBase;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 
@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class Mob implements IMob{
 	private String name = "";
 	private String custom = "";
-	public List<MobItem> MobItemList = new ArrayList<MobItem>();
+	public Map<String,MobItem> MobItems = new HashMap<String,MobItem>();
 	private ItemStack icon = null;
 	
 	public Mob(@Nonnull String name, @Nonnull String custom) {

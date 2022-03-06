@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -40,12 +41,11 @@ public class InventoryMob_ItemList implements InventoryProvider{
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
     	
-    	ClickableItem[] items = new ClickableItem[mob.MobItemList.size()];
+    	ClickableItem[] items = new ClickableItem[mob.MobItems.size()];
         
     	int index = 0;
-    	
-    	for(MobItem item : mob.MobItemList) {
-    		items[index] = ClickableItem.empty(createbutton(item));
+    	for (Map.Entry<String, MobItem> entry : mob.MobItems.entrySet()) {
+    		items[index] = ClickableItem.empty(createbutton(entry.getValue()));
     		index++;
     	}
         

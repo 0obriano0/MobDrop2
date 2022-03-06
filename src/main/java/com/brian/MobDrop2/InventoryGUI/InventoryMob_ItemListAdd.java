@@ -40,7 +40,7 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 		contents.set(0, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player)));
 		contents.set(0, 1, ClickableItem.of(InventoryTools.getbutton("Mob_ItemAdd", "Item"),
-                e -> ChangeItem(player, contents, 0, 1)));
+                e -> {}));
 		
 		LoadCreateButton(player, contents);
 	}
@@ -51,27 +51,13 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 		
 	}
 	
-	private void ChangeItem(Player player ,InventoryContents contents, int x, int y) {
-		Itemset setitem = new Itemset(player.getItemOnCursor().clone()).setAmount(1);
-		if (!setitem.getItemStack().getType().toString().equals("AIR")) {
-			contents.set(x,y, ClickableItem.of(setitem.addLore(DataBase.fileInventory.getStringList("Inventory.Mob_ItemAdd.Button.Item.Lore")).getItemStack(),
-					e -> ChangeItem(player,contents,x,y)));
-			mobitem = new MobItem(setitem);
-			LoadCreateButton(player, contents);
-		}else {
-//			player.sendMessage("");
-		}
-	}
-	
 	private void LoadCreateButton(Player player, InventoryContents contents) {
 		ItemStack item;
 		List<String> errmsg = new ArrayList<String>();
 		
 		if(mobitem != null) {
-			for(MobItem checkitem : mob.MobItemList) {
-				if(checkitem.equalitem(mobitem.getResultItem())) {
-					errmsg.add(DataBase.fileMessage.getString("Inventory.mob_item_same_error"));
-				}
+			if(mob.MobItems.containsKey(mobitem.getItemNo())) {
+				errmsg.add(DataBase.fileMessage.getString("Inventory.mob_item_same_error"));
 			}
 		} else {
 			errmsg.add(DataBase.fileMessage.getString("Inventory.mob_item_noset_error"));
@@ -100,7 +86,7 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 	private void createitem(Player player, InventoryContents contents) {
 		List<String> msg = DataBase.sql.MobAdd(mob);
 		if(msg.isEmpty()) {
-			mob.MobItemList.add(mobitem);
+			mob.MobItems.put(mobitem.getItemNo(),mobitem);
 			if(mob.isCustom()) DataBase.CustomMobsMap.put(mob.getName(), mob);
 			else DataBase.NormalMobsMap.put(mob.getName(), mob);
 //			InventoryMob_ItemList.getInventory(mob).open(player);

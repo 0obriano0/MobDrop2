@@ -1,6 +1,6 @@
 ﻿package com.brian.MobDrop2.Listener;
 
-import java.util.List;
+import java.util.Map;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -23,29 +23,29 @@ public class DeathListener implements Listener{
     	// 判斷是否為玩家殺死的
     	if (entityDeth.getKiller() != null && entityDeth.getKiller() instanceof Player){
     		Player killBy = entityDeth.getKiller();
-    		List<MobItem> mobitemlist = null;
+    		Map<String, MobItem> mobitems = null;
     		String sEntitlyName = "";
     		try {
 	    		if (entityDeth.getCustomName() != null && DataBase.CustomMobsMap.containsKey(entityDeth.getCustomName().toUpperCase())) {
 	    			sEntitlyName = entityDeth.getCustomName().toUpperCase();
-	    			mobitemlist = DataBase.CustomMobsMap.get(sEntitlyName).MobItemList;
+	    			mobitems = DataBase.CustomMobsMap.get(sEntitlyName).MobItems;
 	    		} else if (DataBase.NormalMobsMap.containsKey(entityDeth.getType().getName().toUpperCase())) {
 	    			sEntitlyName = entityDeth.getType().getName().toUpperCase();
-	    			mobitemlist = DataBase.NormalMobsMap.get(sEntitlyName).MobItemList;
+	    			mobitems = DataBase.NormalMobsMap.get(sEntitlyName).MobItems;
 	    		}
     		} catch (NullPointerException e) {
     			return;
     		}
     		
     		// 判斷是否有掉落物清單
-    		if (mobitemlist != null)
+    		if (mobitems != null)
     		{
     			// 取得掉落物清單
     			MobItem MobDropItem;
     			// 迴圈判斷是否掉落物品
-    			for (int i = 0; i < mobitemlist.size(); i++)
+    			for (Map.Entry<String, MobItem> entry : mobitems.entrySet())
     			{
-    				MobDropItem = mobitemlist.get(i);
+    				MobDropItem = entry.getValue();
     				// 判斷世界是否正確
     				//if (customItem.OnlyWorld.equals("") || customItem.OnlyWorld.toUpperCase().equals(entityDeth.getWorld().getName().toUpperCase()))
     				//{
@@ -55,7 +55,7 @@ public class DeathListener implements Listener{
         				if (iChance <= (MobDropItem.Chance * 100))
         				{	
         					// 判定掉落數量
-        					ItemStack MobDropItem_ = MobDropItem.getResultItem();
+        					ItemStack MobDropItem_ = DataBase.mobitems.get(MobDropItem.getItemNo()).getItemStack();
             				int items_num = 1;
         					if(MobDropItem.Quantity < MobDropItem.Quantity_max) {
         						items_num = (int)(Math.random() * (MobDropItem.Quantity_max-MobDropItem.Quantity+1) + MobDropItem.Quantity);
@@ -80,6 +80,6 @@ public class DeathListener implements Listener{
     }
 	
 	private String formatmessage(String message, Player player,String MobName,MobItem MobDropItem,ItemStack Item) {
-		return message.replaceAll("%player%", player.getName()).replaceAll("%mob%",DataBase.fileMessage.GetEntityName(MobName)).replaceAll("%item%",MobDropItem.Item.getItemName()).replaceAll("%item_num%","" + Item.getAmount());
+		return message.replaceAll("%player%", player.getName()).replaceAll("%mob%",DataBase.fileMessage.GetEntityName(MobName)).replaceAll("%item%",DataBase.mobitems.get(MobDropItem.getItemNo()).getItemName()).replaceAll("%item_num%","" + Item.getAmount());
 	}
 }

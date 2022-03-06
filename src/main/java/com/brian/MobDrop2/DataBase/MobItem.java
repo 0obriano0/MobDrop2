@@ -3,36 +3,33 @@ package com.brian.MobDrop2.DataBase;
 import org.bukkit.inventory.ItemStack;
 
 public class MobItem {
-	public Itemset Item;
+	private String Itemno;
 	// 得到的物品數量
 	public int Quantity;
 	public int Quantity_max;
 	// 掉落率
 	public double Chance;
 	
-	public MobItem(Itemset Item) {
-		this.Item = Item;
+	public MobItem(String Itemno) {
+		this.Itemno = Itemno;
 	}
 	
-	public MobItem(int Quantity, int Quantity_max, double Chance, Itemset Item) {
+	public MobItem(int Quantity, int Quantity_max, double Chance, String Itemno) {
 		this.Quantity = Quantity;
 		this.Quantity_max = Quantity_max;
 		this.Chance = Chance;
-		this.Item = Item;
+		this.Itemno = Itemno;
+	}
+	
+	public String getItemNo() {
+		return Itemno;
 	}
 	
 	public ItemStack getResultItem() {
-		ItemStack ResultItem = Item.getItemStack();
-		ResultItem.setAmount(1);
-		return ResultItem;
+		return DataBase.mobitems.get(Itemno).getItemStack();
 	}
 	
-	public boolean equalitem(ItemStack checkitem) {
-		checkitem.setAmount(1);
-		return getResultItem().equals(checkitem);
-	}
-	
-	public String getName() {
-		return Item.getItemName();
+	public String getItemName() {
+		return DataBase.mobitems.get(Itemno).getItemName();
 	}
 }

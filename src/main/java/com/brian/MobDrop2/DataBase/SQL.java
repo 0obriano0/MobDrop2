@@ -12,11 +12,13 @@ public class SQL {
 	private MySQLManager MySQL;
 	private String table_dropitem;
 	private String table_mobs;
+	private String table_items;
 	
 	public void reload() {
 		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
 			this.table_dropitem = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "dropitem";
 			this.table_mobs = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "mobs";
+			this.table_items = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "items";
 			MySQL_checkdb();
 			MySQL_ReLoad();
 		}
@@ -85,13 +87,12 @@ public class SQL {
 					  "CREATE TABLE `" + this.table_dropitem + "` (\n"
 					+ "  `mobname` varchar(20) NOT NULL,\n"
 					+ "  `custom` varchar(1) NOT NULL,\n"
-					+ "  `itemname` varchar(20) NOT NULL,\n"
+					+ "  `itemno` varchar(20) NOT NULL,\n"
 					+ "  `quantity` varchar(4) DEFAULT NULL,\n"
 					+ "  `quantity_max` varchar(4) DEFAULT NULL,\n"
 					+ "  `chance` decimal(5,3) DEFAULT NULL,\n"
 					+ "  `world` longtext DEFAULT NULL,\n"
-					+ "  `item` longtext DEFAULT NULL,\n"
-					+ "  PRIMARY KEY (`mobname`,`custom`,`itemname`)\n"
+					+ "  PRIMARY KEY (`mobname`,`custom`,`itemno`)\n"
 					+ ")");
 		}
 		
@@ -109,6 +110,22 @@ public class SQL {
 				    + "  `custom` varchar(1) NOT NULL,\n"
 				    + "  `icon` longtext,\n"
 					+ "  PRIMARY KEY (`mobname`,`custom`)\n"
+					+ ")");
+		}
+		
+		//check table_mobitems
+		data = MySQL.select(
+				  "SELECT table_name\n"
+				+ "FROM information_schema.tables\n"
+				+ "WHERE table_schema = '" + DataBase.fileDataBaseInfo.mysql.database + "'\n"
+				+ "And table_name = '" + this.table_items + "'");
+		
+		if(data.isEmpty()) {
+			MySQL.executeUpdate(
+					  "CREATE TABLE `" + this.table_items + "` (\n"
+					+ "  `itemno` varchar(20) NOT NULL,\n"
+				    + "  `item` longtext,\n"
+					+ "  PRIMARY KEY (`itemno`)\n"
 					+ ")");
 		}
 	}
