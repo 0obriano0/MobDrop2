@@ -113,7 +113,7 @@ public class SQL {
 					+ ")");
 		}
 		
-		//check table_mobitems
+		//check table_items
 		data = MySQL.select(
 				  "SELECT table_name\n"
 				+ "FROM information_schema.tables\n"
