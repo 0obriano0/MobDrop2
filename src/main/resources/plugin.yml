@@ -42,6 +42,7 @@ permissions:
       children:
          mobdrop.admin.itemset.name: true
          mobdrop.admin.itemset.addlore: true
+         mobdrop.admin.itemset.amount: true
    mobdrop.admin.inventory.*:
       default: op
       children:
