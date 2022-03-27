@@ -16,7 +16,7 @@ public class Commandadd extends mainCommandSystem{
 	
 	public Commandadd() {
 		super(  "items.add",
-				"/mobdrop itemset add 增加物品",
+				"/mobdrop items add 增加物品",
 				new ArrayList<String>(Arrays.asList("mobdrop.admin.items.add")));
 	}
 	

@@ -14,7 +14,7 @@ public class MobItem {
 		this.Itemno = Itemno;
 	}
 	
-	public MobItem(int Quantity, int Quantity_max, double Chance, String Itemno) {
+	public MobItem(String Itemno, int Quantity, int Quantity_max, double Chance) {
 		this.Quantity = Quantity;
 		this.Quantity_max = Quantity_max;
 		this.Chance = Chance;

@@ -52,7 +52,12 @@ permissions:
    mobdrop.admin.inventory.*:
       default: op
       children:
+         mobdrop.admin.inventory.items.*: true
          mobdrop.admin.inventory.mob.*: true
+   mobdrop.admin.inventory.items.*:
+      default: op
+      children:
+         mobdrop.admin.inventory.items.get: true
    mobdrop.admin.inventory.mob.*:
       default: op
       children:

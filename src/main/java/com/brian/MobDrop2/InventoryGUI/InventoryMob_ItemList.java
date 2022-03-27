@@ -72,7 +72,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
         }
         if (player.hasPermission("mobdrop.admin.inventory.mob.item.add")) {
         	contents.set(4, 8, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "ItemAdd"),
-                e -> InventoryMob_ItemListAdd.getInventory(mob).open(player)));
+                e -> InventoryMob_ItemListAdd.getInventory(mob, null).open(player)));
         }
         
     }

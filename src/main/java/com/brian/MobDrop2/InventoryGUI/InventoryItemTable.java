@@ -2,13 +2,17 @@ package com.brian.MobDrop2.InventoryGUI;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
+import com.brian.MobDrop2.DataBase.Mob;
+import com.brian.MobDrop2.DataBase.MobItem;
 import com.brian.MobDrop2.HashMap.HashMapSortItemset;
 
 import fr.minuskube.inv.ClickableItem;
@@ -20,15 +24,31 @@ import fr.minuskube.inv.content.SlotIterator;
 
 public class InventoryItemTable  implements InventoryProvider{
 	
+	Mob mob;
+	MobItem mobitem;
+	
 	public InventoryItemTable() {
-		
+		this.mob = null;
 	}
-
+	
+	public InventoryItemTable(Mob mob, MobItem mobitem) {
+		this.mob = mob;
+		this.mobitem = mobitem;
+	}
+	
 	public static SmartInventory getInventory() {
         return SmartInventory.builder()
                 .provider(new InventoryItemTable())
                 .size(5, 9)
-                .title(ChatColor.BLUE + "")
+                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_all"))
+                .build();
+	}
+	
+	public static SmartInventory getInventory(Mob Mob, MobItem MobItem) {
+        return SmartInventory.builder()
+                .provider(new InventoryItemTable(Mob, MobItem))
+                .size(5, 9)
+                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_mob").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 	
@@ -38,13 +58,25 @@ public class InventoryItemTable  implements InventoryProvider{
 		
 		Pagination pagination = contents.pagination();
 		
-		ClickableItem[] items = new ClickableItem[DataBase.items.size()];
-        int index = 0;
-        HashMapSortItemset ItemList = new HashMapSortItemset((HashMap<String, Itemset>) DataBase.items);
+		
+		Map<String, Itemset> dbitems = new HashMap<String, Itemset>();
+		dbitems.putAll(DataBase.items);
+        if(mob != null) {
+        	for(Entry<String, MobItem> entry : mob.MobItems.entrySet()) {
+        		dbitems.remove(entry.getKey());
+        	}
+        }
         
+        HashMapSortItemset ItemList = new HashMapSortItemset((HashMap<String, Itemset>) dbitems);
+
+        ClickableItem[] items = new ClickableItem[dbitems.size()];
+        int index = 0;
         for (Map.Entry<String, Itemset> entry:ItemList.list_Data) {
-        	Itemset item = entry.getValue();
-            items[index] = ClickableItem.of(item.getItemStack(), e -> {});
+        	Itemset item = new Itemset(entry.getValue().getItemStack().clone());
+        	if (player.hasPermission("mobdrop.admin.inventory.items.get") && mob == null) {
+        		item.addLore(DataBase.fileMessage.getStringList("Inventory.items_table_get_item_info"));
+        	}
+            items[index] = ClickableItem.of(item.getItemStack(), e -> selectitem(entry.getKey(),player));
         	index++;
         }
         
@@ -52,9 +84,14 @@ public class InventoryItemTable  implements InventoryProvider{
         pagination.setItemsPerPage(36);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
+		if(mob == null) {
+			contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+	                e -> InventoryMenu.INVENTORY.open(player)));
+		} else {
+			contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+	                e -> InventoryMob_ItemListAdd.getInventory(mob, mobitem).open(player)));
+		}
 		
-		contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
-                e -> InventoryMenu.INVENTORY.open(player)));
 		contents.set(4, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
                 e -> InventoryItemTable.getInventory().open(player, pagination.previous().getPage())));
         contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
@@ -66,6 +103,23 @@ public class InventoryItemTable  implements InventoryProvider{
 	public void update(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private void selectitem(String itemno, Player player) {
+		if(mob != null) {
+			InventoryMob_ItemListAdd.getInventory(mob, new MobItem(itemno)).open(player);
+		} else if (player.hasPermission("mobdrop.admin.inventory.items.get")) {
+			ItemStack Itemcreate = DataBase.items.get(itemno).getItemStack();
+			Itemcreate.setAmount(1);
+			if(player.getInventory().firstEmpty() == -1) {
+				player.sendMessage("§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_bag_full"));
+			} else {
+				player.getInventory().addItem(Itemcreate);
+				player.sendMessage("§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_success")
+											.replaceAll("%id%", itemno)
+											.replaceAll("%name%", new Itemset(Itemcreate).getItemName()));
+			}
+		}
 	}
 
 }

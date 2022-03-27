@@ -29,6 +29,12 @@ Inventory:
   Button_not_found_lore: "&c找不到按鍵,請聯絡管理員"
   Title_error: "&c標題讀取錯誤,請聯絡管理員"
   Type_error: "&c圖示讀取錯誤,請聯絡管理員"
+  items_table_get_item_info:
+  - ""
+  - "&a點擊左鍵"
+  - "&a拿取道具"
+  items_table_get_item_success: "&f獲取道具ID:&6%id% &f, 名稱:%name%"
+  items_table_get_item_bag_full: "&c背包已滿，無法獲取道具"
   mob_remove_msg: "&b刪除怪物 '&6%mobname%&b'"
   mob_name_noset_error: "&c名稱不能是空白"
   mob_name_same_error: "&c怪物名稱重複"
@@ -41,11 +47,14 @@ Inventory:
   - ""
   - "&7物品數量: &2%num%"
   dropitem_info_lore:
-  - "掉落機率: %Chance%%"
-  - "數量: %Quantity% "
+  - ""
+  - "&7掉落機率: &2%Chance%%"
+  - "&7數量: &2%Quantity%"
 
 Inventory_Title:
   menu: "目錄"
+  items_list_all: "物品列表"
+  items_list_mob: "%mobname% 未選擇列表"
   entitytype_list: "選擇原版怪物列表"
   mob_normal_list: "原版怪物列表"
   mob_custom_list: "自定義怪物列表"

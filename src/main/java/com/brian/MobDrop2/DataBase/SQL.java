@@ -89,10 +89,10 @@ public class SQL {
 					  "CREATE TABLE `" + this.table_dropitem + "` (\n"
 					+ "  `mobname` varchar(20) NOT NULL,\n"
 					+ "  `custom` varchar(1) NOT NULL,\n"
-					+ "  `itemno` varchar(20) NOT NULL,\n"
+					+ "  `itemno` varchar(100) NOT NULL,\n"
 					+ "  `quantity` varchar(4) DEFAULT NULL,\n"
 					+ "  `quantity_max` varchar(4) DEFAULT NULL,\n"
-					+ "  `chance` decimal(5,3) DEFAULT NULL,\n"
+					+ "  `chance` decimal(6,3) DEFAULT NULL,\n"
 					+ "  `world` longtext DEFAULT NULL,\n"
 					+ "  PRIMARY KEY (`mobname`,`custom`,`itemno`)\n"
 					+ ")");
@@ -125,7 +125,7 @@ public class SQL {
 		if(data.isEmpty()) {
 			MySQL.executeUpdate(
 					  "CREATE TABLE `" + this.table_items + "` (\n"
-					+ "  `itemno` varchar(20) NOT NULL,\n"
+					+ "  `itemno` varchar(100) NOT NULL,\n"
 				    + "  `item` longtext,\n"
 					+ "  PRIMARY KEY (`itemno`)\n"
 					+ ")");
@@ -141,6 +141,7 @@ public class SQL {
 					+ "Select * \n"
 					+ "From " + this.table_mobs + "\n");
 			
+			//Loading mobs
 			for(Map<String,String> row : rows) {
 				String id = row.get("mobname") != null ? row.get("mobname").toUpperCase() : "";
 				String custom = row.get("custom") != null && row.get("custom").equals("Y")? "Y" : "N";
@@ -157,6 +158,7 @@ public class SQL {
 				}
 			}
 			
+			//Loading items
 			rows = MySQL.select(""
 					+ "Select * \n"
 					+ "From " + this.table_items + "\n");
@@ -167,6 +169,31 @@ public class SQL {
 				if(!itemBase64.isEmpty()) {
 					Itemset item = new Itemset(itemBase64);
 					DataBase.items.put(itemno, item);
+				}
+			}
+			
+			//Loading drop item
+			rows = MySQL.select(""
+					+ "Select * \n"
+					+ "From " + this.table_dropitem + "\n");
+			for(Map<String,String> row : rows) {
+				String id = row.get("mobname") != null ? row.get("mobname").toUpperCase() : "";
+				boolean custom = row.get("custom") != null && row.get("custom").equals("Y");
+				String Itemno = row.get("itemno") != null ? row.get("itemno").toUpperCase() : "";
+				int Quantity = row.get("quantity") != null ? Integer.parseInt(row.get("quantity")) : 0;
+				int Quantity_max = row.get("quantity_max") != null ? Integer.parseInt(row.get("quantity_max")) : 0;
+				double Chance = row.get("chance") != null ? Double.parseDouble(row.get("chance")) : 0.00;
+//				DataBase.Print("Quantity: " + Quantity);
+//				DataBase.Print("Quantity_max: " + Quantity_max);
+//				DataBase.Print("Chance: " + Chance);
+				if(custom) {
+					Mob mob = DataBase.CustomMobsMap.get(id);
+					mob.MobItems.put(Itemno, new MobItem(Itemno, Quantity, Quantity_max, Chance));
+					DataBase.CustomMobsMap.put(id, mob);
+				} else {
+					Mob mob = DataBase.NormalMobsMap.get(id);
+					mob.MobItems.put(Itemno, new MobItem(Itemno, Quantity, Quantity_max, Chance));
+					DataBase.NormalMobsMap.put(id, mob);
 				}
 			}
 		}
@@ -262,16 +289,11 @@ public class SQL {
 			if(data.isEmpty()) {			
 				String sql = ""
 				+ "Insert Into " + this.table_dropitem + "\n"
-				+ "(mobname, custom	, itemno)\n"
+				+ "(mobname, custom , itemno)\n"
 				+ "Values\n"
 				+ "('" + Mob.getName() + "',"
 				+ " '" + Mob.getCustom() + "',"
-				+ " '" + MobItem.getItemNo() + "'";
-				
-				if(Mob.hasIcon()) 
-					sql = sql + ", "+ " '" + new Itemset(Mob.getIcon()).itemStackToBase64() + "')";
-				else 
-					sql = sql + ", "+ "null" + ")";
+				+ " '" + MobItem.getItemNo() + "')";
 				
 				boolean Success = MySQL.executeUpdate(sql);
 				if(!Success)

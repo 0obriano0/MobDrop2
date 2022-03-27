@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,13 +23,15 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 	Mob mob;
 	MobItem mobitem = null;
 	
-	public InventoryMob_ItemListAdd(Mob mob) {
+	
+	public InventoryMob_ItemListAdd(Mob mob, MobItem mobitem) {
 		this.mob = mob;
+		this.mobitem = mobitem;
 	}
 
-	public static SmartInventory getInventory(Mob Mob) {
+	public static SmartInventory getInventory(Mob Mob, MobItem MobItem) {
         return SmartInventory.builder()
-                .provider(new InventoryMob_ItemListAdd(Mob))
+                .provider(new InventoryMob_ItemListAdd(Mob, MobItem))
                 .size(1, 9)
                 .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_item_list_add"))
                 .build();
@@ -39,8 +42,12 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 		// TODO Auto-generated method stub
 		contents.set(0, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player)));
-		contents.set(0, 1, ClickableItem.of(InventoryTools.getbutton("Mob_ItemAdd", "Item"),
-                e -> {}));
+		contents.set(0, 1, ClickableItem.of(button("Item"),
+                e -> InventoryItemTable.getInventory(mob, mobitem).open(player)));
+		
+		if(mobitem != null) {
+			contents.set(0, 2, ClickableItem.of(mobitem.getResultItem(), e -> {}));
+		}
 		
 		LoadCreateButton(player, contents);
 	}
@@ -49,6 +56,24 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 	public void update(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
+	}
+	private ItemStack button(String name) {
+		String itemno = mobitem != null ? mobitem.getItemNo() : "";
+		String Type = DataBase.fileInventory.getString("Inventory.Mob_ItemAdd.Button." + name + ".Type").toUpperCase();
+		String title = DataBase.fileInventory.getString("Inventory.Mob_ItemAdd.Button." + name + ".Title");
+		List<String> Lore = new ArrayList<String>();
+		for(String str : DataBase.fileInventory.getStringList("Inventory.Mob_ItemAdd.Button." + name + ".Lore")){
+			Lore.add(str.replaceAll("&", "§")
+					    .replaceAll("%id%", itemno));
+		}
+		Material material = null;
+		if(Material.getMaterial(Type) != null)
+			material = Material.getMaterial(Type);
+		else {
+			material = Material.BARRIER;
+			Lore.add(DataBase.fileMessage.getString("Inventory.Type_error"));
+		}
+		return new Itemset(material).setItemName(title).setLore(Lore).getItemStack();
 	}
 	
 	private void LoadCreateButton(Player player, InventoryContents contents) {
@@ -84,12 +109,10 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 	}
 	
 	private void createitem(Player player, InventoryContents contents) {
-		List<String> msg = DataBase.sql.MobAdd(mob);
+		List<String> msg = DataBase.sql.MobItemAdd(mob,mobitem);
 		if(msg.isEmpty()) {
 			mob.MobItems.put(mobitem.getItemNo(),mobitem);
-			if(mob.isCustom()) DataBase.CustomMobsMap.put(mob.getName(), mob);
-			else DataBase.NormalMobsMap.put(mob.getName(), mob);
-//			InventoryMob_ItemList.getInventory(mob).open(player);
+			InventoryMob_ItemList.getInventory(mob).open(player);
 		} else {
 			player.sendMessage(msg.toString());
 		}
