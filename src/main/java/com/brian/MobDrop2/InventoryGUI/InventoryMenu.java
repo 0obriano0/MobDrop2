@@ -42,7 +42,14 @@ public class InventoryMenu implements InventoryProvider{
 		String title = DataBase.fileInventory.getString("Inventory.Menu.Button." + mod + ".Title");
 		List<String> Lore = new ArrayList<String>();
 		for(String str : DataBase.fileInventory.getStringList("Inventory.Menu.Button." + mod + ".Lore")){
-			int size = mod.equals("Normal") ? DataBase.NormalMobsMap.size() : DataBase.CustomMobsMap.size();
+			int size = 0;
+			if(mod.equals("Normal")) {
+				size = DataBase.NormalMobsMap.size();
+			} else if (mod.equals("Normal")) {
+				size =  DataBase.CustomMobsMap.size();
+			} else if (mod.equals("Items")){
+				size =  DataBase.items.size();
+			}
 			Lore.add(str.replaceAll("&", "§").replaceAll("%num%", size + ""));
 		}
 		Material material = null;

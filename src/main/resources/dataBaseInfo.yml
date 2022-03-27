@@ -8,6 +8,5 @@ mysql:
   password: password
   hostname: 127.0.0.1:3306
   database: mobdrop
-  # Valid characters are a-z 0-9 and _
   Prefix: mdop_
   useSSL: false

@@ -33,15 +33,21 @@ permissions:
       default: op
       children:
          mobdrop.admin: true
+         mobdrop.admin.items.*: true
          mobdrop.admin.itemset.*: true
          mobdrop.admin.reload: true
          mobdrop.admin.test: true
          mobdrop.admin.inventory.*: true
+   mobdrop.admin.items.*:
+      default: op
+      children:
+         mobdrop.admin.items.add: true
    mobdrop.admin.itemset.*:
       default: op
       children:
          mobdrop.admin.itemset.name: true
          mobdrop.admin.itemset.addlore: true
+         mobdrop.admin.itemset.durability: true
          mobdrop.admin.itemset.amount: true
    mobdrop.admin.inventory.*:
       default: op

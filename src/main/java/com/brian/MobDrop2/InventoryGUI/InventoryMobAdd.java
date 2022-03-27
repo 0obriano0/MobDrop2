@@ -83,9 +83,9 @@ public class InventoryMobAdd implements InventoryProvider{
 	private void ChangeItem(Player player ,InventoryContents contents, int x, int y) {
 		Itemset setitem = new Itemset(player.getItemOnCursor().clone()).setAmount(1);
 		if (!setitem.getItemStack().getType().toString().equals("AIR")) {
+			mob.setIcon(setitem.getItemStack());
 			contents.set(x,y, ClickableItem.of(setitem.addLore(DataBase.fileInventory.getStringList("Inventory.MobAdd.Button.Icon.Lore")).getItemStack(),
 					e -> ChangeItem(player,contents,x,y)));
-			mob.setIcon(setitem.getItemStack());
 			LoadCreateButton(player, contents);
 		}else {
 //			player.sendMessage("");

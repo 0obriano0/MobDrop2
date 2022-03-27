@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.inventory.ItemStack;
+
 import com.brian.MobDrop2.DataBase.MySQL.MySQLManager;
 
 public class SQL {
@@ -133,6 +135,7 @@ public class SQL {
 	private void MySQL_ReLoad() {
 		DataBase.CustomMobsMap.clear();
 		DataBase.NormalMobsMap.clear();
+		DataBase.items.clear();
 		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
 			List<Map<String,String>> rows = MySQL.select(""
 					+ "Select * \n"
@@ -151,6 +154,19 @@ public class SQL {
 					DataBase.CustomMobsMap.put(id, mob);
 				} else {
 					DataBase.NormalMobsMap.put(id, mob);
+				}
+			}
+			
+			rows = MySQL.select(""
+					+ "Select * \n"
+					+ "From " + this.table_items + "\n");
+			for(Map<String,String> row : rows) {
+				String itemno = row.get("itemno") != null ? row.get("itemno").toUpperCase() : "";
+				String itemBase64 = row.get("item") != null ? row.get("item") : "";
+				
+				if(!itemBase64.isEmpty()) {
+					Itemset item = new Itemset(itemBase64);
+					DataBase.items.put(itemno, item);
 				}
 			}
 		}
@@ -256,6 +272,53 @@ public class SQL {
 					sql = sql + ", "+ " '" + new Itemset(Mob.getIcon()).itemStackToBase64() + "')";
 				else 
 					sql = sql + ", "+ "null" + ")";
+				
+				boolean Success = MySQL.executeUpdate(sql);
+				if(!Success)
+					mode.add("Add_data_error");
+			} else {
+				mode.add("same_data_error");
+			}
+		} else {
+			
+		}
+		return mode;
+	}
+	
+	/**
+	 * 增加物品
+	 * @param itemno
+	 * @param item
+	 * @return
+	 *   當發生錯誤時會回傳錯誤代碼
+	 */
+	public List<String> ItemsAdd(String itemno, ItemStack item) {
+		return ItemsAdd(itemno,new Itemset(item));
+	}
+	
+	/**
+	 * 增加物品
+	 * @param itemno
+	 * @param item
+	 * @return
+	 *   當發生錯誤時會回傳錯誤代碼
+	 */
+	public List<String> ItemsAdd(String itemno, Itemset item) {
+		List<String> mode = new ArrayList<String>();
+		
+		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
+			List<Map<String,String>> data = MySQL.select(""
+					+ "Select * \n"
+					+ "From " + this.table_items + "\n"
+				    + "Where itemno = '" + itemno + "'");
+			
+			if(data.isEmpty()) {			
+				String sql = ""
+				+ "Insert Into " + this.table_items + "\n"
+				+ "(itemno, item)\n"
+				+ "Values\n"
+				+ "('" + itemno + "',"
+				+ " '" + item.itemStackToBase64() + "')";
 				
 				boolean Success = MySQL.executeUpdate(sql);
 				if(!Success)
