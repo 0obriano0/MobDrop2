@@ -2,6 +2,7 @@ package com.brian.MobDrop2.Command.items;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -18,5 +19,10 @@ public class Commandremove extends mainCommandSystem{
 	@Override
 	public void run(Player player, String commandLabel, Command command, String[] args) throws Exception {
 		
+	}
+	
+	@Override
+	public List<String> tabComplete(Player player, String commandLabel, Command command, String[] args, final ClassLoader classLoader, final String commandPath){
+		return null;
 	}
 }

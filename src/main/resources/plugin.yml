@@ -42,6 +42,8 @@ permissions:
       default: op
       children:
          mobdrop.admin.items.add: true
+         mobdrop.admin.items.get: true
+         mobdrop.admin.items.remove: true
    mobdrop.admin.itemset.*:
       default: op
       children:

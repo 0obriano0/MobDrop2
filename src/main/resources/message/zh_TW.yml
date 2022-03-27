@@ -71,7 +71,8 @@ Command:
   NoPermission: "&c無使用此指令的權限"
   CanNotFind: "&c查無此指令"
   HandNoItem: "&c手上沒有物品"
-   
+  ItemNotFind: "&c查無此物品"
+  
 Mobs:
   #1.13
   BAT: "蝙蝠"
