@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.Command.itemset;
+package com.brian.MobDrop2.Command.items.set;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,12 +11,12 @@ import com.brian.MobDrop2.Command.mainCommandSystem;
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
 
-public class Commandname extends mainCommandSystem{
+public class Commandamount extends mainCommandSystem{
 	
-	public Commandname() {
-		super(  "itemset.name",
-				"/mobdrop itemset name 設定物品名稱",
-				new ArrayList<String>(Arrays.asList("mobdrop.admin.itemset.name")));
+	public Commandamount() {
+		super(  "items.set.amount",
+				"/mobdrop items set amount 設定物品數量",
+				new ArrayList<String>(Arrays.asList("mobdrop.admin.items.set.amount")));
 	}
 	
 	@Override
@@ -26,7 +26,7 @@ public class Commandname extends mainCommandSystem{
 			if(args.length >= 1) {
 				String str = args[0].replaceAll("&", "§");
 				Itemset item = new Itemset(setitem);
-				item.setItemName(str);
+				item.setAmount(Integer.parseInt(str));
 				player.getInventory().setItemInMainHand(item.getItemStack());
 			}
 		} else {

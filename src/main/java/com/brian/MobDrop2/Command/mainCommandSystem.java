@@ -23,22 +23,35 @@ import com.brian.MobDrop2.MobDrop2;
 import com.brian.MobDrop2.DataBase.DataBase;
 
 public class mainCommandSystem implements ImainCommandSystem {
-	private final transient String name;
+	private final transient String id;
 	private final transient List<String> permissions;
 	private final transient String help;
 	private final transient String subCommand_path;
 	private List<String> subCommands = null;
 	private boolean rundefault;
 	
-	protected mainCommandSystem(final String name,final String help,final List<String> permissions) {
-        this.name = name;
+	/**
+	 * 定義一個指令
+	 * @param id 指令ID
+	 * @param help 說明敘述
+	 * @param permissions 權限(type : List<String>)
+	 */
+	protected mainCommandSystem(final String id,final String help,final List<String> permissions) {
+        this.id = id;
         this.help = help;
         this.permissions = permissions;
         this.subCommand_path = null;
     }
 	
-	protected mainCommandSystem(final String name,final String help,final List<String> permissions, String subCommand_path) {
-        this.name = name;
+	/**
+	 * 定義一個指令
+	 * @param id 指令ID
+	 * @param help 說明敘述
+	 * @param permissions 權限(type : List<String>)
+	 * @param subCommand_path 指令的路徑
+	 */
+	protected mainCommandSystem(final String id,final String help,final List<String> permissions, String subCommand_path) {
+        this.id = id;
         this.help = help;
         this.permissions = permissions;
         this.subCommand_path = subCommand_path;
@@ -46,7 +59,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 	
 	@Override
 	public String getName() {
-        return name;
+        return id;
     }
 	
 	@Override
@@ -100,7 +113,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-		        }else if (args.length != 0 && (commandLabel.equalsIgnoreCase(DataBase.pluginName.toLowerCase() + "." + name) || commandLabel.equalsIgnoreCase("mobdrop." + name) || commandLabel.equalsIgnoreCase("mdop." + name))) {
+		        }else if (args.length != 0 && (commandLabel.equalsIgnoreCase(DataBase.pluginName.toLowerCase() + "." + id) || commandLabel.equalsIgnoreCase("mobdrop." + id) || commandLabel.equalsIgnoreCase("mdop." + id))) {
 					if(!getsubCommands().contains(args[0])) {
 						sender.sendMessage(DataBase.fileMessage.getString("Command.CanNotFind"));
 					}
@@ -142,7 +155,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}else if (args.length != 0 && (commandLabel.equalsIgnoreCase(DataBase.pluginName.toLowerCase() + "." + name) || commandLabel.equalsIgnoreCase("mobdrop." + name) || commandLabel.equalsIgnoreCase("mdop." + name))) {
+				}else if (args.length != 0 && (commandLabel.equalsIgnoreCase(DataBase.pluginName.toLowerCase() + "." + id) || commandLabel.equalsIgnoreCase("mobdrop." + id) || commandLabel.equalsIgnoreCase("mdop." + id))) {
 					if(!getsubCommands().contains(args[0])) {
 						player.sendMessage(DataBase.fileMessage.getString("Command.CanNotFind"));
 					}

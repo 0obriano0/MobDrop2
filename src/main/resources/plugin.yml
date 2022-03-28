@@ -34,7 +34,6 @@ permissions:
       children:
          mobdrop.admin: true
          mobdrop.admin.items.*: true
-         mobdrop.admin.itemset.*: true
          mobdrop.admin.reload: true
          mobdrop.admin.test: true
          mobdrop.admin.inventory.*: true
@@ -44,13 +43,14 @@ permissions:
          mobdrop.admin.items.add: true
          mobdrop.admin.items.get: true
          mobdrop.admin.items.remove: true
-   mobdrop.admin.itemset.*:
+         mobdrop.admin.items.set.*: true
+   mobdrop.admin.items.set.*:
       default: op
       children:
-         mobdrop.admin.itemset.name: true
-         mobdrop.admin.itemset.addlore: true
-         mobdrop.admin.itemset.durability: true
-         mobdrop.admin.itemset.amount: true
+         mobdrop.admin.items.set.name: true
+         mobdrop.admin.items.set.addlore: true
+         mobdrop.admin.items.set.durability: true
+         mobdrop.admin.items.set.amount: true
    mobdrop.admin.inventory.*:
       default: op
       children:

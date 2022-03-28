@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.Command.itemset;
+package com.brian.MobDrop2.Command.items.set;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +11,12 @@ import com.brian.MobDrop2.Command.mainCommandSystem;
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
 
-public class Commanddurability extends mainCommandSystem{
-	public Commanddurability() {
-		super(  "itemset.durability",
-				"/mobdrop itemset durability 設定物品耐久度",
-				new ArrayList<String>(Arrays.asList("mobdrop.admin.itemset.durability")));
+public class Commandname extends mainCommandSystem{
+	
+	public Commandname() {
+		super(  "items.set.name",
+				"/mobdrop items set name 設定物品名稱",
+				new ArrayList<String>(Arrays.asList("mobdrop.admin.items.set.name")));
 	}
 	
 	@Override
@@ -25,7 +26,7 @@ public class Commanddurability extends mainCommandSystem{
 			if(args.length >= 1) {
 				String str = args[0].replaceAll("&", "§");
 				Itemset item = new Itemset(setitem);
-				item.setDurability(Short.parseShort(str));
+				item.setItemName(str);
 				player.getInventory().setItemInMainHand(item.getItemStack());
 			}
 		} else {
