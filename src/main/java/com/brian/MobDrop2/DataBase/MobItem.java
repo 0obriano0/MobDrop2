@@ -2,6 +2,11 @@ package com.brian.MobDrop2.DataBase;
 
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * 怪物物品定義檔
+ * @author Brian
+ *
+ */
 public class MobItem {
 	private String Itemno;
 	// 得到的物品數量

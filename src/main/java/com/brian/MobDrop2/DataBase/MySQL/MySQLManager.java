@@ -14,6 +14,11 @@ import java.util.Map;
 
 import com.brian.MobDrop2.DataBase.DataBase;
 
+/**
+ * MySQL 定義檔 方便我使用
+ * @author Brian
+ *
+ */
 public class MySQLManager {
 	// JDBC driver name and database URL
 	// MySQL 8.0 以下版本 - JDBC 驱动名及数据库 URL

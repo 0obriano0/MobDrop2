@@ -7,6 +7,11 @@ import javax.annotation.Nonnull;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * 物品創建 的 文字說明檔
+ * @author Brian
+ *
+ */
 public interface IItemset {
 
 	ItemMeta getItemMeta();

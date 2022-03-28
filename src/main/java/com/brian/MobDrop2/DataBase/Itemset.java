@@ -20,6 +20,11 @@ import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
+/**
+ * 物品創建 的 實作檔
+ * @author Brian
+ *
+ */
 public class Itemset implements IItemset {
 	private ItemStack Item;
 	private int mysqlNo = -1;

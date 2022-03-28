@@ -12,6 +12,11 @@ import org.bukkit.plugin.Plugin;
 
 import com.brian.MobDrop2.AnsiColor;
 
+/**
+ * 一些檔案操作的額外功能
+ * @author Brian
+ *
+ */
 public interface FileAPI {
 	public static void copyFile(InputStream in, File out) throws Exception {
         InputStream fis = in;

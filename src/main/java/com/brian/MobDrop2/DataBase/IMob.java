@@ -2,6 +2,11 @@ package com.brian.MobDrop2.DataBase;
 
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * 怪物創建 的 文字說明檔
+ * @author Brian
+ *
+ */
 public interface IMob {
 
 	/**

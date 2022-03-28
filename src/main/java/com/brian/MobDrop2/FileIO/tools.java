@@ -10,6 +10,12 @@ import java.util.List;
 import org.bukkit.plugin.Plugin;
 
 import com.brian.MobDrop2.AnsiColor;
+
+/**
+ * 檔案操作的額外工具
+ * @author Brian
+ *
+ */
 public class tools {
 	/**
 	 * 基本文字輸出 顯示讀取成功及失敗

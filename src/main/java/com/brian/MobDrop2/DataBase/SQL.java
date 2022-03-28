@@ -9,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 
 import com.brian.MobDrop2.DataBase.MySQL.MySQLManager;
 
+/**
+ * 作用可以快速切換不同sql 的 實作檔
+ * @author Brian
+ *
+ */
 public class SQL {
 	
 	private MySQLManager MySQL;

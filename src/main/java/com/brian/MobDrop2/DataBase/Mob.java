@@ -8,6 +8,11 @@ import javax.annotation.Nonnull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * 怪物 的 實作檔
+ * @author Brian
+ *
+ */
 public class Mob implements IMob{
 	private String name = "";
 	private String custom = "";

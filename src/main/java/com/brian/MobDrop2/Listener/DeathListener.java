@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Listener;
+package com.brian.MobDrop2.Listener;
 
 import java.util.Map;
 

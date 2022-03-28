@@ -11,6 +11,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.brian.MobDrop2.MobDrop2;
 
+/**
+ * 檔案操作的核心檔案
+ * @author Brian
+ *
+ */
 public class FileIO implements IFileIO{
 	
 	private final transient String FileName;
