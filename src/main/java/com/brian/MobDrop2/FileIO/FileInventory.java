@@ -8,12 +8,13 @@ import java.util.Map;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import com.brian.MobDrop2.MobDrop2;
 import com.brian.MobDrop2.DataBase.DataBase;
 import com.brian.MobDrop2.DataBase.Itemset;
 
 public class FileInventory extends FileIO{
 	public FileInventory() {
-		super("Inventory.yml");
+		super("message", MobDrop2.plugin.getConfig().getString("lang") + "/Inventory.yml");
 	}
 	
 	private Map<String,ItemStack> Buttons = new HashMap<String,ItemStack>();

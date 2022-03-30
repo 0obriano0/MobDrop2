@@ -9,7 +9,7 @@ import com.brian.MobDrop2.DataBase.DataBase;
 
 public class FileMessage extends FileIO{
 	public FileMessage() {
-		super("message", MobDrop2.plugin.getConfig().getString("lang") + ".yml");
+		super("message", MobDrop2.plugin.getConfig().getString("lang") + "/Base.yml");
 	}
 	
 	public Map<String,String> IDMobtoMessage = new HashMap<String,String>();
