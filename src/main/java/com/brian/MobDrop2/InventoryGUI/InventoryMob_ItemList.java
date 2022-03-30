@@ -45,7 +45,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
         
     	int index = 0;
     	for (Map.Entry<String, MobItem> entry : mob.MobItems.entrySet()) {
-    		items[index] = ClickableItem.empty(createbutton(entry.getValue()));
+    		items[index] = ClickableItem.of(createbutton(entry.getValue()), e -> InventoryMob_ItemListEdit.getInventory(mob, entry.getValue()).open(player));
     		index++;
     	}
         

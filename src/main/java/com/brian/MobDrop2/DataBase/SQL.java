@@ -312,6 +312,40 @@ public class SQL {
 		return mode;
 	}
 	
+	public List<String> MobItemUpdate(Mob Mob, MobItem MobItem) {
+		List<String> mode = new ArrayList<String>();
+		
+		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
+			List<Map<String,String>> data = MySQL.select(""
+					+ "Select * \n"
+					+ "From " + this.table_dropitem + "\n"
+				    + "Where mobname = '" + Mob.getName() + "'\n"
+				    + "And custom = '" + Mob.getCustom() + "'\n"
+					+ "And itemno = '" + MobItem.getItemNo() + "'");
+			
+			if(data.isEmpty()) {			
+				mode.add("data_not_found_error");
+			} else {
+				String sql = ""
+				+ "Update " + this.table_dropitem + "\n"
+				+ "Set" + "\n"
+				+ "  quantity = " + MobItem.Quantity + ",\n"
+				+ "  quantity_max = " + ((MobItem.Quantity_max - MobItem.Quantity) <= 0 ? "null" : MobItem.Quantity_max) + ",\n"
+				+ "  chance = " + MobItem.Chance + "\n"
+			    + "Where mobname = '" + Mob.getName() + "'\n"
+			    + "And custom = '" + Mob.getCustom() + "'\n"
+				+ "And itemno = '" + MobItem.getItemNo() + "'";
+					
+				boolean Success = MySQL.executeUpdate(sql);
+				if(!Success)
+					mode.add("Update_data_error");
+			}
+		} else {
+			
+		}
+		return mode;
+	}
+	
 	/**
 	 * 增加物品
 	 * @param itemno

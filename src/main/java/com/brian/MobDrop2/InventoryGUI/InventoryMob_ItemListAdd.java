@@ -23,7 +23,6 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 	Mob mob;
 	MobItem mobitem = null;
 	
-	
 	public InventoryMob_ItemListAdd(Mob mob, MobItem mobitem) {
 		this.mob = mob;
 		this.mobitem = mobitem;
@@ -57,6 +56,7 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	private ItemStack button(String name) {
 		String itemno = mobitem != null ? mobitem.getItemNo() : "";
 		String Type = DataBase.fileInventory.getString("Inventory.Mob_ItemAdd.Button." + name + ".Type").toUpperCase();
@@ -112,7 +112,7 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 		List<String> msg = DataBase.sql.MobItemAdd(mob,mobitem);
 		if(msg.isEmpty()) {
 			mob.MobItems.put(mobitem.getItemNo(),mobitem);
-			InventoryMob_ItemList.getInventory(mob).open(player);
+			InventoryMob_ItemListEdit.getInventory(mob,mobitem).open(player);
 		} else {
 			player.sendMessage(msg.toString());
 		}

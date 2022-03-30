@@ -32,7 +32,7 @@ init:
       Lore:
       - "&7取消返回上一頁"
     Save:
-      Type: "LIME_WOOL"
+      Type: "BOOK"
       Title: "&a儲存"
       Lore:
       - "&7點擊存檔"
@@ -123,7 +123,83 @@ Inventory:
         Title: "&a選擇物品"
         Lore:
         - "&7系統代號:%id%"
-
+  Mob_ItemEdit:
+    Type:
+      quantity: "&a%quantity%"
+      quantity_max: " &7- &a%quantity_max%"
+      mode_quantity: "&a最少掉落數量"
+      mode_quantity_max: "&b最大掉落數量"
+    Button:
+      Chance:
+        Type: "ORANGE_DYE"
+        Title: "&6掉落機率"
+        Lore:
+        - "&7目前機率: &a%chance%%"
+      Chance_1:
+        Type: "GREEN_WOOL"
+        Title: "&6掉落機率 &a 1"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7左鍵 : &a+1"
+        - "&7右鍵 : &c-1"
+      Chance_10:
+        Type: "GREEN_WOOL"
+        Title: "&6掉落機率 &a 10"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7左鍵 : &a+10"
+        - "&7右鍵 : &c-10"
+      Chance_0_1:
+        Type: "GREEN_WOOL"
+        Title: "&6掉落機率 &a 0.1"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7左鍵 : &a+0.1"
+        - "&7右鍵 : &c-0.1"
+      Chance_0_01:
+        Type: "GREEN_WOOL"
+        Title: "&6掉落機率 &a 0.01"
+        Lore:
+        - "&7目前機率 : &a%chance%%"
+        - "&7左鍵 : &a+0.01"
+        - "&7右鍵 : &c-0.01"
+      Quantity:
+        Type: "PAPER"
+        Title: "&f掉落數量"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%" #quantity 是會透過 Mob_ItemEdit.Type.quantity 跟 quantity_max 更改
+        - "&7點擊切換: &a最少掉落數量 &7跟 &b最大掉落數量"
+        - "&7目前更改: %mode_quantity%"
+      Quantity_max_cancel:
+        Type: "RED_WOOL"
+        Title: "&c取消最大掉落數量"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%" 
+        - "&7點擊 : &c取消&b最大掉落數量"
+      Quantity_1:
+        Type: "GREEN_WOOL"
+        Title: "&f掉落數量 &a 1"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7左鍵 : &a+1"
+        - "&7右鍵 : &c-1"
+        - "&7目前更改: %mode_quantity%"
+      Quantity_10:
+        Type: "GREEN_WOOL"
+        Title: "&f掉落數量 &a 10"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7左鍵 : &a+10"
+        - "&7右鍵 : &c-10"
+        - "&7目前更改: %mode_quantity%"
+      Quantity_100:
+        Type: "GREEN_WOOL"
+        Title: "&f掉落數量 &a 100"
+        Lore:
+        - "&7目前掉落數量: &a%quantity%"
+        - "&7左鍵 : &a+100"
+        - "&7右鍵 : &c-100"
+        - "&7目前更改: %mode_quantity%"
 Other:
   EntityType_Normal:
     blacklist:

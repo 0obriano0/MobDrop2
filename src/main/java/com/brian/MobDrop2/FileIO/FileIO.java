@@ -61,8 +61,12 @@ public class FileIO implements IFileIO{
 			return this.getFileforYML().getString(path).replaceAll("&", "§");
 		}catch(NullPointerException e){
 			String full_url = FileName;
+			try {
+				if(!URL.equals(null)) full_url = URL + "\\" + FileName;
+			}catch(NullPointerException ee) {
+				return "system error [file load error \" " + FileName + " \"]";
+			}
 			
-			if(!URL.equals(null)) full_url = URL + "\\" + FileName;
 					
 			MobDrop2.plugin.saveResource(full_url, true);
 			
