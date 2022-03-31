@@ -130,6 +130,11 @@ Inventory:
       mode_quantity: "&a最少掉落數量"
       mode_quantity_max: "&b最大掉落數量"
     Button:
+      Remove:
+        Type: "RED_WOOL"
+        Title: "&a刪除物品"
+        Lore:
+        - "&7點擊刪除物品"
       ItemForm:
         Type: "LIGHT_BLUE_STAINED_GLASS_PANE"
         Title: " "

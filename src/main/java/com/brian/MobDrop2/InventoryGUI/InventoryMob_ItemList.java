@@ -45,7 +45,11 @@ public class InventoryMob_ItemList implements InventoryProvider{
         
     	int index = 0;
     	for (Map.Entry<String, MobItem> entry : mob.MobItems.entrySet()) {
-    		items[index] = ClickableItem.of(createbutton(entry.getValue()), e -> InventoryMob_ItemListEdit.getInventory(mob, entry.getValue()).open(player));
+    		items[index] = ClickableItem.of(createbutton(player, entry.getValue()), e -> {
+    			if (player.hasPermission("mobdrop.admin.inventory.mob.item.edit")) {
+    				InventoryMob_ItemListEdit.getInventory(mob, entry.getValue()).open(player);
+    			}
+    		});
     		index++;
     	}
         
@@ -83,7 +87,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
 		
 	}
 	
-	private ItemStack createbutton(MobItem MobItem) {
+	private ItemStack createbutton(Player player, MobItem MobItem) {
 		ItemStack item = MobItem.getResultItem();
 		ItemMeta newItemMeta = item.getItemMeta();
 		
@@ -93,11 +97,17 @@ public class InventoryMob_ItemList implements InventoryProvider{
         
         String Quantity = "§f " + MobItem.Quantity;
         if(MobItem.Quantity_max - MobItem.Quantity > 0)
-        	Quantity = Quantity + " ~ " + MobItem.Quantity_max;
+        	Quantity = Quantity + " - " + MobItem.Quantity_max;
         
         for(String str : DataBase.fileMessage.getStringList("Inventory.dropitem_info_lore")) {
         	Lore.add(str.replaceAll("%Chance%", "§f " + MobItem.Chance)
         			    .replaceAll("%Quantity%", Quantity));
+        }
+        
+        if (player.hasPermission("mobdrop.admin.inventory.mob.item.edit")) {
+        	for(String str : DataBase.fileMessage.getStringList("Inventory.mob_item_edit_info")) {
+        		Lore.add(str);
+        	}
         }
         
         newItemMeta.setLore(Lore);

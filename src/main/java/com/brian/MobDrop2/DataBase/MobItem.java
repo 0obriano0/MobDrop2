@@ -31,7 +31,7 @@ public class MobItem {
 	}
 	
 	public ItemStack getResultItem() {
-		return DataBase.items.get(Itemno).getItemStack();
+		return DataBase.items.get(Itemno).getItemStack().clone();
 	}
 	
 	public String getItemName() {

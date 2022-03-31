@@ -58,6 +58,11 @@ public class InventoryMob_ItemListEdit  implements InventoryProvider{
 		contents.set(5, 7, ClickableItem.of(DataBase.fileInventory.getbutton("Save"),
                 e -> save(player,contents)));
 		
+		if (player.hasPermission("mobdrop.admin.inventory.mob.item.remove")) {
+        	contents.set(5, 6, ClickableItem.of(InventoryTools.getbutton("Mob_ItemEdit", "Remove"),
+                    e -> InventoryMob_itemListRemove.getInventory(mob,mobitem).open(player) ));
+        }
+		
 		//Item form
 		ItemForm(player, contents);
 		contents.set(2, 2, ClickableItem.empty(mobitem.getResultItem()));

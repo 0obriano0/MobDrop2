@@ -40,9 +40,13 @@ Inventory:
   mob_name_same_error: "&c怪物名稱重複"
   mob_normal_no_select: "&c請選擇怪物"
   mob_normal_same_select: "&c系統內已有重複怪物"
-  mob_item_noset_error: "&c請放置物品"
+  mob_item_noset_error: "&c請選擇物品"
   mob_item_same_error: "&c此怪物已有重複物品"
-  mob_item_remove_msg: "&b刪除怪物 '&6%mobname%&b' 的物品 '&6%itemname%&b'"
+  mob_item_remove_msg: "&b刪除怪物 '&6%mobname%&b' 的物品 '&6%itemname%&b'(&7%itemno%&b)"
+  mob_item_edit_info:
+  - ""
+  - "&a點擊左鍵"
+  - "&a進入設定物品"
   mob_info_lore:
   - ""
   - "&7物品數量: &2%num%"
@@ -64,6 +68,7 @@ Inventory_Title:
   mob_item_list: "&1%mobname% &f物品清單"
   mob_item_list_add: "&1新增物品"
   mob_item_list_Edit: "&f設定物品 &1%itemname%"
+  mob_item_list_remove: "&f刪除物品 &1%itemname%"
 
 Command:
   CmdCanNotUse: "&c後台無法使用此指令"

@@ -71,3 +71,5 @@ permissions:
       default: op
       children:
         mobdrop.admin.inventory.mob.item.add: true
+        mobdrop.admin.inventory.mob.item.edit: true
+        mobdrop.admin.inventory.mob.item.remove: true

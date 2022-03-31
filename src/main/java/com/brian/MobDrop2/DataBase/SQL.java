@@ -346,6 +346,26 @@ public class SQL {
 		return mode;
 	}
 	
+	public List<String> MobItemRemove(Mob Mob, MobItem MobItem) {
+		List<String> mode = new ArrayList<String>();
+		
+		if(DataBase.fileDataBaseInfo.storage.method.equals("mysql")) {
+			String sql = ""
+					+ "Delete From " + this.table_dropitem + "\n"
+					+ "Where 1=1\n"
+					+ "And mobname = '" + Mob.getName() + "'\n"
+				    + "And custom = '" + Mob.getCustom() + "'\n"
+					+ "And itemno = '" + MobItem.getItemNo() + "'";
+			
+			boolean Success = MySQL.executeUpdate(sql);
+			if(!Success)
+				mode.add("remove_mob_item_error");
+		} else {
+			
+		}
+		return mode;
+	}
+	
 	/**
 	 * 增加物品
 	 * @param itemno
