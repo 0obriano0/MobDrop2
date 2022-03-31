@@ -98,7 +98,7 @@ public class InventoryMob_ItemListEdit  implements InventoryProvider{
 			mobitem.Chance = chance;
 			InventoryMob_ItemList.getInventory(mob).open(player);
 		} else {
-			player.sendMessage(msg.toString());
+			DataBase.sendMessage(player,msg.toString());
 		}
 	}
 	

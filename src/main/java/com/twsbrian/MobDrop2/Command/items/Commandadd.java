@@ -29,16 +29,16 @@ public class Commandadd extends mainCommandSystem{
 				List<String> msg = DataBase.sql.ItemsAdd(str, setitem);
 				if(msg.isEmpty()) {
 					DataBase.items.put(str, new Itemset(setitem));
-					player.sendMessage("物品增加成功");
+					DataBase.sendMessage(player,DataBase.fileMessage.getString("Inventory.items_table_add_success"));
 				} else {
-					player.sendMessage("物品增加失敗");
-					player.sendMessage(msg.toString());
+					DataBase.sendMessage(player,DataBase.fileMessage.getString("Inventory.items_table_add_fail"));
+					DataBase.sendMessage(player,msg.toString());
 				}
 			} else {
-				player.sendMessage("請輸入物品id");
+				DataBase.sendMessage(player,"請輸入物品id");
 			}
 		} else {
-			player.sendMessage(DataBase.fileMessage.getString("Command.HandNoItem"));
+			DataBase.sendMessage(player,DataBase.fileMessage.getString("Command.HandNoItem"));
 		}
 	}
 }

@@ -30,7 +30,7 @@ public class Commandamount extends mainCommandSystem{
 				player.getInventory().setItemInMainHand(item.getItemStack());
 			}
 		} else {
-			player.sendMessage(DataBase.fileMessage.getString("Command.HandNoItem"));
+			DataBase.sendMessage(player,DataBase.fileMessage.getString("Command.HandNoItem"));
 		}
 	}
 }

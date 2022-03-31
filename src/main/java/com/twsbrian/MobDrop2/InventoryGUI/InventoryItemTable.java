@@ -112,10 +112,10 @@ public class InventoryItemTable  implements InventoryProvider{
 			ItemStack Itemcreate = DataBase.items.get(itemno).getItemStack();
 			Itemcreate.setAmount(1);
 			if(player.getInventory().firstEmpty() == -1) {
-				player.sendMessage("§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_bag_full"));
+				DataBase.sendMessage(player,"§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_bag_full"));
 			} else {
 				player.getInventory().addItem(Itemcreate);
-				player.sendMessage("§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_success")
+				DataBase.sendMessage(player,"§b" + DataBase.fileMessage.getString("Inventory.items_table_get_item_success")
 											.replaceAll("%id%", itemno)
 											.replaceAll("%name%", new Itemset(Itemcreate).getItemName()));
 			}

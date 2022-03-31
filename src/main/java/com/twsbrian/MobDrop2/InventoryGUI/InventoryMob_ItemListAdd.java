@@ -114,7 +114,7 @@ public class InventoryMob_ItemListAdd implements InventoryProvider{
 			mob.MobItems.put(mobitem.getItemNo(),mobitem);
 			InventoryMob_ItemListEdit.getInventory(mob,mobitem).open(player);
 		} else {
-			player.sendMessage(msg.toString());
+			DataBase.sendMessage(player,msg.toString());
 		}
 	}
 }

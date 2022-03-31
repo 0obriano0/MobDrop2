@@ -88,7 +88,7 @@ public class InventoryMobAdd implements InventoryProvider{
 					e -> ChangeItem(player,contents,x,y)));
 			LoadCreateButton(player, contents);
 		}else {
-//			player.sendMessage("");
+//			DataBase.sendMessage(player,"");
 		}
 	}
 	
@@ -138,7 +138,7 @@ public class InventoryMobAdd implements InventoryProvider{
 			else DataBase.NormalMobsMap.put(mob.getName(), mob);
 			InventoryMob_ItemList.getInventory(mob).open(player);
 		} else {
-			player.sendMessage(msg.toString());
+			DataBase.sendMessage(player,msg.toString());
 		}
 	}
 }

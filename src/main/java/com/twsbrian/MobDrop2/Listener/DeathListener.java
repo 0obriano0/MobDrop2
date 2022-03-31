@@ -71,7 +71,7 @@ public class DeathListener implements Listener{
         					if(MobDrop2.plugin.getConfig().getBoolean("GobalMessage.Show",true) && MobDrop2.plugin.getConfig().getDouble("GobalMessage.Chance",20) >= MobDropItem.Chance) 
         						MobDrop2.server.broadcastMessage("§b" + DataBase.fileMessage.getString("Message.Title") + " " + formatmessage(DataBase.fileMessage.getString("Message.Gobal_MobDropItem"), killBy, sEntitlyName, MobDropItem, MobDropItem_));
     						
-        					killBy.sendMessage("§b" + DataBase.fileMessage.getString("Message.Title") + "§f " + " " + formatmessage(DataBase.fileMessage.getString("Message.MobDropItem"), killBy, sEntitlyName, MobDropItem, MobDropItem_));
+        					DataBase.sendMessage(killBy, "§f" + formatmessage(DataBase.fileMessage.getString("Message.MobDropItem"), killBy, sEntitlyName, MobDropItem, MobDropItem_));
         				}
     				//}
     			}

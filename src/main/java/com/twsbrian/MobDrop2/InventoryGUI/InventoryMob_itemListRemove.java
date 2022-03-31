@@ -70,7 +70,7 @@ public class InventoryMob_itemListRemove implements InventoryProvider{
 			else DataBase.NormalMobsMap.get(mob.getName()).MobItems.remove(mobitem.getItemNo());
 			InventoryMob_ItemList.getInventory(mob).open(player);
 		} else {
-			player.sendMessage(msg.toString());
+			DataBase.sendMessage(player,msg.toString());
 		}
 	}
 }

@@ -1,5 +1,5 @@
 Message:
-  Title: "[怪物掉落系統]"
+  Title: "&b[怪物掉落系統] "
   MobDropItem: "§f%mob% §6掉落了§f %item% §b%item_num% §6個!"
   Gobal_MobDropItem: "§6恭喜§a %player% §6 將§f %mob% §6殺死後掉落§a %item% §b%item_num% §6個!"
 
@@ -35,6 +35,8 @@ Inventory:
   - "&a拿取道具"
   items_table_get_item_success: "&f獲取道具ID:&6%id% &f, 名稱:%name%"
   items_table_get_item_bag_full: "&c背包已滿，無法獲取道具"
+  items_table_add_success: "&a物品增加成功"
+  items_table_add_fail: "&c物品增加失敗"
   mob_remove_msg: "&b刪除怪物 '&6%mobname%&b'"
   mob_name_noset_error: "&c名稱不能是空白"
   mob_name_same_error: "&c怪物名稱重複"

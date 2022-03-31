@@ -14,7 +14,7 @@ public class ToolCommandSystem {
 	public static ImainCommandSystem getCommandClass(String command) {
     	ImainCommandSystem cmd = null;
         try {
-            cmd = (ImainCommandSystem) MobDrop2.class.getClassLoader().loadClass("com.brian." + DataBase.pluginName + ".Command" + ".Command" + command).newInstance();
+            cmd = (ImainCommandSystem) MobDrop2.class.getClassLoader().loadClass("com.twsbrian." + DataBase.pluginName + ".Command" + ".Command" + command).newInstance();
         }catch(InstantiationException ex) {
         	ex.printStackTrace();
         }catch (Exception ex) {

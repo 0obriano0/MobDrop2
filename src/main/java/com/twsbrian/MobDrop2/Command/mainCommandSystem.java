@@ -148,7 +148,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 				if(args.length == 0 && ToolCommandSystem.hasCommandClass("help",classLoader,newcommandPath)){
 					ImainCommandSystem cmd = ToolCommandSystem.getCommandClass("help",classLoader,newcommandPath);
 		        	if(!cmd.hasPermission(player)) {
-		        		player.sendMessage(DataBase.fileMessage.getString("Command.NoPermission"));
+		        		DataBase.sendMessage(player,DataBase.fileMessage.getString("Command.NoPermission"));
 		        	}
 					try {
 						cmd.run(player, commandLabel + ".help", command, args, classLoader, newcommandPath);
@@ -157,13 +157,13 @@ public class mainCommandSystem implements ImainCommandSystem {
 					}
 				}else if (args.length != 0 && (commandLabel.equalsIgnoreCase(DataBase.pluginName.toLowerCase() + "." + id) || commandLabel.equalsIgnoreCase("mobdrop." + id) || commandLabel.equalsIgnoreCase("mdop." + id))) {
 					if(!getsubCommands().contains(args[0])) {
-						player.sendMessage(DataBase.fileMessage.getString("Command.CanNotFind"));
+						DataBase.sendMessage(player,DataBase.fileMessage.getString("Command.CanNotFind"));
 					}
 					if(args.length >= 1) {
 						String[] newargs = Arrays.copyOfRange(args, 1, args.length);
 		    			ImainCommandSystem cmd = ToolCommandSystem.getCommandClass(args[0],classLoader,newcommandPath);
 		    			if(!cmd.hasPermission(player)) {
-		    				player.sendMessage(DataBase.fileMessage.getString("Command.NoPermission"));
+		    				DataBase.sendMessage(player,DataBase.fileMessage.getString("Command.NoPermission"));
 	    				}
 	            		try {
 							cmd.run(player, commandLabel + "." + args[0], command, newargs, classLoader, newcommandPath);
@@ -241,7 +241,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 	public List<String> getsubCommands(){
 		if(subCommands == null && subCommand_path != null) {
 			subCommands = new ArrayList<String>();
-			URL jarURL = MobDrop2.plugin.getClass().getResource("/com/brian/" + DataBase.pluginName + "/Command" + subCommand_path);
+			URL jarURL = MobDrop2.plugin.getClass().getResource("/com/twsbrian/" + DataBase.pluginName + "/Command" + subCommand_path);
 	    	URI uri;
 			try {
 				FileSystem fileSystem = null;
@@ -249,7 +249,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 				Path myPath;
 		        if (uri.getScheme().equals("jar")) {
 		            fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-		            myPath = fileSystem.getPath("/com/brian/"+ DataBase.pluginName +"/Command" + subCommand_path);
+		            myPath = fileSystem.getPath("/com/twsbrian/"+ DataBase.pluginName +"/Command" + subCommand_path);
 		        } else {
 		            myPath = Paths.get(uri);
 		        }

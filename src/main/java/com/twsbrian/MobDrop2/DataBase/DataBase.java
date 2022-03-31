@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.twsbrian.MobDrop2.AnsiColor;
@@ -76,6 +77,15 @@ public class DataBase {
 	public static FileInventory fileInventory = new FileInventory();
 	
 	/**
+	 * 傳給玩家的訊息加上 Message.Title
+	 * @param player 玩家
+	 * @param msg 文字訊息
+	 */
+	public static void sendMessage(Player player,String msg){
+		player.sendMessage(DataBase.fileMessage.getString("Message.Title") + "§f" + msg);
+	}
+	
+	/**
 	 * 顯示訊息 在cmd 裡顯示 "[MobDrop2] " + msg
 	 * @param msg 要顯示的文字
 	 */
@@ -101,7 +111,7 @@ public class DataBase {
 	public static List<String> getCommands(Plugin plugin){
 		if(Commands == null) {
 			Commands = new ArrayList<String>();
-			URL jarURL = plugin.getClass().getResource("/com/brian/" + pluginName + "/Command");
+			URL jarURL = plugin.getClass().getResource("/com/twsbrian/" + pluginName + "/Command");
 	    	URI uri;
 			try {
 				FileSystem fileSystem = null;
@@ -109,7 +119,7 @@ public class DataBase {
 				Path myPath;
 		        if (uri.getScheme().equals("jar")) {
 		            fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-		            myPath = fileSystem.getPath("/com/brian/"+ pluginName +"/Command");
+		            myPath = fileSystem.getPath("/com/twsbrian/"+ pluginName +"/Command");
 		            
 		        } else {
 		            myPath = Paths.get(uri);
