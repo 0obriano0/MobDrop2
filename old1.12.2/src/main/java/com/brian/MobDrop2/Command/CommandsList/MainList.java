@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Command.CommandsList;
+﻿package com.twsbrian.MobDrop2.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
-import com.brian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.DataBase;
 
 public class MainList {
 	CommandsTools Tools = new CommandsTools();

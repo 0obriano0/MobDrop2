@@ -1,9 +1,9 @@
-﻿package com.brian.MobDrop2.DropItems;
+﻿package com.twsbrian.MobDrop2.DropItems;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.brian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.DataBase;
 
 public class GetItem {
 	public static boolean getitem(Player player,String[] args) {

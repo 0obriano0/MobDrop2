@@ -1,10 +1,10 @@
-﻿package com.brian.MobDrop2.Command.CommandsList;
+﻿package com.twsbrian.MobDrop2.Command.CommandsList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import com.brian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.DataBase;
 
 public class ReloadCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {

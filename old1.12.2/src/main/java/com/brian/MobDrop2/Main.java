@@ -1,14 +1,14 @@
-﻿package com.brian.MobDrop2;
+﻿package com.twsbrian.MobDrop2;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.brian.MobDrop2.Command.PlayerCommands;
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.FileIO.LoadConfig;
-import com.brian.MobDrop2.FileIO.LoadItems;
-import com.brian.MobDrop2.FileIO.LoadLanguage;
-import com.brian.MobDrop2.FileIO.LoadMobs;
-import com.brian.MobDrop2.Listener.DeathListener;
+import com.twsbrian.MobDrop2.Command.PlayerCommands;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.FileIO.LoadConfig;
+import com.twsbrian.MobDrop2.FileIO.LoadItems;
+import com.twsbrian.MobDrop2.FileIO.LoadLanguage;
+import com.twsbrian.MobDrop2.FileIO.LoadMobs;
+import com.twsbrian.MobDrop2.Listener.DeathListener;
 
 public class Main extends JavaPlugin {
 	public void onEnable()

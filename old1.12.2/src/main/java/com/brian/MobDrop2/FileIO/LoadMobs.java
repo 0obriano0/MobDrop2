@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.FileIO;
+﻿package com.twsbrian.MobDrop2.FileIO;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import com.brian.MobDrop2.AnsiColor;
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.Database.Items;
-import com.brian.MobDrop2.Database.Mob;
-import com.brian.MobDrop2.Database.MobItemList;
+import com.twsbrian.MobDrop2.AnsiColor;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.Items;
+import com.twsbrian.MobDrop2.Database.Mob;
+import com.twsbrian.MobDrop2.Database.MobItemList;
 
 public class LoadMobs {
 	// 主要讀取設定用

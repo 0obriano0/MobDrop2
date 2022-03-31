@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Database.lang;
+﻿package com.twsbrian.MobDrop2.Database.lang;
 
 public class message {
 	public String wall = "§a牆壁請無視";

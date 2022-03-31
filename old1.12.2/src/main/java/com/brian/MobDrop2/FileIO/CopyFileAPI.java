@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.FileIO;
+﻿package com.twsbrian.MobDrop2.FileIO;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,9 +8,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.brian.MobDrop2.AnsiColor;
-import com.brian.MobDrop2.Main;
-import com.brian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.AnsiColor;
+import com.twsbrian.MobDrop2.Main;
+import com.twsbrian.MobDrop2.Database.DataBase;
 
 public class CopyFileAPI {
 	public static void copyFile(InputStream in, File out) throws Exception {

@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Command;
+﻿package com.twsbrian.MobDrop2.Command;
 
 import java.util.List;
 
@@ -8,13 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop2.Command.CommandsList.GetItemCommand;
-import com.brian.MobDrop2.Command.CommandsList.ItemListCommand;
-import com.brian.MobDrop2.Command.CommandsList.Item_IOCommand;
-import com.brian.MobDrop2.Command.CommandsList.MobListCommand;
-import com.brian.MobDrop2.Command.CommandsList.ReloadCommand;
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.InventoryGUI.InventoryMenu;
+import com.twsbrian.MobDrop2.Command.CommandsList.GetItemCommand;
+import com.twsbrian.MobDrop2.Command.CommandsList.ItemListCommand;
+import com.twsbrian.MobDrop2.Command.CommandsList.Item_IOCommand;
+import com.twsbrian.MobDrop2.Command.CommandsList.MobListCommand;
+import com.twsbrian.MobDrop2.Command.CommandsList.ReloadCommand;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.InventoryGUI.InventoryMenu;
 
 public class PlayerCommands implements CommandExecutor ,TabExecutor{
  

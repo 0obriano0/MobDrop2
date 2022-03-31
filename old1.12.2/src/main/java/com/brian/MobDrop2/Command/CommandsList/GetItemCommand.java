@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Command.CommandsList;
+﻿package com.twsbrian.MobDrop2.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.DropItems.GetItem;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.DropItems.GetItem;
 
 public class GetItemCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {

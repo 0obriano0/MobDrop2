@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Listener;
+﻿package com.twsbrian.MobDrop2.Listener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.Database.MobItemList;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.MobItemList;
 
 public class DeathListener implements Listener{
 	public DeathListener()

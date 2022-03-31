@@ -1,10 +1,10 @@
-﻿package com.brian.MobDrop2.Database;
+﻿package com.twsbrian.MobDrop2.Database;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.brian.MobDrop2.Database.lang.InventoryGUI;
-import com.brian.MobDrop2.Database.lang.message;
+import com.twsbrian.MobDrop2.Database.lang.InventoryGUI;
+import com.twsbrian.MobDrop2.Database.lang.message;
 
 public class language {
 	public String Plugin_name = "[MobDrop]";

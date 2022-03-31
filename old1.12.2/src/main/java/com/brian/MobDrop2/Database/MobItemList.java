@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Database;
+﻿package com.twsbrian.MobDrop2.Database;
 
 import org.bukkit.inventory.ItemStack;
 

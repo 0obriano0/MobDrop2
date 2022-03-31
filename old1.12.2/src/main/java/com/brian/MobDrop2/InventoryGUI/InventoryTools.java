@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.InventoryGUI;
+﻿package com.twsbrian.MobDrop2.InventoryGUI;
 
 import java.util.ArrayList;
 import java.util.List;

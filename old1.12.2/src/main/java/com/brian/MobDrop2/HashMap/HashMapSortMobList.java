@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.HashMap;
+﻿package com.twsbrian.MobDrop2.HashMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.brian.MobDrop2.Database.Mob;
+import com.twsbrian.MobDrop2.Database.Mob;
 
 public class HashMapSortMobList {
 	// 想依照姓名或成績牌列印出所有資料，先將所有HashMap裡的entry放入List

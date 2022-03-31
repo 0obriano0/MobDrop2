@@ -1,4 +1,4 @@
-package com.brian.MobDrop2;
+package com.twsbrian.MobDrop2;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

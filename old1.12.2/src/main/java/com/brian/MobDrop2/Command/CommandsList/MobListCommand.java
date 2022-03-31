@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Command.CommandsList;
+﻿package com.twsbrian.MobDrop2.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.Database.MobItemList;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.MobItemList;
 
 public class MobListCommand {
 	private static boolean list_base(CommandSender sender,List<MobItemList> MobDropItemList ,String keyName){

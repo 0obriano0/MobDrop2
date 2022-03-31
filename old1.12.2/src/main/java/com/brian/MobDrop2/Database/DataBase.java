@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.Database;
+﻿package com.twsbrian.MobDrop2.Database;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import com.brian.MobDrop2.Main;
-import com.brian.MobDrop2.Command.CommandsList.MainList;
-import com.brian.MobDrop2.FileIO.LoadConfig;
-import com.brian.MobDrop2.FileIO.LoadItems;
-import com.brian.MobDrop2.FileIO.LoadLanguage;
-import com.brian.MobDrop2.FileIO.LoadMobs;
+import com.twsbrian.MobDrop2.Main;
+import com.twsbrian.MobDrop2.Command.CommandsList.MainList;
+import com.twsbrian.MobDrop2.FileIO.LoadConfig;
+import com.twsbrian.MobDrop2.FileIO.LoadItems;
+import com.twsbrian.MobDrop2.FileIO.LoadLanguage;
+import com.twsbrian.MobDrop2.FileIO.LoadMobs;
 
 public class DataBase {
 	// 主插件

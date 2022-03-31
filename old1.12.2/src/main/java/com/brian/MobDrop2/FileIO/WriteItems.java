@@ -1,4 +1,4 @@
-package com.brian.MobDrop2.FileIO;
+package com.twsbrian.MobDrop2.FileIO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.Database.Items;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.Items;
 
 public class WriteItems {
 	

@@ -1,4 +1,4 @@
-﻿package com.brian.MobDrop2.InventoryGUI;
+﻿package com.twsbrian.MobDrop2.InventoryGUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.brian.MobDrop2.Database.DataBase;
-import com.brian.MobDrop2.Database.Mob;
-import com.brian.MobDrop2.Database.MobItemList;
-import com.brian.MobDrop2.HashMap.HashMapSortMobList;
+import com.twsbrian.MobDrop2.Database.DataBase;
+import com.twsbrian.MobDrop2.Database.Mob;
+import com.twsbrian.MobDrop2.Database.MobItemList;
+import com.twsbrian.MobDrop2.HashMap.HashMapSortMobList;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
