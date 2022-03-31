@@ -216,10 +216,10 @@ public class InventoryMob_ItemListEdit  implements InventoryProvider{
 		
 		contents.set(1, 5, ClickableItem.of(button("Chance"),
                 e -> {}));
-		contents.set(1, 6, ClickableItem.of(button("Chance_subtract"),
-                e -> ChanceClick(player, contents, e, chance_type, true)));
-		contents.set(1, 7, ClickableItem.of(button("Chance_add"),
+		contents.set(1, 6, ClickableItem.of(button("Chance_add"),
                 e -> ChanceClick(player, contents, e, chance_type, false)));
+		contents.set(1, 7, ClickableItem.of(button("Chance_subtract"),
+                e -> ChanceClick(player, contents, e, chance_type, true)));
 		contents.set(1, 8, ClickableItem.of(button("Chance_type"),
                 e -> TypeClick(player, contents, e, "Chance")));
 	}
@@ -228,10 +228,10 @@ public class InventoryMob_ItemListEdit  implements InventoryProvider{
 		
 		contents.set(3, 5, ClickableItem.of(button("Quantity"),
                 e -> QuantityMainClick(player, contents, e)));
-		contents.set(3, 6, ClickableItem.of(button("Quantity_subtract"),
-                e -> QuantityClick(player, contents, e, quantity_type, true)));
-		contents.set(3, 7, ClickableItem.of(button("Quantity_add"),
+		contents.set(3, 6, ClickableItem.of(button("Quantity_add"),
                 e -> QuantityClick(player, contents, e, quantity_type, false)));
+		contents.set(3, 7, ClickableItem.of(button("Quantity_subtract"),
+                e -> QuantityClick(player, contents, e, quantity_type, true)));
 		contents.set(3, 8, ClickableItem.of(button("Quantity_type"),
                 e -> TypeClick(player, contents, e, "Quantity")));
 	}
