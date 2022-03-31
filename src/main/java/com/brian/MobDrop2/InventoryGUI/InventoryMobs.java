@@ -40,7 +40,7 @@ public class InventoryMobs implements InventoryProvider{
 			Title = DataBase.fileMessage.getString("Inventory_Title.mob_normal_list");
 		return SmartInventory.builder()
 				.provider(new InventoryMobs(Custom))
-				.size(5, 9)
+				.size(6, 9)
 				.title(ChatColor.BLUE + Title)
 				.build();
 	}
@@ -63,20 +63,20 @@ public class InventoryMobs implements InventoryProvider{
         }
         
         pagination.setItems(items);
-        pagination.setItemsPerPage(36);
+        pagination.setItemsPerPage(45);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
 		
-		contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+		contents.set(5, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMenu.INVENTORY.open(player)));
-		contents.set(4, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
+		contents.set(5, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
                 e -> InventoryMobs.getInventory(Custom).open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
+        contents.set(5, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(5, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryMobs.getInventory(Custom).open(player, pagination.next().getPage())));
         
         if (player.hasPermission("mobdrop.admin.inventory.mod.add")) {
-        	contents.set(4, 8, ClickableItem.of(InventoryTools.getbutton("Mob_List", "MobAdd"),
+        	contents.set(5, 8, ClickableItem.of(InventoryTools.getbutton("Mob_List", "MobAdd"),
                 e -> InventoryMobAdd.getInventory(new Mob("", Custom ? "Y" : "N")).open(player)));
         }
 	}

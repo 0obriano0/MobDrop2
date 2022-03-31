@@ -31,7 +31,7 @@ public class InventoryNormalMobs implements InventoryProvider{
 	public static SmartInventory getInventory(Mob mob) {
 		return SmartInventory.builder()
 				.provider(new InventoryNormalMobs(mob))
-				.size(5, 9)
+				.size(6, 9)
 				.title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.entitytype_list"))
 				.build();
 	}
@@ -52,17 +52,17 @@ public class InventoryNormalMobs implements InventoryProvider{
 	    }
         
         pagination.setItems(items);
-        pagination.setItemsPerPage(36);
+        pagination.setItemsPerPage(45);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
 		// TODO Auto-generated method stub
-		contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+		contents.set(5, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMobAdd.getInventory(mob).open(player)));
-        contents.set(4, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
+        contents.set(5, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
                 e -> InventoryNormalMobs.getInventory(mob).open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
+        contents.set(5, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(5, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryNormalMobs.getInventory(mob).open(player, pagination.next().getPage())));
 	}
 

@@ -130,76 +130,65 @@ Inventory:
       mode_quantity: "&a最少掉落數量"
       mode_quantity_max: "&b最大掉落數量"
     Button:
+      ItemForm:
+        Type: "LIGHT_BLUE_STAINED_GLASS_PANE"
+        Title: " "
+        Lore: []
       Chance:
         Type: "ORANGE_DYE"
         Title: "&6掉落機率"
         Lore:
         - "&7目前機率: &a%chance%%"
-      Chance_1:
-        Type: "GREEN_WOOL"
-        Title: "&6掉落機率 &a 1"
+      Chance_add:
+        Type: "SOUL_TORCH"
+        Title: "&6掉落機率"
         Lore:
         - "&7目前機率 : &a%chance%%"
-        - "&7左鍵 : &a+1"
-        - "&7右鍵 : &c-1"
-      Chance_10:
-        Type: "GREEN_WOOL"
-        Title: "&6掉落機率 &a 10"
+        - "&7點擊 : &a+%chance_type%"
+      Chance_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6掉落機率"
         Lore:
         - "&7目前機率 : &a%chance%%"
-        - "&7左鍵 : &a+10"
-        - "&7右鍵 : &c-10"
-      Chance_0_1:
-        Type: "GREEN_WOOL"
-        Title: "&6掉落機率 &a 0.1"
+        - "&7點擊 : &c-%chance_type%"
+      Chance_type:
+        Type: "LECTERN"
+        Title: "&6掉落機率"
         Lore:
         - "&7目前機率 : &a%chance%%"
-        - "&7左鍵 : &a+0.1"
-        - "&7右鍵 : &c-0.1"
-      Chance_0_01:
-        Type: "GREEN_WOOL"
-        Title: "&6掉落機率 &a 0.01"
-        Lore:
-        - "&7目前機率 : &a%chance%%"
-        - "&7左鍵 : &a+0.01"
-        - "&7右鍵 : &c-0.01"
+        - "&7左鍵 : &a+10 倍率"
+        - "&7右鍵 : &c-10 倍率"
+        - "&7可調整倍率 : &60.01 &7- &610"
+        - "&7目前倍率: &a%chance_type%"
       Quantity:
         Type: "PAPER"
         Title: "&f掉落數量"
         Lore:
-        - "&7目前掉落數量: &a%quantity%" #quantity 是會透過 Mob_ItemEdit.Type.quantity 跟 quantity_max 更改
-        - "&7點擊切換: &a最少掉落數量 &7跟 &b最大掉落數量"
-        - "&7目前更改: %mode_quantity%"
-      Quantity_max_cancel:
-        Type: "RED_WOOL"
-        Title: "&c取消最大掉落數量"
-        Lore:
-        - "&7目前掉落數量: &a%quantity%" 
-        - "&7點擊 : &c取消&b最大掉落數量"
-      Quantity_1:
-        Type: "GREEN_WOOL"
-        Title: "&f掉落數量 &a 1"
+        - "&7目前掉落數量 : &a%quantity%" #quantity 是會透過 Mob_ItemEdit.Type.quantity 跟 quantity_max 更改
+        - "&7目前更改 : %mode_quantity%"
+        - "&7左鍵切換 : &a最少掉落數量 &7跟 &b最大掉落數量"
+        - "&7右鍵點擊 : &c取消&b最大掉落數量"
+      Quantity_add:
+        Type: "SOUL_TORCH"
+        Title: "&6掉落數量"
         Lore:
         - "&7目前掉落數量: &a%quantity%"
-        - "&7左鍵 : &a+1"
-        - "&7右鍵 : &c-1"
-        - "&7目前更改: %mode_quantity%"
-      Quantity_10:
-        Type: "GREEN_WOOL"
-        Title: "&f掉落數量 &a 10"
+        - "&7點擊 : &a+%quantity_type%"
+      Quantity_subtract:
+        Type: "REDSTONE_TORCH"
+        Title: "&6掉落數量"
         Lore:
         - "&7目前掉落數量: &a%quantity%"
-        - "&7左鍵 : &a+10"
-        - "&7右鍵 : &c-10"
-        - "&7目前更改: %mode_quantity%"
-      Quantity_100:
-        Type: "GREEN_WOOL"
-        Title: "&f掉落數量 &a 100"
+        - "&7點擊 : &c-%quantity_type%"
+      Quantity_type:
+        Type: "LECTERN"
+        Title: "&6掉落數量"
         Lore:
         - "&7目前掉落數量: &a%quantity%"
-        - "&7左鍵 : &a+100"
-        - "&7右鍵 : &c-100"
-        - "&7目前更改: %mode_quantity%"
+        - "&7左鍵 : &a+10 倍率"
+        - "&7右鍵 : &c-10 倍率"
+        - "&7可調整倍率 : &61 &7- &6100"
+        - "&7目前倍率: &a%quantity_type%"
 Other:
   EntityType_Normal:
     blacklist:

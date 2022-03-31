@@ -32,7 +32,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
 	public static SmartInventory getInventory(Mob Mob) {
         return SmartInventory.builder()
                 .provider(new InventoryMob_ItemList(Mob))
-                .size(5, 9)
+                .size(6, 9)
                 .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_item_list").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
@@ -50,28 +50,28 @@ public class InventoryMob_ItemList implements InventoryProvider{
     	}
         
         pagination.setItems(items);
-        pagination.setItemsPerPage(36);
+        pagination.setItemsPerPage(45);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
-        contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+        contents.set(5, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
                 e -> InventoryMobs.getInventory(mob.isCustom()).open(player)));
-        contents.set(4, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
+        contents.set(5, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
+        contents.set(5, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(5, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryMob_ItemList.getInventory(mob).open(player, pagination.next().getPage())));
         
         if (player.hasPermission("mobdrop.admin.inventory.mob.remove")) {
-        	contents.set(4, 6, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobRemove"),
+        	contents.set(5, 6, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobRemove"),
                     e -> InventoryMobRemove.getInventory(mob).open(player) ));
         }
         if (player.hasPermission("mobdrop.admin.inventory.mob.edit")) {
-        	contents.set(4, 7, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobEdit"),
+        	contents.set(5, 7, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "MobEdit"),
                 e -> InventoryMobEdit.getInventory(mob).open(player)));
         }
         if (player.hasPermission("mobdrop.admin.inventory.mob.item.add")) {
-        	contents.set(4, 8, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "ItemAdd"),
+        	contents.set(5, 8, ClickableItem.of(InventoryTools.getbutton("Mob_Item_List", "ItemAdd"),
                 e -> InventoryMob_ItemListAdd.getInventory(mob, null).open(player)));
         }
         

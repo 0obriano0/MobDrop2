@@ -39,7 +39,7 @@ public class InventoryItemTable  implements InventoryProvider{
 	public static SmartInventory getInventory() {
         return SmartInventory.builder()
                 .provider(new InventoryItemTable())
-                .size(5, 9)
+                .size(6, 9)
                 .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_all"))
                 .build();
 	}
@@ -47,7 +47,7 @@ public class InventoryItemTable  implements InventoryProvider{
 	public static SmartInventory getInventory(Mob Mob, MobItem MobItem) {
         return SmartInventory.builder()
                 .provider(new InventoryItemTable(Mob, MobItem))
-                .size(5, 9)
+                .size(6, 9)
                 .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_mob").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
@@ -81,21 +81,21 @@ public class InventoryItemTable  implements InventoryProvider{
         }
         
         pagination.setItems(items);
-        pagination.setItemsPerPage(36);
+        pagination.setItemsPerPage(45);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
 		if(mob == null) {
-			contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+			contents.set(5, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
 	                e -> InventoryMenu.INVENTORY.open(player)));
 		} else {
-			contents.set(4, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
+			contents.set(5, 0, ClickableItem.of(DataBase.fileInventory.getbutton("Back"),
 	                e -> InventoryMob_ItemListAdd.getInventory(mob, mobitem).open(player)));
 		}
 		
-		contents.set(4, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
+		contents.set(5, 3, ClickableItem.of(DataBase.fileInventory.getbutton("Previous"),
                 e -> InventoryItemTable.getInventory().open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
+        contents.set(5, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(5, 5, ClickableItem.of(DataBase.fileInventory.getbutton("Next"),
                 e -> InventoryItemTable.getInventory().open(player, pagination.next().getPage())));
 	}
 
