@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import com.twsbrian.MobDrop2.Command.mainCommandSystem;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
@@ -25,7 +24,7 @@ public class Commandremove extends mainCommandSystem{
 	public void run(Player player, String commandLabel, Command command, String[] args) throws Exception {
 		if(args.length >= 1) {
 			if(DataBase.items.get(args[0]) != null) {
-				
+				DataBase.sendMessage(player,"§cthis command not yet");
 			} else {
 				DataBase.sendMessage(player,"§b" + DataBase.fileMessage.getString("Command.ItemNotFind"));
 			}
