@@ -8,9 +8,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
 import com.twsbrian.MobDrop2.DataBase.Itemset;
+import com.twsbrian.MobDrop2.DataBase.MessageSet;
 import com.twsbrian.MobDrop2.DataBase.Mob;
+import com.twsbrian.MobDrop2.Timer.CustomMobNameTimer;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
@@ -44,7 +47,7 @@ public class InventoryMobAdd implements InventoryProvider{
 	                e -> InventoryNormalMobs.getInventory(mob).open(player)));
 		} else {
 			contents.set(0, 1, ClickableItem.of(button("Name"),
-	                e -> {}));
+	                e -> setNewCustomMobName(player)));
 		}
 		
 		if(!(!mob.isCustom() && mob.getName().isEmpty())) {
@@ -140,5 +143,14 @@ public class InventoryMobAdd implements InventoryProvider{
 		} else {
 			DataBase.sendMessage(player,msg.toString());
 		}
+	}
+	
+	private void setNewCustomMobName(Player player) {
+		DataBase.NewCustomMobName.put(player.getName(),new MessageSet(mob,(Long)System.currentTimeMillis()));
+		//開啟倒數計時
+		new CustomMobNameTimer(player);
+		int timeout = MobDrop2.plugin.getConfig().getInt("Inventory.MessageSet.CustomName");
+		DataBase.sendMessage(player,DataBase.fileMessage.getString("Timer.TimeStart").replace("%time%", timeout + ""));
+		InventoryMobAdd.getInventory(mob).close(player);
 	}
 }

@@ -3,3 +3,7 @@ GobalMessage:
   Chance: 20
 
 lang: zh_TW
+
+Inventory:
+  MessageSet:
+    CustomName: 15

@@ -85,7 +85,7 @@ Inventory:
         Lore:
         - "&7使用者必需在15秒內&f"
         - "&7在聊天窗打上名稱&f"
-        - "&7目前名稱:%name%"
+        - "&7目前名稱: %name%"
       Icon:
         Type: "BARRIER"
         Title: "&a設定圖示"

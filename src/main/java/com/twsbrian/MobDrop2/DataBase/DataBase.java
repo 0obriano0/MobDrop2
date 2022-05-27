@@ -75,6 +75,7 @@ public class DataBase {
 	 * Inventory 相關設定檔
 	 */
 	public static FileInventory fileInventory = new FileInventory();
+	public static Map<String, MessageSet> NewCustomMobName = new HashMap<String, MessageSet>();
 	
 	/**
 	 * 傳給玩家的訊息加上 Message.Title

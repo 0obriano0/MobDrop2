@@ -45,7 +45,7 @@ public class InventoryMenu implements InventoryProvider{
 			int size = 0;
 			if(mod.equals("Normal")) {
 				size = DataBase.NormalMobsMap.size();
-			} else if (mod.equals("Normal")) {
+			} else if (mod.equals("Custom")) {
 				size =  DataBase.CustomMobsMap.size();
 			} else if (mod.equals("Items")){
 				size =  DataBase.items.size();

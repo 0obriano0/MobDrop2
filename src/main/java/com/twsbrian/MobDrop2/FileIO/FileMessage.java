@@ -2,6 +2,8 @@ package com.twsbrian.MobDrop2.FileIO;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.twsbrian.MobDrop2.AnsiColor;
 import com.twsbrian.MobDrop2.MobDrop2;
@@ -14,11 +16,25 @@ public class FileMessage extends FileIO{
 	
 	public Map<String,String> IDMobtoMessage = new HashMap<String,String>();
 	public Map<String,String> MessagetoIDMob = new HashMap<String,String>();
+	public Map<Integer,String> TimerLeft = new HashMap<Integer,String>();
 	
 	@Override
 	public boolean reloadcmd() {
 		int MobsSuccess = 0;
 		int MobsFail = 0;
+		TimerLeft.clear();
+		if(this.data.contains("Timer.TimeLeft")) {
+			Pattern p = Pattern.compile("%%[0-9]*%%");//java.util.regex.Pattern;
+		    
+			for(String str : data.getStringList("Timer.TimeLeft")) {
+				Matcher matcher = p.matcher(str);//java.util.regex.Pattern;
+				if(matcher.find()) {
+					String getstr = matcher.group(0);
+					TimerLeft.put(Integer.parseInt(getstr.replace("%", "")), str.replace("&","§").replace(getstr,"%time%"));
+				}
+			}
+		}
+		
 		if(this.data.contains("Mobs")) {
 			IDMobtoMessage.clear();
 			MessagetoIDMob.clear();

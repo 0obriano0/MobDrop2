@@ -31,6 +31,11 @@
         <id>bungeecord-repo</id>
         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </repository>
+    <!-- ProtocolLib -->
+    <repository>
+    <id>dmulloy2-repo</id>
+    <url>https://repo.dmulloy2.net/repository/public/</url>
+  </repository>
   </repositories>
   
   <dependencies>
@@ -84,6 +89,15 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.16</version>
 	</dependency>
+	
+	<!-- 
+	<dependency>
+	    <groupId>com.comphenix.protocol</groupId>
+	    <artifactId>ProtocolLib</artifactId>
+	    <version>4.7.0</version>
+	    <scope>provided</scope>
+    </dependency> 
+    -->
 	
   </dependencies>
   

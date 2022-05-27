@@ -22,7 +22,18 @@ SQL:
   Run_cmd_fail: "&a指令成功執行"
   Connecting_fail: "&c連結失敗"
   can_not_use_command: "&c無法使用此指令【%cmd%】,連結取消"
-   
+
+Timer:
+  TimeStart: "&a請於 %time% 秒內完成輸入!"
+  TimeOut: "&c %time% 秒的時間已到"
+  TimeLeft:
+    - "&c還剩餘 %%10%% 秒能輸入"
+    - "&c還剩餘 %%5%% 秒能輸入"
+    - "&c還剩餘 %%4%% 秒能輸入"
+    - "&c還剩餘 %%3%% 秒能輸入"
+    - "&c還剩餘 %%2%% 秒能輸入"
+    - "&c還剩餘 %%1%% 秒能輸入"
+
 Inventory:
   Material_not_found: "&c找不到適當的材料"
   Button_not_found: "&c找不到按鍵"

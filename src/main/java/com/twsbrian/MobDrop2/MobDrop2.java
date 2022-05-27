@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.twsbrian.MobDrop2.Command.ImainCommandSystem;
 import com.twsbrian.MobDrop2.Command.ToolCommandSystem;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
+import com.twsbrian.MobDrop2.Listener.ChatListener;
 import com.twsbrian.MobDrop2.Listener.DeathListener;
 
 public class MobDrop2 extends JavaPlugin{
@@ -131,6 +132,7 @@ public class MobDrop2 extends JavaPlugin{
     private void setEvents(){
     	//Bukkit.getServer().getPluginManager().registerEvents(new ShopListener(), this);
     	getServer().getPluginManager().registerEvents(new DeathListener(), this);
+    	getServer().getPluginManager().registerEvents(new ChatListener(), this);
     }
     
     /**
