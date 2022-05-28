@@ -28,11 +28,11 @@ Timer:
   TimeOut: "&c %time% 秒的時間已到"
   TimeLeft:
     - "&c還剩餘 %%10%% 秒能輸入"
-    - "&c還剩餘 %%5%% 秒能輸入"
-    - "&c還剩餘 %%4%% 秒能輸入"
-    - "&c還剩餘 %%3%% 秒能輸入"
-    - "&c還剩餘 %%2%% 秒能輸入"
-    - "&c還剩餘 %%1%% 秒能輸入"
+    - "&c還剩餘  %%5%% 秒能輸入"
+    - "&c還剩餘  %%4%% 秒能輸入"
+    - "&c還剩餘  %%3%% 秒能輸入"
+    - "&c還剩餘  %%2%% 秒能輸入"
+    - "&c還剩餘  %%1%% 秒能輸入"
 
 Inventory:
   Material_not_found: "&c找不到適當的材料"
@@ -67,21 +67,6 @@ Inventory:
   - ""
   - "&7掉落機率: &2%Chance%%"
   - "&7數量: &2%Quantity%"
-
-Inventory_Title:
-  menu: "目錄"
-  items_list_all: "物品列表"
-  items_list_mob: "%mobname% 未選擇列表"
-  entitytype_list: "選擇原版怪物列表"
-  mob_normal_list: "原版怪物列表"
-  mob_custom_list: "自定義怪物列表"
-  mob_edit: "&f設定怪物 &1%mobname%"
-  mob_add: "&1新增怪物"
-  mob_remove: "&f刪除怪物 &1%mobname%"
-  mob_item_list: "&1%mobname% &f物品清單"
-  mob_item_list_add: "&1新增物品"
-  mob_item_list_Edit: "&f設定物品 &1%itemname%"
-  mob_item_list_remove: "&f刪除物品 &1%itemname%"
 
 Command:
   CmdCanNotUse: "&c後台無法使用此指令"

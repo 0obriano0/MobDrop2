@@ -33,7 +33,7 @@ public class InventoryMob_ItemList implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMob_ItemList(Mob))
                 .size(6, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_item_list").replaceAll("%mobname%", Mob.getMobName()))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("Mob_Item_List").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 

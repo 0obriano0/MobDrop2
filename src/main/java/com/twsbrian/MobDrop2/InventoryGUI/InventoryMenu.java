@@ -21,7 +21,7 @@ public class InventoryMenu implements InventoryProvider{
             .id("Menu")
             .provider(new InventoryMenu())
             .size(3, 9)
-            .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.menu"))
+            .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("Menu"))
             .build();
 	
 	@Override

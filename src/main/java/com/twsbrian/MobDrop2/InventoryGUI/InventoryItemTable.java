@@ -40,7 +40,7 @@ public class InventoryItemTable  implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryItemTable())
                 .size(6, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_all"))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("Items"))
                 .build();
 	}
 	
@@ -48,7 +48,7 @@ public class InventoryItemTable  implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryItemTable(Mob, MobItem))
                 .size(6, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.items_list_mob").replaceAll("%mobname%", Mob.getMobName()))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("ItemsListMob").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 	

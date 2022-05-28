@@ -26,7 +26,7 @@ public class InventoryMobRemove implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMobRemove(Mob))
                 .size(1, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_remove").replaceAll("%mobname%", Mob.getMobName()))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("MobRemove").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 	

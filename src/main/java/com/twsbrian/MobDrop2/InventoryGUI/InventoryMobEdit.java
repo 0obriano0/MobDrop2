@@ -23,7 +23,7 @@ public class InventoryMobEdit implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMobEdit(Mob))
                 .size(1, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_edit").replaceAll("%mobname%", Mob.getMobName()))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("MobEdit").replaceAll("%mobname%", Mob.getMobName()))
                 .build();
 	}
 	

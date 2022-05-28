@@ -29,10 +29,10 @@ public class InventoryMob_itemListRemove implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMob_itemListRemove(Mob, MobItem))
                 .size(1, 9)
-                .title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.mob_item_list_remove")
-											                .replaceAll("%mobname%", Mob.getMobName())
-														    .replaceAll("%itemname%", MobItem.getItemName())
-														    .replaceAll("%itemno%", MobItem.getItemNo()))
+                .title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("Mob_ItemRemove")
+											                  .replaceAll("%mobname%", Mob.getMobName())
+														      .replaceAll("%itemname%", MobItem.getItemName())
+														      .replaceAll("%itemno%", MobItem.getItemNo()))
                 .build();
 	}
 	

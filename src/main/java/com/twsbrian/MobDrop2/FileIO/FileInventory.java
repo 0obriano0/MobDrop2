@@ -70,6 +70,10 @@ public class FileInventory extends FileIO{
     	return Buttons.getOrDefault(Name.toLowerCase(), new Itemset(Material.BARRIER).setItemName(DataBase.fileMessage.getString("Inventory.Button_not_found")).setLore(DataBase.fileMessage.getString("Inventory.Button_not_found_lore")).getItemStack());
     }
     
+    public String getInventorTitle(String ID) {
+    	return this.getString("Inventory." + ID + ".Title");
+    }
+    
     public List<String> getEntityType_Normal_BlackList(){
     	return EntityType_Normal_BlackList;
     }

@@ -35,9 +35,9 @@ public class InventoryMobs implements InventoryProvider{
 	public static SmartInventory getInventory(boolean Custom) {
 		String Title = "";
 		if(Custom)
-			Title = DataBase.fileMessage.getString("Inventory_Title.mob_custom_list");
+			Title = DataBase.fileInventory.getString("Inventory.Mob_List.Title.Custom");
 		else
-			Title = DataBase.fileMessage.getString("Inventory_Title.mob_normal_list");
+			Title = DataBase.fileInventory.getString("Inventory.Mob_List.Title.Normal");
 		return SmartInventory.builder()
 				.provider(new InventoryMobs(Custom))
 				.size(6, 9)

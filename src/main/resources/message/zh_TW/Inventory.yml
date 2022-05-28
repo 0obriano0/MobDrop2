@@ -55,6 +55,7 @@ init:
       - "%error%"
 Inventory:
   Menu:
+    Title: "目錄"
     Button:
       Normal:
         Type: "GRASS_BLOCK"
@@ -71,7 +72,14 @@ Inventory:
         Title: "&f物品列表"
         Lore:
         - "&7數量: &2%num%"
+  Items: 
+    Title: "物品列表"
+  ItemsListMob: 
+    Title: "%mobname% 未選擇列表"
+  EntitytypeList: 
+    Title: "選擇原版怪物列表"
   MobAdd:
+    Title: "&1新增怪物"
     Button:
       getEntityType: #新增原版怪物時 才會出現的按鈕
         Type: "ORANGE_WOOL"
@@ -92,7 +100,14 @@ Inventory:
         Lore:
         - ""
         - "&a請直接放上想要的物品當圖示"
+  MobEdit: 
+    Title: "&f設定怪物 &1%mobname%"
+  MobRemove: 
+    Title: "&f刪除怪物 &1%mobname%"
   Mob_List:
+    Title:
+      Normal: "原版怪物列表"
+      Custom: "自定義怪物列表"
     Button:
       MobAdd:
         Type: "CRAFTING_TABLE"
@@ -100,6 +115,7 @@ Inventory:
         Lore:
         - "&7點擊新增"
   Mob_Item_List:
+    Title: "&1%mobname% &f物品清單"
     Button:
       MobRemove:
         Type: "RED_WOOL"
@@ -117,6 +133,7 @@ Inventory:
         Lore:
         - "&7點擊新增物品"
   Mob_ItemAdd:
+    Title: "&1新增物品"
     Button:
       Item:
         Type: "ORANGE_WOOL"
@@ -124,6 +141,7 @@ Inventory:
         Lore:
         - "&7系統代號:%id%"
   Mob_ItemEdit:
+    Title: "&f設定物品 &1%itemname%"
     Type:
       quantity: "&a%quantity%"
       quantity_max: " &7- &a%quantity_max%"
@@ -194,6 +212,9 @@ Inventory:
         - "&7右鍵 : &c-10 倍率"
         - "&7可調整倍率 : &61 &7- &6100"
         - "&7目前倍率: &a%quantity_type%"
+  Mob_ItemRemove:
+    Title: "&f刪除物品 &1%itemname%"
+  SQLError:
 Other:
   EntityType_Normal:
     blacklist:

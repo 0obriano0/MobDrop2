@@ -32,7 +32,7 @@ public class InventoryNormalMobs implements InventoryProvider{
 		return SmartInventory.builder()
 				.provider(new InventoryNormalMobs(mob))
 				.size(6, 9)
-				.title(ChatColor.BLUE + DataBase.fileMessage.getString("Inventory_Title.entitytype_list"))
+				.title(ChatColor.BLUE + DataBase.fileInventory.getInventorTitle("EntitytypeList"))
 				.build();
 	}
 	
