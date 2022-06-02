@@ -168,7 +168,7 @@ public class mainCommandSystem implements ImainCommandSystem {
 	            		try {
 							cmd.run(player, commandLabel + "." + args[0], command, newargs, classLoader, newcommandPath);
 						} catch (Exception e) {
-							e.printStackTrace();
+							if(DataBase.getDebug())	e.printStackTrace();
 						}
 		            }
 		    	} 

@@ -42,6 +42,7 @@ public class MobDrop2 extends JavaPlugin{
 
     }
 	
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     	return Command(sender,command,label,args,MobDrop2.class.getClassLoader(),"com.twsbrian." + DataBase.pluginName + ".Command");
     }

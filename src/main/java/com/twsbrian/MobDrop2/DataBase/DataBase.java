@@ -151,6 +151,10 @@ public class DataBase {
 		return Commands;
     }
 	
+	public static boolean getDebug() {
+		return (MobDrop2.plugin.getConfig().contains("Debug") && MobDrop2.plugin.getConfig().getBoolean("Debug"));
+	}
+	
 	/**
 	 * Minecraft 16 種顏色
 	 */

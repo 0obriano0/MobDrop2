@@ -34,7 +34,7 @@ public class CustomMobNameTimer {
 		MessageSet data = DataBase.NewCustomMobName.get(player.getName());
 		if(data == null) {
 				t.cancel();
-		}else {
+		} else {
 			int timeout = MobDrop2.plugin.getConfig().getInt("Inventory.MessageSet.CustomName");
 			
 			if((System.currentTimeMillis() - data.getTime())/1000 >= timeout) {

@@ -16,9 +16,9 @@ public class ToolCommandSystem {
         try {
             cmd = (ImainCommandSystem) MobDrop2.class.getClassLoader().loadClass("com.twsbrian." + DataBase.pluginName + ".Command" + ".Command" + command).newInstance();
         }catch(InstantiationException ex) {
-        	ex.printStackTrace();
+        	if(DataBase.getDebug())	ex.printStackTrace();
         }catch (Exception ex) {
-            ex.printStackTrace();
+        	if(DataBase.getDebug())	ex.printStackTrace();
         }
 		return cmd;
     }
@@ -36,9 +36,9 @@ public class ToolCommandSystem {
         try {
             cmd = (ImainCommandSystem) classLoader.loadClass(commandPath + ".Command" + command).newInstance();
         }catch(InstantiationException ex) {
-        	ex.printStackTrace();
+        	if(DataBase.getDebug())	ex.printStackTrace();
         }catch (Exception ex) {
-            ex.printStackTrace();
+        	if(DataBase.getDebug())	ex.printStackTrace();
         }
 		return cmd;
     }
@@ -55,12 +55,12 @@ public class ToolCommandSystem {
         try {
             classLoader.loadClass(commandPath + ".Command" + command).newInstance();
         }catch(InstantiationException ex) {
-        	ex.printStackTrace();
+        	if(DataBase.getDebug())	ex.printStackTrace();
         	return false;
         }catch (ClassNotFoundException cnfe) {
         	return false;
 		}catch (Exception ex) {
-            ex.printStackTrace();
+			if(DataBase.getDebug())	ex.printStackTrace();
             return false;
         }
 		return true;
