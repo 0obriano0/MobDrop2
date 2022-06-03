@@ -31,8 +31,8 @@ public class MobDrop2 extends JavaPlugin{
         reloadConfig();
         
         setEvents();
-        DataBase.fileDataBaseInfo.reloadFile();
         DataBase.fileMessage.reloadFile();
+        DataBase.fileDataBaseInfo.reloadFile();
         DataBase.fileInventory.reloadFile();
 
 	}
@@ -141,8 +141,8 @@ public class MobDrop2 extends JavaPlugin{
      */
     public static void reload() {
     	plugin.reloadConfig();
-    	DataBase.fileDataBaseInfo.reloadFile();
     	DataBase.fileMessage.reloadFile();
+    	DataBase.fileDataBaseInfo.reloadFile();
     	DataBase.fileInventory.reloadFile();
     }
 }

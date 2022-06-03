@@ -4,20 +4,20 @@ init:
       Type: "BARRIER"
       Title: "&c離開"
       Lore:
-      - "&7關閉介面"
+      - "&7Close GUI"
     Back:
       Type: "OAK_DOOR"
-      Title: "&a返回"
+      Title: "&aBack"
       Lore:
       - "&7返回上一畫面"
     Previous:
       Type: "ARROW"
-      Title: "&a上一頁"
+      Title: "&aPrevious"
       Lore:
       - "&7點擊讀取上一頁"
     Next:
       Type: "ARROW"
-      Title: "&a下一頁"
+      Title: "&aNext"
       Lore:
       - "&7點擊讀取下一頁"
     Success_Remove:

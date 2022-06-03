@@ -10,6 +10,7 @@ import java.util.List;
 import org.bukkit.plugin.Plugin;
 
 import com.twsbrian.MobDrop2.AnsiColor;
+import com.twsbrian.MobDrop2.MobDrop2;
 
 /**
  * 檔案操作的額外工具
@@ -43,5 +44,15 @@ public class tools {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	protected static String getLang() {
+		String Name = MobDrop2.plugin.getConfig().getString("lang");
+		if(Name.toLowerCase().equals("zh_tw")) Name = "zh_TW";
+		return Name;
 	}
 }

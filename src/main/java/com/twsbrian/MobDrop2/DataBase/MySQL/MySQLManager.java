@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
+import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
 
 /**
@@ -58,7 +60,7 @@ public class MySQLManager {
 		
 		String data = "&useSSL=" + useSSL;
 		
-		if(autoReconnect) data = data + "&autoReconnect=true";
+		if(autoReconnect) data = data + "&autoReconnect=true&failOverReadOnly=false";
 		
 		if(!characterEncoding.equals("")) 
 			data = data + "&useUnicode=true&characterEncoding=" + characterEncoding;
@@ -90,21 +92,23 @@ public class MySQLManager {
      * 開啟與MySQL連結
      * @return 有沒有成功
      */
-	public boolean open() {
+	public boolean open(){
 		try{
 			//Register JDBC driver
 			Class.forName(JDBC_DRIVER);
 			
 			//Open a connection
-			print("Connecting to database...");
+			print(DataBase.fileMessage.getString("SQL.DataBase_Connecting"));
 			this.conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			
 			if(!this.SelectDataBase()) CreateDataBase(this.db);
+			print(DataBase.fileMessage.getString("SQL.DataBase_is_connect"));
 		}catch(SQLException se){
 			//Handle errors for JDBC
-			if(se.getClass().getSimpleName().equals("CommunicationsException")) {
+			if(se.getClass().getSimpleName().equals("CommunicationsException") || 
+			   se.getClass().getSimpleName().equals("SQLNonTransientConnectionException")) {
 				conn = null;
-				print("Connecting fail");
+				print(DataBase.fileMessage.getString("SQL.Connecting_fail"));
 			}else
 				se.printStackTrace();
 			return false;
@@ -125,6 +129,7 @@ public class MySQLManager {
 			if(conn!=null)
 				conn.close();
 			conn = null;
+			DataBase.fileMessage.getString("SQL.DataBase_Close");
 			return true;
 		}catch(SQLException se){
 			se.printStackTrace();
@@ -138,32 +143,34 @@ public class MySQLManager {
 	 */
 	public boolean SelectDataBase() {
 		Statement stmt = null;
-		if(conn==null) open();
-	   
+		if(conn==null) if(!open()) return false;
 		
 		boolean success = false;
 		try{
 			//Execute a query
-			DataBase.Print("Select database[ " + db + " ]...");
+			print(DataBase.fileMessage.getString("SQL.DataBase_Selecting").replaceAll("%db%", db));
 			stmt = conn.createStatement();
 			String sql = "use " + db;
-			print("SelectDataBase = " + stmt.executeUpdate(sql));
-			print("Database[ " + db + " ]Select successfully...");
+			stmt.executeUpdate(sql);
+//			print("SelectDataBase = " + stmt.executeUpdate(sql));
+			print(DataBase.fileMessage.getString("SQL.DataBase_Select_Success").replaceAll("%db%", db));
 			success = true;
 		}catch(SQLSyntaxErrorException mse) {
-			DataBase.Print("can not get DataBase [ " + db + " ]");
+//			DataBase.Print("can not get DataBase [ " + db + " ]");
+			print(DataBase.fileMessage.getString("SQL.DataBase_Select_Fail").replaceAll("%db%", db));
 		}catch(SQLException se){
 			//Handle errors for JDBC
+			MobDrop2.plugin.getLogger().log(Level.WARNING, "SQLException: ");
 			se.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			try{
-				if(stmt!=null) stmt.close();
-				if(!this.autoReconnect) close();
-			}catch(SQLException se2){
-				se2.printStackTrace();
-			}
+//			try{
+//				if(stmt!=null) stmt.close();
+//				if(!this.autoReconnect) close();
+//			}catch(SQLException se2){
+//				se2.printStackTrace();
+//			}
 		}
 		
 		return success;
@@ -173,23 +180,28 @@ public class MySQLManager {
      * 創建一個數據庫
      * @param DataBaseName 數據庫名稱
      */
-	public void CreateDataBase(String DataBaseName) {
+	public boolean CreateDataBase(String DataBaseName) {
 		Statement stmt = null;
-		if(conn==null) open();
+		if(conn==null) if(!open()) return false;
 	   
+		boolean success = false;
 		try{
 			//Execute a query
-			print("Creating database...");
+			print(DataBase.fileMessage.getString("SQL.DataBase_Creating"));
 			stmt = conn.createStatement();
 			String sql = "CREATE DATABASE " + DataBaseName;
 			stmt.executeUpdate(sql);
-			print("Database created successfully...");
+			print(DataBase.fileMessage.getString("SQL.DataBase_Create_Success"));
 			this.SelectDataBase();
+			success = true;
 		}catch(SQLException se){
 			//Handle errors for JDBC
+			MobDrop2.plugin.getLogger().log(Level.WARNING, "SQLException: ");
 			se.printStackTrace();
+			success = false;
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}finally{
 			try{
 				if(stmt!=null) stmt.close();
@@ -198,6 +210,7 @@ public class MySQLManager {
 				se2.printStackTrace();
 			}
 		}
+		return success;
 	}
 	
 	/**
@@ -237,6 +250,7 @@ public class MySQLManager {
 			success = true;
 		}catch(SQLException se){
 			//Handle errors for JDBC
+			MobDrop2.plugin.getLogger().log(Level.WARNING, "SQLException: ");
 			se.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -287,6 +301,7 @@ public class MySQLManager {
 			success = true;
 		}catch(SQLException se){
 			//Handle errors for JDBC
+			MobDrop2.plugin.getLogger().log(Level.WARNING, "SQLException: ");
 			se.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -323,7 +338,6 @@ public class MySQLManager {
 		Statement stmt = null;
 		ResultSet rs = null;
 		if(conn==null) open();
-		
 		List<Map<String,String>> data_list = new ArrayList<Map<String,String>>();
 		
 		try{
@@ -352,6 +366,7 @@ public class MySQLManager {
 			print(DataBase.fileMessage.getString("SQL.Run_cmd_Success"));
 		}catch(SQLException se){
 			//Handle errors for JDBC
+			MobDrop2.plugin.getLogger().log(Level.WARNING, "SQLException: ");
 			se.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -371,7 +386,7 @@ public class MySQLManager {
 	 * @param message 訊息
 	 */
 	protected void print(String message) {
-		if(showLog) DataBase.Print(message);
+		if(MobDrop2.plugin.getConfig().getBoolean("SQL.Info")) DataBase.Print(message);
 	}
 	
 	/**
@@ -379,7 +394,7 @@ public class MySQLManager {
 	 * @param message 訊息
 	 */
 	protected void print(String color,String message) {
-		if(showLog) {
+		if(MobDrop2.plugin.getConfig().getBoolean("SQL.Info")) {
 			List<String> lstr = new ArrayList<String>();
 			for(String str : message.split("\n"))
 				if(!str.isEmpty()) lstr.add(color + str);

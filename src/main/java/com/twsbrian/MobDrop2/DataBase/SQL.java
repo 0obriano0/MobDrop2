@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.bukkit.inventory.ItemStack;
 
+import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.MySQL.MySQLManager;
 
 /**
@@ -26,8 +27,11 @@ public class SQL {
 			this.table_dropitem = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "dropitem";
 			this.table_mobs = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "mobs";
 			this.table_items = (DataBase.fileDataBaseInfo.mysql.Prefix.isEmpty() ? "" : DataBase.fileDataBaseInfo.mysql.Prefix) + "items";
-			MySQL_checkdb();
-			MySQL_ReLoad();
+			MySql_init();
+			if(MySQL.open()) {
+				MySQL_checkdb();
+				MySQL_ReLoad();
+			}
 		}
 	}
 	
@@ -73,7 +77,7 @@ public class SQL {
 			return new ArrayList<Map<String,String>>();
 	}
 	
-	private void MySQL_checkdb(){
+	private void MySql_init() {
 		// init
 		MySQL = new MySQLManager(DataBase.fileDataBaseInfo.mysql.username,
 				   DataBase.fileDataBaseInfo.mysql.password,
@@ -81,7 +85,9 @@ public class SQL {
 				   DataBase.fileDataBaseInfo.mysql.database,
 				   DataBase.fileDataBaseInfo.mysql.useSSL,
 				   DataBase.fileDataBaseInfo.mysql.autoReconnect);
-		
+	}
+	
+	private void MySQL_checkdb(){
 		// check dropitem
 		List<Map<String,String>> data = MySQL.select(
 				  "SELECT table_name\n"
@@ -90,7 +96,9 @@ public class SQL {
 				+ "And table_name = '" + this.table_dropitem + "'");
 		
 		if(data.isEmpty()) {
-			MySQL.executeUpdate(
+			print(DataBase.fileMessage.getString("SQL.Table_Createing").replaceAll("%table%", table_dropitem)
+					 												   .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			if(MySQL.executeUpdate(
 					  "CREATE TABLE `" + this.table_dropitem + "` (\n"
 					+ "  `mobname` varchar(20) NOT NULL,\n"
 					+ "  `custom` varchar(1) NOT NULL,\n"
@@ -100,7 +108,13 @@ public class SQL {
 					+ "  `chance` decimal(6,3) DEFAULT NULL,\n"
 					+ "  `world` longtext DEFAULT NULL,\n"
 					+ "  PRIMARY KEY (`mobname`,`custom`,`itemno`)\n"
-					+ ")");
+					+ ")")) {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Success").replaceAll("%table%", table_dropitem)
+						                                                        .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			} else {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Fail").replaceAll("%table%", table_dropitem)
+						 													 .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			}
 		}
 		
 		// check mobs
@@ -111,13 +125,21 @@ public class SQL {
 				+ "And table_name = '" + this.table_mobs + "'");
 		
 		if(data.isEmpty()) {
-			MySQL.executeUpdate(
+			print(DataBase.fileMessage.getString("SQL.Table_Createing").replaceAll("%table%", table_mobs)
+					   												   .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			if(MySQL.executeUpdate(
 					  "CREATE TABLE `" + this.table_mobs + "` (\n"
 					+ "  `mobname` varchar(20) NOT NULL,\n"
 				    + "  `custom` varchar(1) NOT NULL,\n"
 				    + "  `icon` longtext,\n"
 					+ "  PRIMARY KEY (`mobname`,`custom`)\n"
-					+ ")");
+					+ ")")) {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Success").replaceAll("%table%", table_mobs)
+                        												        .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			} else {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Fail").replaceAll("%table%", table_mobs)
+				        													 .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			}
 		}
 		
 		//check table_items
@@ -128,12 +150,20 @@ public class SQL {
 				+ "And table_name = '" + this.table_items + "'");
 		
 		if(data.isEmpty()) {
-			MySQL.executeUpdate(
+			print(DataBase.fileMessage.getString("SQL.Table_Createing").replaceAll("%table%", table_items)
+					   												   .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			if(MySQL.executeUpdate(
 					  "CREATE TABLE `" + this.table_items + "` (\n"
 					+ "  `itemno` varchar(100) NOT NULL,\n"
 				    + "  `item` longtext,\n"
 					+ "  PRIMARY KEY (`itemno`)\n"
-					+ ")");
+					+ ")")) {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Success").replaceAll("%table%", table_items)
+                        												        .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			} else {
+				print(DataBase.fileMessage.getString("SQL.Table_Create_Fail").replaceAll("%table%", table_items)
+						 													 .replaceAll("%db%", DataBase.fileDataBaseInfo.mysql.database));
+			}
 		}
 	}
 	
@@ -411,6 +441,14 @@ public class SQL {
 			
 		}
 		return mode;
+	}
+	
+	/**
+	 * print顯示控制器
+	 * @param message 訊息
+	 */
+	private void print(String message) {
+		if(MobDrop2.plugin.getConfig().getBoolean("SQL.Info")) DataBase.Print(message);
 	}
 	
 }

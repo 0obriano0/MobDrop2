@@ -34,7 +34,7 @@ public class InventoryMobRemove implements InventoryProvider{
 	public void init(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
-		Itemset success = new Itemset(DataBase.fileInventory.getbutton("Success"));
+		Itemset success = new Itemset(DataBase.fileInventory.getbutton("Success_Remove"));
 		List<String> Lore = new ArrayList<String>();
 		for(String str : success.getLore()) {
 			Lore.add(str.replaceAll("%msg%", DataBase.fileMessage.getString("Inventory.mob_remove_msg").replaceAll("%mobname%", mob.getMobName())));

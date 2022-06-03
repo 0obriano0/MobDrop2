@@ -18,7 +18,7 @@ import com.twsbrian.MobDrop2.MobDrop2;
  */
 public class FileIO implements IFileIO{
 	
-	private final transient String FileName;
+	private transient String FileName;
 	private transient String URL = null;
 	
 	protected FileConfiguration data = null;
@@ -35,6 +35,11 @@ public class FileIO implements IFileIO{
 	@Override
 	public String getFileName() {
 		return FileName;
+	}
+	
+	protected void setFileName(String FileName) {
+		this.FileName = FileName;
+		readFile();
 	}
 	
 	@Override

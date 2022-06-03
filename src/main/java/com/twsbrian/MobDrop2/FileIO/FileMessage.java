@@ -6,12 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.twsbrian.MobDrop2.AnsiColor;
-import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
 
 public class FileMessage extends FileIO{
 	public FileMessage() {
-		super("message", MobDrop2.plugin.getConfig().getString("lang") + "/Base.yml");
+		super("message", tools.getLang() + "/Base.yml");
 	}
 	
 	public Map<String,String> IDMobtoMessage = new HashMap<String,String>();
@@ -20,6 +19,7 @@ public class FileMessage extends FileIO{
 	
 	@Override
 	public boolean reloadcmd() {
+		this.setFileName(tools.getLang() + "/Base.yml");
 		int MobsSuccess = 0;
 		int MobsFail = 0;
 		TimerLeft.clear();

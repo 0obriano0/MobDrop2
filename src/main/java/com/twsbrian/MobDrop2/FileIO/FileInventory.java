@@ -8,13 +8,12 @@ import java.util.Map;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
 import com.twsbrian.MobDrop2.DataBase.Itemset;
 
 public class FileInventory extends FileIO{
 	public FileInventory() {
-		super("message", MobDrop2.plugin.getConfig().getString("lang") + "/Inventory.yml");
+		super("message", tools.getLang() + "/Inventory.yml");
 	}
 	
 	private Map<String,ItemStack> Buttons = new HashMap<String,ItemStack>();
@@ -22,6 +21,8 @@ public class FileInventory extends FileIO{
 	
 	@Override
 	public boolean reloadcmd() {
+		this.setFileName(tools.getLang() + "/Inventory.yml");
+		
 		if(data.contains("Other.EntityType_Normal.blacklist")) {
 			EntityType_Normal_BlackList.clear();
 			for(String str: getStringList("Other.EntityType_Normal.blacklist")) {
