@@ -154,12 +154,12 @@ Mobs:
   # 1.16
   HOGLIN: "Hoglin"
   PIGLIN: "Piglin"
-  STRIDER: "熾足獸"
-  ZOGLIN: "豬屍獸"
-  ZOMBIFIED_PIGLIN: "殭屍化豬布林"
+  STRIDER: "Strider"
+  ZOGLIN: "Zoglin"
+  ZOMBIFIED_PIGLIN: "Zombified Piglin"
   # 1.16.2
-  PIGLIN_BRUTE: "豬布林蠻兵"
+  PIGLIN_BRUTE: "Piglin Brute"
   # 1.17
   AXOLOTL: "AXOLOTL"
-  GLOW_SQUID: "螢光魷魚"
-  GOAT: "山羊"
+  GLOW_SQUID: "Glow Squid"
+  GOAT: "Goat"
