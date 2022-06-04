@@ -174,6 +174,7 @@ public class InventoryMob_ItemListEdit  implements InventoryProvider{
 		}
 		
 		this.chance = setchance > 100 ? this.chance : setchance;
+		this.chance = this.chance <= 0 ? 0 : this.chance;
 		ChanceButton(player, contents);
 	}
 	

@@ -15,8 +15,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.twsbrian.MobDrop2.Command.ImainCommandSystem;
 import com.twsbrian.MobDrop2.Command.ToolCommandSystem;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
+import com.twsbrian.MobDrop2.DataBase.itemset.Glow;
 import com.twsbrian.MobDrop2.Listener.ChatListener;
 import com.twsbrian.MobDrop2.Listener.DeathListener;
+import com.twsbrian.MobDrop2.Listener.ItemDropListener;
+import com.twsbrian.MobDrop2.Listener.ItemPickupListener;
 
 public class MobDrop2 extends JavaPlugin{
 	public static Plugin plugin;
@@ -29,6 +32,7 @@ public class MobDrop2 extends JavaPlugin{
         
         saveDefaultConfig();
         reloadConfig();
+        DataBase.settingItemDropColorByChance();
         
         setEvents();
         DataBase.fileMessage.reloadFile();
@@ -39,7 +43,11 @@ public class MobDrop2 extends JavaPlugin{
 	
 	@Override
     public void onDisable() {
-
+		try {
+            Glow.unregister();
+        } catch (NoClassDefFoundError error) {
+            // this try/catch block is to prevent console spam
+        }
     }
 	
 	@Override
@@ -134,6 +142,8 @@ public class MobDrop2 extends JavaPlugin{
     	//Bukkit.getServer().getPluginManager().registerEvents(new ShopListener(), this);
     	getServer().getPluginManager().registerEvents(new DeathListener(), this);
     	getServer().getPluginManager().registerEvents(new ChatListener(), this);
+    	getServer().getPluginManager().registerEvents(new ItemDropListener(), this);
+    	getServer().getPluginManager().registerEvents(new ItemPickupListener(), this);
     }
     
     /**
@@ -141,6 +151,8 @@ public class MobDrop2 extends JavaPlugin{
      */
     public static void reload() {
     	plugin.reloadConfig();
+    	DataBase.settingItemDropColorByChance();
+    	
     	DataBase.fileMessage.reloadFile();
     	DataBase.fileDataBaseInfo.reloadFile();
     	DataBase.fileInventory.reloadFile();

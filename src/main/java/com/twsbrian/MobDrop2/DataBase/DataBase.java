@@ -10,12 +10,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -151,28 +153,45 @@ public class DataBase {
 		return Commands;
     }
 	
+	/**
+	 * 取得是否顯示debug 專用訊息
+	 * @return
+	 */
 	public static boolean getDebug() {
 		return (MobDrop2.plugin.getConfig().contains("Debug") && MobDrop2.plugin.getConfig().getBoolean("Debug"));
 	}
 	
 	/**
-	 * Minecraft 16 種顏色
+	 * 物品掉落顏色設定
 	 */
-	public static List<String> Color = new ArrayList<String>(
-			Arrays.asList("white",
-					      "orange",
-					      "magenta",
-					      "light_blue",
-					      "yellow",
-					      "lime",
-					      "pink",
-					      "gray",
-					      "light_gray",
-					      "cyan",
-					      "puple",
-					      "blue",
-					      "brown",
-					      "green",
-					      "red",
-					      "black"));
+	
+	protected static NavigableMap<Double, String> ItemDropColorByChance = new TreeMap<Double, String>();
+	
+	public static String getDropColorByChance(Double Chance) {
+        // To do a lookup for some value in 'Chance'
+        if (Chance < 0 || Chance >= 100) {
+            // out of range
+        	return MobDrop2.plugin.getConfig().getString("Glow.Defualt");
+        } else {
+        	return DataBase.ItemDropColorByChance.floorEntry(Chance).getValue();
+        }
+	}
+	
+	public static void settingItemDropColorByChance() {
+		if(MobDrop2.plugin.getConfig().contains("Glow.Chance")) {
+			Map<Integer, String> sortmap = new TreeMap<Integer, String>();
+			for (String name : MobDrop2.plugin.getConfig().getConfigurationSection("Glow.Chance").getKeys(false)) {
+	    		sortmap.put(Integer.valueOf(name), MobDrop2.plugin.getConfig().getString("Glow.Chance." + name));
+			}
+			
+			DataBase.ItemDropColorByChance.clear();
+			Integer lastint = 0;
+			for(Entry<Integer, String> entry : sortmap.entrySet()) {
+				DataBase.ItemDropColorByChance.put(lastint.doubleValue(), entry.getValue());
+				lastint = entry.getKey();
+			}
+			
+			DataBase.ItemDropColorByChance.put(lastint.doubleValue(),MobDrop2.plugin.getConfig().getString("Glow.Defualt"));
+		}
+	}
 }

@@ -1,13 +1,48 @@
+##########
+#設定語言#
+##########
+lang: zh_TW
+
+##################################
+#設定掉落機率低於多少要發公共頻道#
+##################################
 GobalMessage:
   Show: true
   Chance: 20
 
-lang: zh_TW
+Holo:
+  Show: true
+  Defualt_Color: "&f"
+  Drop_Format: "&f[&b%player%&f] &f%item%"
+  Drop_Count: "&f x %amount%"
 
+##############
+#物品相關設定#
+##############
+#發光設定
+Glow:
+  Show: false
+  # All Or OnlyMobDrop2
+  Mode: "OnlyMobDrop2"
+  #設定預設顏色
+  Defualt: "&f"
+  #依掉落機率顯示物品發光顏色
+  Chance:
+    70: "&a"
+    50: "&9"
+    30: "&d"
+    10: "&6"
+
+###################
+#設定GUI中某些細項#
+###################
 Inventory:
   MessageSet:
     #在新增自定義怪物名子時 所等待的時間
     CustomName: 15
 
+#########################
+#是否要顯示SQL的運行過程#
+#########################
 SQL:
   Info: false
