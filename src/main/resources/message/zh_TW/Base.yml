@@ -44,9 +44,9 @@ Inventory:
   Title_error: "&c標題讀取錯誤,請聯絡管理員"
   Type_error: "&c圖示讀取錯誤,請聯絡管理員"
   items_table_get_item_info:
-  - ""
-  - "&a點擊左鍵"
-  - "&a拿取道具"
+    - ""
+    - "&a點擊左鍵"
+    - "&a拿取道具"
   items_table_get_item_success: "&f獲取道具ID:&6%id% &f, 名稱:%name%"
   items_table_get_item_bag_full: "&c背包已滿，無法獲取道具"
   items_table_add_success: "&a物品增加成功"
@@ -60,16 +60,16 @@ Inventory:
   mob_item_same_error: "&c此怪物已有重複物品"
   mob_item_remove_msg: "&b刪除怪物 '&6%mobname%&b' 的物品 '&6%itemname%&b'(&7%itemno%&b)"
   mob_item_edit_info:
-  - ""
-  - "&a點擊左鍵"
-  - "&a進入設定物品"
+    - ""
+    - "&a點擊左鍵"
+    - "&a進入設定物品"
   mob_info_lore:
-  - ""
-  - "&7物品數量: &2%num%"
+    - ""
+    - "&7物品數量: &2%num%"
   dropitem_info_lore:
-  - ""
-  - "&7掉落機率: &2%Chance%%"
-  - "&7數量: &2%Quantity%"
+    - ""
+    - "&7掉落機率: &2%Chance%%"
+    - "&7數量: &2%Quantity%"
 
 Command:
   CmdCanNotUse: "&c後台無法使用此指令"
