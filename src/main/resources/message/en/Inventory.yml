@@ -2,218 +2,218 @@ init:
   Button:
     Close:
       Type: "BARRIER"
-      Title: "&c離開"
+      Title: "&cLeave"
       Lore:
       - "&7Close GUI"
     Back:
       Type: "OAK_DOOR"
       Title: "&aBack"
       Lore:
-      - "&7返回上一畫面"
+      - "&7Return to previous menu"
     Previous:
       Type: "ARROW"
       Title: "&aPrevious"
       Lore:
-      - "&7點擊讀取上一頁"
+      - "&7Click to load previous page"
     Next:
       Type: "ARROW"
       Title: "&aNext"
       Lore:
-      - "&7點擊讀取下一頁"
+      - "&7Click to load next page"
     Success_Remove:
       Type: "GREEN_WOOL"
-      Title: "&a確認刪除"
+      Title: "&aConfirm deletion"
       Lore:
-      - "&7確認刪除"
+      - "&7Confirm delete"
       - "&f - %msg%" 
     Cancel:
       Type: "RED_WOOL"
-      Title: "&a取消"
+      Title: "&aCancel"
       Lore:
-      - "&7取消返回上一頁"
+      - "&7Cancel & return to last page"
     Save:
       Type: "BOOK"
-      Title: "&a儲存"
+      Title: "&asave"
       Lore:
-      - "&7點擊存檔"
+      - "&7Click to save"
     Error_Save:
       Type: "RED_WOOL"
-      Title: "&a儲存"
+      Title: "&asave"
       Lore:
-      - "&c資料有誤，請確認:"
+      - "&cThere's something wrong with data, please check:"
       - "%error%"
     Create:
       Type: "LIME_WOOL"
-      Title: "&a創建"
+      Title: "&aCreate"
       Lore:
-      - "&7點擊存檔創建"
+      - "&7Click to create archive"
     Error_Create:
       Type: "RED_WOOL"
-      Title: "&a創建"
+      Title: "&aCreate"
       Lore:
-      - "&c資料有誤，請確認:"
+      - "&cThere's something wrong with data, please check:"
       - "%error%"
 Inventory:
   Menu:
-    Title: "目錄"
+    Title: "Menu"
     Button:
       Normal:
         Type: "GRASS_BLOCK"
-        Title: "&f原版生物"
+        Title: "&fOriginal Mob"
         Lore:
-        - "&7數量: &2%num%"
+        - "&7Quantity: &2%num%"
       Custom:
         Type: "CRAFTING_TABLE"
-        Title: "&f自定義生物"
+        Title: "&fCustomize Mob"
         Lore:
-        - "&7數量: &2%num%"
+        - "&7Quantity: &2%num%"
       Items:
         Type: "ITEM_FRAME"
-        Title: "&f物品列表"
+        Title: "&fItem list"
         Lore:
-        - "&7數量: &2%num%"
+        - "&7Quantity: &2%num%"
   Items: 
-    Title: "物品列表"
+    Title: "Item list"
   ItemsListMob: 
-    Title: "%mobname% 未選擇列表"
+    Title: "%mobname% Unused list"
   EntitytypeList: 
-    Title: "選擇原版怪物列表"
+    Title: "Original mob select list"
   MobAdd:
-    Title: "&1新增怪物"
+    Title: "&1Add new mob"
     Button:
-      getEntityType: #新增原版怪物時 才會出現的按鈕
+      getEntityType: # Only appears when using original mobs.
         Type: "ORANGE_WOOL"
-        Title: "&a選擇怪物"
+        Title: "&achoose mob"
         Lore:
-        - "&7目前選擇:%name%"
-        - "&7系統代號:%id%"
-      Name: #自定義怪物時 才會出現的按鈕
+        - "&7Selecting:%name%"
+        - "&7System code:%id%"
+      Name: #Only appears when using customize mobs.
         Type: "ORANGE_WOOL"
-        Title: "&a設定名稱"
-        Lore:
-        - "&7使用者必需在15秒內&f"
-        - "&7在聊天窗打上名稱&f"
-        - "&7目前名稱: %name%"
+        Title: "&aSet name"
+        Lore:                   
+        - "&7User must enter name in chat&f"
+        - "&7within 15 seconds.&f"
+        - "&7Current name: %name%"
       Icon:
         Type: "BARRIER"
-        Title: "&a設定圖示"
+        Title: "&aSet icon"
         Lore:
         - ""
-        - "&a請直接放上想要的物品當圖示"
+        - "&aPlease drag the item you want here to set icon"
   MobEdit: 
-    Title: "&f設定怪物 &1%mobname%"
+    Title: "&fSet mob &1%mobname%"
   MobRemove: 
-    Title: "&f刪除怪物 &1%mobname%"
+    Title: "&fDelete mob &1%mobname%"
   Mob_List:
     Title:
-      Normal: "原版怪物列表"
-      Custom: "自定義怪物列表"
+      Normal: "Original mob list"
+      Custom: "Customize mob list"
     Button:
       MobAdd:
         Type: "CRAFTING_TABLE"
-        Title: "&a新增怪物"
+        Title: "&aAdd new mob"
         Lore:
-        - "&7點擊新增"
+        - "&7Click to add"
   Mob_Item_List:
-    Title: "&1%mobname% &f物品清單"
+    Title: "&1%mobname% &fitem list"
     Button:
       MobRemove:
         Type: "RED_WOOL"
-        Title: "&a刪除怪物"
+        Title: "&aDelete mob"
         Lore:
-        - "&7點擊刪除怪物"
+        - "&7Click to delete mob"
       MobEdit:
         Type: "WRITABLE_BOOK"
-        Title: "&a設定怪物"
+        Title: "&aEdit mob"
         Lore:
-        - "&7點擊修改"
+        - "&7Click to edit"
       ItemAdd:
         Type: "CRAFTING_TABLE"
-        Title: "&a新增物品"
+        Title: "&aAdd new item"
         Lore:
-        - "&7點擊新增物品"
+        - "&7Click to add new item"
   Mob_ItemAdd:
-    Title: "&1新增物品"
+    Title: "&1Add item"
     Button:
       Item:
         Type: "ORANGE_WOOL"
-        Title: "&a選擇物品"
+        Title: "&aChoose item"
         Lore:
-        - "&7系統代號:%id%"
+        - "&7System code:%id%"
   Mob_ItemEdit:
-    Title: "&f設定物品 &1%itemname%"
+    Title: "&fEdit item &1%itemname%"
     Type:
       quantity: "&a%quantity%"
       quantity_max: " &7- &a%quantity_max%"
-      mode_quantity: "&a最少掉落數量"
-      mode_quantity_max: "&b最大掉落數量"
+      mode_quantity: "&aMinimum drop quantity"
+      mode_quantity_max: "&bMaximum drop quantity"
     Button:
       Remove:
         Type: "RED_WOOL"
-        Title: "&a刪除物品"
+        Title: "&aDelete item"
         Lore:
-        - "&7點擊刪除物品"
+        - "&7Click to delete item"
       ItemForm:
         Type: "LIGHT_BLUE_STAINED_GLASS_PANE"
         Title: " "
         Lore: []
       Chance:
         Type: "ORANGE_DYE"
-        Title: "&6掉落機率"
+        Title: "&6Drop chance"
         Lore:
-        - "&7目前機率: &a%chance%%"
+        - "&7Current drop chance: &a%chance%%"
       Chance_add:
         Type: "SOUL_TORCH"
-        Title: "&6掉落機率"
+        Title: "&6Increase drop chance"
         Lore:
-        - "&7目前機率 : &a%chance%%"
-        - "&7點擊 : &a+%chance_type%"
+        - "&7Current drop chance : &a%chance%%"
+        - "&7Click to : &a+%chance_type%"
       Chance_subtract:
         Type: "REDSTONE_TORCH"
-        Title: "&6掉落機率"
+        Title: "&6Reduce drop chance"
         Lore:
-        - "&7目前機率 : &a%chance%%"
-        - "&7點擊 : &c-%chance_type%"
+        - "&7Current drop chance : &a%chance%%"
+        - "&7Click to : &c-%chance_type%"
       Chance_type:
         Type: "LECTERN"
-        Title: "&6掉落機率"
+        Title: "&6Adjust drop chance"
         Lore:
-        - "&7目前機率 : &a%chance%%"
-        - "&7左鍵 : &a+10 倍率"
-        - "&7右鍵 : &c-10 倍率"
-        - "&7可調整倍率 : &60.01 &7- &610"
-        - "&7目前倍率: &a%chance_type%"
+        - "&7Current drop chance : &a%chance%%"
+        - "&7Left click : &a+10 times"
+        - "&7Right click : &c-10 times"
+        - "&7Adjustable multiplier : &60.01 &7- &610"
+        - "&7Current multiplier: &a%chance_type%"
       Quantity:
         Type: "PAPER"
-        Title: "&f掉落數量"
+        Title: "&6Increase drop quantity"
         Lore:
-        - "&7目前掉落數量 : &a%quantity%" #quantity 是會透過 Mob_ItemEdit.Type.quantity 跟 quantity_max 更改
-        - "&7目前更改 : %mode_quantity%"
-        - "&7左鍵切換 : &a最少掉落數量 &7跟 &b最大掉落數量"
-        - "&7右鍵點擊 : &c取消&b最大掉落數量"
+        - "&7Current drop quantity : &a%quantity%" #quantity will change by Mob_ItemEdit.Type.quantity & quantity_max
+        - "&7Changing : %mode_quantity%"
+        - "&7Left click to switch : &aminimum drop quantity &7and &bmaximum drop quantity"
+        - "&7Right click : &ccancel &bmaximum drop quantity"
       Quantity_add:
         Type: "SOUL_TORCH"
-        Title: "&6掉落數量"
+        Title: "&6Increase drop quantity"
         Lore:
-        - "&7目前掉落數量: &a%quantity%"
-        - "&7點擊 : &a+%quantity_type%"
+        - "&7Current drop quantity: &a%quantity%"
+        - "&7Click to : &a+%quantity_type%"
       Quantity_subtract:
         Type: "REDSTONE_TORCH"
-        Title: "&6掉落數量"
+        Title: "&6Reduce drop quantity"
         Lore:
-        - "&7目前掉落數量: &a%quantity%"
-        - "&7點擊 : &c-%quantity_type%"
+        - "&7Current drop quantity: &a%quantity%"
+        - "&7Click to : &c-%quantity_type%"
       Quantity_type:
         Type: "LECTERN"
-        Title: "&6掉落數量"
+        Title: "&6Adjust drop quantity"
         Lore:
-        - "&7目前掉落數量: &a%quantity%"
-        - "&7左鍵 : &a+10 倍率"
-        - "&7右鍵 : &c-10 倍率"
-        - "&7可調整倍率 : &61 &7- &6100"
-        - "&7目前倍率: &a%quantity_type%"
+        - "&7Current drop quantity: &a%quantity%"
+        - "&7Left click : &a+10 times"
+        - "&7Right click : &c-10 times"
+        - "&7Adjustable multiplier : &61 &7- &6100"
+        - "&7Current multiplier: &a%quantity_type%"
   Mob_ItemRemove:
-    Title: "&f刪除物品 &1%itemname%"
+    Title: "&fDelete item &1%itemname%"
   SQLError:
 Other:
   EntityType_Normal:
