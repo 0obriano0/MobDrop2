@@ -10,8 +10,7 @@ public class ToolCommandSystem {
 	 * @param command 指令名稱
      * @return 該class資料
      */
-    @SuppressWarnings("deprecation")
-	public static ImainCommandSystem getCommandClass(String command) {
+    public static ImainCommandSystem getCommandClass(String command) {
     	ImainCommandSystem cmd = null;
         try {
             cmd = (ImainCommandSystem) MobDrop2.class.getClassLoader().loadClass("com.twsbrian." + DataBase.pluginName + ".Command" + ".Command" + command).newInstance();
@@ -30,7 +29,6 @@ public class ToolCommandSystem {
      * @param commandPath 要抓取插件的檔案位置
      * @return 該class資料
      */
-    @SuppressWarnings("deprecation")
     public static ImainCommandSystem getCommandClass(String command,final ClassLoader classLoader, final String commandPath) {
     	ImainCommandSystem cmd = null;
         try {
@@ -50,7 +48,6 @@ public class ToolCommandSystem {
      * @param commandPath 要抓取插件的檔案位置
      * @return true or false
      */
-    @SuppressWarnings("deprecation")
     public static boolean hasCommandClass(String command,final ClassLoader classLoader, final String commandPath) {
         try {
             classLoader.loadClass(commandPath + ".Command" + command).newInstance();
