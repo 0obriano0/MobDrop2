@@ -25,6 +25,7 @@ permissions:
          mobdrop.user: true
          mobdrop.user.help: true
          mobdrop.user.inventory.*: true
+         mobdrop.user.hhh: true
    mobdrop.user.inventory.*:
       default: true
       children:
