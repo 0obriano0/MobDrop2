@@ -11,7 +11,7 @@ GobalMessage:
   Chance: 20
 
 Holo:
-  Show: true
+  Show: false
   Defualt_Color: "&f"
   Drop_Format: "&f[&b%player%&f] &f%item%"
   Drop_Count: "&f x %amount%"
