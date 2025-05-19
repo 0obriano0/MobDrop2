@@ -120,28 +120,30 @@ public class DataBase {
         FileSystem fileSystem = null;
         uri = jarURL.toURI();
         Path myPath;
-            if (uri.getScheme().equals("jar")) {
-                fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
-                myPath = fileSystem.getPath("/com/twsbrian/"+ pluginName +"/Command");
-                
-            } else {
-                myPath = Paths.get(uri);
+        if (uri.getScheme().equals("jar")) {
+            fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
+            myPath = fileSystem.getPath("/com/twsbrian/"+ pluginName +"/Command");
+        } else {
+            myPath = Paths.get(uri);
+        }
+        if (fileSystem == null) {
+          return Commands;
+        }
+        for (Iterator<Path> it = Files.walk(myPath, 1).iterator(); it.hasNext();){
+          String[] path = it.next().toString().split("/");
+          
+          String file = path[path.length - 1];
+          if(file.matches("(.*)class$")) {
+            file = file.split("\\.")[0];
+            if(file.matches("^Command.*")) {
+              String filename = file.split("Command")[1];
+              Commands.add(filename);
             }
-            for (Iterator<Path> it = Files.walk(myPath, 1).iterator(); it.hasNext();){
-              String[] path = it.next().toString().split("/");
-              
-              String file = path[path.length - 1];
-              if(file.matches("(.*)class$")) {
-                file = file.split("\\.")[0];
-                if(file.matches("^Command.*")) {
-                  String filename = file.split("Command")[1];
-                  Commands.add(filename);
-                }
-              }
-                //System.out.println(it.next());
-              Collections.sort(Commands);
-            }
-            fileSystem.close();
+          }
+            //System.out.println(it.next());
+          Collections.sort(Commands);
+        }
+        fileSystem.close();
       } catch (URISyntaxException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
