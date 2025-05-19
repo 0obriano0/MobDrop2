@@ -90,26 +90,26 @@ public class InventoryNormalMobs implements InventoryProvider{
 			if(entry.name().toUpperCase().contains("ARROW")) continue;
       if(!checkEntityType(entry)) continue;
 
-        	Material f_item = null;
-        	Material head = Material.getMaterial(entry.name().toUpperCase() + "_HEAD");
-        	Material spawn_egg = Material.getMaterial(entry.name().toUpperCase() + "_SPAWN_EGG");
-        	Material item = Material.getMaterial(entry.name().toUpperCase());
-        	f_item = head;
-        	if(f_item == null) f_item = spawn_egg;
-        	if(f_item == null) f_item = item;
-        	if(f_item == null) {
-        		f_item = Material.BARRIER;
-        		findMaterial = false;
-        	}
-        	
-        	Itemset itemset = new Itemset(f_item);
-        	itemset.setItemName("§a" + DataBase.fileMessage.GetEntityName(entry.name().toUpperCase()));
-        	if(!findMaterial) {
-        		itemset.setLore(DataBase.fileMessage.getString("Inventory.Material_not_found"));
-        	}
-        	
-        	mobs.put(entry.name().toUpperCase(), itemset.getItemStack());
-	    }
+      Material f_item = null;
+      Material head = Material.getMaterial(entry.name().toUpperCase() + "_HEAD");
+      Material spawn_egg = Material.getMaterial(entry.name().toUpperCase() + "_SPAWN_EGG");
+      Material item = Material.getMaterial(entry.name().toUpperCase());
+      f_item = head;
+      if(f_item == null) f_item = spawn_egg;
+      if(f_item == null) f_item = item;
+      if(f_item == null) {
+        f_item = Material.BARRIER;
+        findMaterial = false;
+      }
+      
+      Itemset itemset = new Itemset(f_item);
+      itemset.setItemName("§a" + DataBase.fileMessage.GetEntityName(entry.name().toUpperCase()));
+      if(!findMaterial) {
+        itemset.setLore(DataBase.fileMessage.getString("Inventory.Material_not_found"));
+      }
+      
+      mobs.put(entry.name().toUpperCase(), itemset.getItemStack());
+    }
 		
 		return mobs;
 	}
