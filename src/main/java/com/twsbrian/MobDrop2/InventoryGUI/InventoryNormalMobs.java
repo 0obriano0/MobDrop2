@@ -88,7 +88,8 @@ public class InventoryNormalMobs implements InventoryProvider{
 			if(DataBase.fileInventory.getEntityType_Normal_BlackList().contains(entry.name().toUpperCase())) continue;
 			if(entry.name().toUpperCase().contains("MINECART")) continue;
 			if(entry.name().toUpperCase().contains("ARROW")) continue;
-			
+      if(!checkEntityType(entry)) continue;
+
         	Material f_item = null;
         	Material head = Material.getMaterial(entry.name().toUpperCase() + "_HEAD");
         	Material spawn_egg = Material.getMaterial(entry.name().toUpperCase() + "_SPAWN_EGG");
@@ -112,4 +113,30 @@ public class InventoryNormalMobs implements InventoryProvider{
 		
 		return mobs;
 	}
+  
+  private boolean checkEntityType(EntityType type) {
+    if (type == null) return false;
+    // 不用列舉、不用 SpawnCategory，也不用關鍵字，只能根據 EntityType 的屬性進行判斷
+    // 這種情況下，僅能用 EntityType 的 method 判斷（但 EntityType 沒有 isMob/isLiving 這類方法）
+    // 可以嘗試用 EntityType.getEntityClass() 是否為 LivingEntity 的子類來判斷
+    Class<?> clazz = type.getEntityClass();
+    if (clazz == null) {
+      // 非實體
+      return false;
+    }
+    if (org.bukkit.entity.LivingEntity.class.isAssignableFrom(clazz)) {
+      // 是生物（包含怪物與動物）
+      // 進一步判斷是否為 Monster
+      if (org.bukkit.entity.Monster.class.isAssignableFrom(clazz)) {
+        // 怪物
+        return true;
+      } else {
+        // 其他生物（非怪物)
+        return true;
+      }
+    } else {
+      // 不是生物
+      return false;
+    }
+  }
 }
