@@ -13,8 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
+
 import com.twsbrian.MobDrop2.MobDrop2;
 import com.twsbrian.MobDrop2.DataBase.DataBase;
+import com.twsbrian.MobDrop2.DataBase.Callback;
 
 /**
  * MySQL 定義檔 方便我使用
@@ -31,7 +34,7 @@ public class MySQLManager {
 	protected transient String USER;
 	protected transient String PASS;
 	protected transient String db;
-   
+  
 	protected Connection conn = null;
 	
 	public boolean autoReconnect = false;
@@ -315,7 +318,25 @@ public class MySQLManager {
 		}
 		return success;
 	}
-	
+  
+  /**
+   * 非同步發送指令給 MySQL
+   * 於 2025/05/20 新增
+   * @param command 指令
+   * @param callback 回調函數
+   */
+  public void executeUpdateAsync(String command, Callback<Boolean> callback) {
+    Bukkit.getScheduler().runTaskAsynchronously(MobDrop2.plugin, () -> {
+      try {
+        boolean result = this.executeUpdate(command);
+        callback.onSuccess(result);
+      } catch (Exception e) {
+        callback.onFailure(e);
+      }
+    });
+  }
+
+
 	/**
 	 * 傳送查詢相關指令 並轉換成 list map 模式
 	 * db 使用內部設定好的
@@ -381,6 +402,23 @@ public class MySQLManager {
 		return data_list;
 	}
 	
+  /**
+   * 非同步查詢資料庫
+   * 於 2025/05/20 新增
+   * @param command 指令
+   * @param callback 回調函數
+   */
+  public void selectAsync(String command, Callback<List<Map<String, String>>> callback) {
+    Bukkit.getScheduler().runTaskAsynchronously(MobDrop2.plugin, () -> {
+      try {
+        List<Map<String, String>> result = this.select(command);
+        callback.onSuccess(result);
+      } catch (Exception e) {
+        callback.onFailure(e);
+      }
+    });
+  }
+
 	/**
 	 * print顯示控制器
 	 * @param message 訊息

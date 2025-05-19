@@ -2,11 +2,14 @@ package com.twsbrian.MobDrop2.Command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.twsbrian.MobDrop2.DataBase.DataBase;
+import com.twsbrian.MobDrop2.DataBase.Itemset;
+import com.twsbrian.MobDrop2.DataBase.Callback;
 
 public class Commandtest extends mainCommandSystem{
 	public Commandtest() {
@@ -36,6 +39,44 @@ public class Commandtest extends mainCommandSystem{
 		// if(args.length >= 1) {
 		// 	DataBase.Print(DataBase.getDropColorByChance(Double.valueOf(args[0])));
 		// }
+    // if (args.length >= 2) {
+    //   try {
+    //     int page = Integer.parseInt(args[0]);
+    //     int size = Integer.parseInt(args[1]);
+    //     Map<String,Itemset> items = DataBase.sql.ItemsGet(page, size);
+    //     DataBase.Print("ItemNo 列表 (第 " + page + " 頁, 每頁 " + size + " 筆):");
+    //     for (Map.Entry<String, Itemset> entry : items.entrySet()) {
+    //       String itemNo = entry.getKey();
+    //       Itemset item = entry.getValue();
+    //       DataBase.Print("ItemNo: " + itemNo + ", Item: " + item);
+    //     }
+    //   } catch (NumberFormatException e) {
+    //     DataBase.Print("請輸入正確的頁數與每頁大小 (數字)。");
+    //   }
+    // }
+
+    DataBase.Print("查詢中...");
+    if (args.length >= 2) {
+      int page = Integer.parseInt(args[0]);
+      int size = Integer.parseInt(args[1]);
+      DataBase.sql.ItemsGetAsync(page, size, new Callback<Map<String,Itemset>>() {
+        @Override
+        public void onSuccess(Map<String, Itemset> result) {
+          DataBase.Print("ItemNo 列表 (第 " + page + " 頁, 每頁 " + size + " 筆):");
+          for (Map.Entry<String, Itemset> entry : result.entrySet()) {
+            String itemNo = entry.getKey();
+            Itemset item = entry.getValue();
+            DataBase.Print("ItemNo: " + itemNo + ", Item: " + item);
+          }
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+          DataBase.Print("查詢失敗: " + e.getMessage());
+        }
+      });
+    }
+    
     DataBase.Print("test");
 	}
 }
