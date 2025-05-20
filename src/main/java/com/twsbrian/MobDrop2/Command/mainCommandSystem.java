@@ -51,16 +51,16 @@ public class mainCommandSystem implements ImainCommandSystem {
    * @param subCommand_path 指令的路徑
    */
   protected mainCommandSystem(final String id,final String help,final List<String> permissions, String subCommand_path) {
-        this.id = id;
-        this.help = help;
-        this.permissions = permissions;
-        this.subCommand_path = subCommand_path;
-    }
+    this.id = id;
+    this.help = help;
+    this.permissions = permissions;
+    this.subCommand_path = subCommand_path;
+  }
   
   @Override
   public String getName() {
-        return id;
-    }
+    return id;
+  }
   
   @Override
   public String getHelp() {
@@ -267,7 +267,7 @@ public class mainCommandSystem implements ImainCommandSystem {
               subCommands.add(filename);
             }
           }
-            //System.out.println(it.next());
+          // System.out.println(it.next());
           Collections.sort(subCommands);
         }
         fileSystem.close();
